@@ -66,14 +66,19 @@
   .hero-right .case .name { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: -0.015em; }
   .hero-right .case .stat { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: #9ab2ae; }
 
-  /* TICKER */
-  .ticker { padding: 28px 56px; background: #fff; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 32px; overflow: hidden; }
-  .ticker .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); flex-shrink: 0; }
-  .ticker .logos { display: flex; gap: 36px; align-items: center; flex: 1; flex-wrap: wrap; row-gap: 18px; }
-  .ticker .logo { height: 28px; width: auto; max-width: 140px; object-fit: contain; opacity: 0.75; filter: grayscale(0.15); transition: opacity 0.2s, filter 0.2s; display: block; }
-  .ticker .logo:hover { opacity: 1; filter: grayscale(0); }
-  .ticker .logo-text { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; letter-spacing: -0.02em; color: var(--ink); opacity: 0.6; transition: opacity 0.2s; }
-  .ticker .logo-text:hover { opacity: 1; }
+  /* TICKER — infinite horizontal marquee */
+  .ticker { padding: 28px 0; background: #fff; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 18px; overflow: hidden; }
+  .ticker .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); padding: 0 56px; }
+  .marquee { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%); }
+  .marquee-track { display: flex; gap: 64px; align-items: center; width: max-content; animation: marquee 60s linear infinite; will-change: transform; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+  .marquee .logo { height: 36px; width: auto; max-width: 180px; object-fit: contain; opacity: 0.7; filter: grayscale(0.2); transition: opacity 0.2s, filter 0.2s; display: block; flex-shrink: 0; }
+  .marquee .logo:hover { opacity: 1; filter: grayscale(0); }
+  .marquee .logo-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: 26px; letter-spacing: -0.025em; color: var(--ink); opacity: 0.65; transition: opacity 0.2s; flex-shrink: 0; line-height: 1; }
+  .marquee .logo-text:hover { opacity: 1; }
+  .marquee .logo-text.shiftmed { font-family: 'Geist', sans-serif; font-weight: 800; letter-spacing: -0.03em; color: #0a3d3a; text-transform: lowercase; }
+  .marquee .logo-text.elektra { font-family: 'Fraunces', serif; font-weight: 500; font-style: italic; color: #c44569; letter-spacing: -0.02em; }
 
   /* INTRO / VALUE PROP */
   .intro { padding: 100px 56px; display: grid; grid-template-columns: 280px 1fr; gap: 64px; border-bottom: 1px solid var(--rule); align-items: start; }
@@ -360,34 +365,44 @@
     </div>
   </div>
 
-  <!-- TICKER -->
+  <!-- TICKER — infinite marquee of partner wordmarks -->
   <div class="ticker">
     <div class="label">Operating in the trenches at →</div>
-    <div class="logos">
-      <img class="logo" src="https://icons.duckduckgo.com/ip3/koda.health.ico" alt="Koda Health" title="Koda Health" />
-      <span class="logo-text" style="font-style:italic;" title="Guaranteed">Guaranteed</span>
-      <img class="logo" src="https://icons.duckduckgo.com/ip3/genhealth.ai.ico" alt="GenHealth.ai" title="GenHealth.ai" />
-      <span class="logo-text" title="Serif Health">Serif Health</span>
-      <img class="logo" src="https://icons.duckduckgo.com/ip3/ellipsishealth.com.ico" alt="Ellipsis Health" title="Ellipsis Health" />
-      <img class="logo" src="https://icons.duckduckgo.com/ip3/fitonhealth.com.ico" alt="FitOn Health" title="FitOn Health" />
-      <img class="logo" src="https://icons.duckduckgo.com/ip3/shiftmed.com.ico" alt="ShiftMed" title="ShiftMed" />
-      <img class="logo" src="https://icons.duckduckgo.com/ip3/diagnosticrobotics.com.ico" alt="Diagnostic Robotics" title="Diagnostic Robotics" />
-      <img class="logo" src="https://icons.duckduckgo.com/ip3/heartbeathealth.com.ico" alt="Heartbeat Health" title="Heartbeat Health" />
-      <img class="logo" src="https://icons.duckduckgo.com/ip3/elektrahealth.com.ico" alt="Elektra Health" title="Elektra Health" />
-      <img class="logo" src="https://icons.duckduckgo.com/ip3/hellolunajoy.com.ico" alt="LunaJoy" title="LunaJoy" />
-      <img class="logo" src="https://icons.duckduckgo.com/ip3/kentohealth.com.ico" alt="Kento Health" title="Kento Health" />
+    <div class="marquee">
+      <div class="marquee-track" id="logoTrack">
+        <img class="logo" src="logos/koda-health.png" alt="Koda Health" title="Koda Health" />
+        <img class="logo" src="logos/guaranteed.png" alt="Guaranteed" title="Guaranteed" />
+        <img class="logo" src="logos/genhealth.svg" alt="GenHealth.ai" title="GenHealth.ai" style="height:32px;" />
+        <img class="logo" src="logos/serif-health.png" alt="Serif Health" title="Serif Health" />
+        <img class="logo" src="logos/ellipsis-health.png" alt="Ellipsis Health" title="Ellipsis Health" />
+        <img class="logo" src="logos/fiton-health.svg" alt="FitOn Health" title="FitOn Health" />
+        <span class="logo-text shiftmed" title="ShiftMed">shiftmed</span>
+        <img class="logo" src="logos/diagnostic-robotics.png" alt="Diagnostic Robotics" title="Diagnostic Robotics" />
+        <img class="logo" src="logos/heartbeat-health.svg" alt="Heartbeat Health" title="Heartbeat Health" />
+        <span class="logo-text elektra" title="Elektra Health">Elektra Health</span>
+        <img class="logo" src="logos/lunajoy.png" alt="LunaJoy" title="LunaJoy" />
+        <img class="logo" src="logos/kento-health.png" alt="Kento Health" title="Kento Health" />
+      </div>
     </div>
   </div>
   <script>
-    // Replace any logo image that fails to load with the company name as a wordmark
-    document.querySelectorAll('.ticker img.logo').forEach(function(img){
-      img.addEventListener('error', function(){
-        var span = document.createElement('span');
-        span.className = 'logo-text';
-        span.textContent = img.alt;
-        img.replaceWith(span);
+    // Duplicate logo set as cloned DOM nodes so the keyframe -50% translate loops seamlessly.
+    // If a logo image fails to load, replace it with a styled wordmark from its alt text.
+    (function(){
+      var track = document.getElementById('logoTrack');
+      if (!track) return;
+      var originals = Array.prototype.slice.call(track.children);
+      originals.forEach(function(node){ track.appendChild(node.cloneNode(true)); });
+      track.querySelectorAll('img.logo').forEach(function(img){
+        img.addEventListener('error', function(){
+          var span = document.createElement('span');
+          span.className = 'logo-text';
+          span.title = img.alt;
+          span.textContent = img.alt;
+          img.replaceWith(span);
+        });
       });
-    });
+    })();
   </script>
 
   <!-- INTRO -->

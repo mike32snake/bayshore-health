@@ -250,9 +250,14 @@
   .qa summary { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; list-style: none; cursor: pointer; }
   .qa summary::-webkit-details-marker { display: none; }
   .qa h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; margin: 0; flex: 1; }
-  .qa .toggle { font-family: 'Geist Mono', monospace; font-size: 18px; color: var(--terra); transition: transform 0.2s; }
+  .qa .toggle { font-family: 'Geist Mono', monospace; font-size: 18px; color: var(--terra); transition: transform 0.25s ease; }
   .qa[open] .toggle { transform: rotate(45deg); }
   .qa .a { font-size: 15px; line-height: 1.65; color: var(--stone); margin: 16px 0 0; max-width: 720px; }
+  .qa[open] .a { animation: qaFadeIn 0.28s ease both; }
+  .qa.closing .a { animation: qaFadeOut 0.22s ease both; }
+  .qa.closing .toggle { transform: rotate(0deg); }
+  @keyframes qaFadeIn  { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes qaFadeOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-6px); } }
 
   /* CTA */
   .cta-block { background: var(--terra); color: #fff; padding: 100px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; overflow: hidden; }
@@ -399,6 +404,33 @@
           span.title = img.alt;
           span.textContent = img.alt;
           img.replaceWith(span);
+        });
+      });
+    })();
+
+    // FAQ open/close fade animation.
+    // Native <details> hides children instantly on close, so we intercept the
+    // close click, play the fadeout, then flip the open attribute.
+    (function(){
+      document.querySelectorAll('details.qa').forEach(function(qa){
+        var summary = qa.querySelector('summary');
+        if (!summary) return;
+        summary.addEventListener('click', function(e){
+          if (!qa.open) return; // opening — let the browser handle it; CSS animates the fade-in
+          e.preventDefault();
+          if (qa.classList.contains('closing')) return;
+          qa.classList.add('closing');
+          var answer = qa.querySelector('.a');
+          var done = function(){
+            qa.classList.remove('closing');
+            qa.open = false;
+            if (answer) answer.removeEventListener('animationend', done);
+          };
+          if (answer) {
+            answer.addEventListener('animationend', done);
+          } else {
+            setTimeout(done, 220);
+          }
         });
       });
     })();

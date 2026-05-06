@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Bayshore Health — Healthcare BD & Revenue Advisory</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e1d28;
+    --teal: #1a3942;
+    --terra: #d97757;
+    --sage: #3a7a5a;
+    --stone: #5a6b65;
+    --paper: #f4f5f3;
+    --paper-2: #ecede9;
+    --rule: #d8dcd5;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); font-family: 'Geist', sans-serif; color: var(--ink); }
+
+  /* Brand lockup */
+  .lockup-h { display: flex; align-items: center; gap: 8px; }
+  .lockup-h .word { font-family: 'Fraunces', serif; font-weight: 800; letter-spacing: -0.045em; line-height: 0.9; font-variation-settings: "opsz" 144; color: var(--ink); }
+  .lockup-h .health { color: var(--stone); }
+  .lockup-h .slash { font-family: 'Geist Mono', monospace; font-weight: 500; color: var(--terra); line-height: 1; }
+  .lockup-h img { display: block; object-fit: contain; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Geist Mono', monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; padding: 14px 22px; text-decoration: none; cursor: pointer; border: 1px solid currentColor; transition: all 0.2s; }
+  .btn.solid { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn.terra { background: var(--terra); color: #fff; border-color: var(--terra); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn:hover { transform: translateY(-1px); }
+
+  .container { width: 100%; max-width: 1440px; margin: 0 auto; }
+
+  /* NAV */
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 56px; border-bottom: 1px solid var(--rule); background: #fff; position: sticky; top: 0; z-index: 50; }
+  .nav .lockup-h .word { font-size: 22px; }
+  .nav .lockup-h .word.health { font-size: 16px; }
+  .nav .lockup-h .slash { font-size: 28px; }
+  .nav .lockup-h img { height: 32px; }
+  .nav-right { display: flex; align-items: center; gap: 28px; }
+  .nav-right a { font-family: 'Geist', sans-serif; font-weight: 500; font-size: 13px; color: var(--ink); text-decoration: none; }
+  .nav-right a:hover { color: var(--terra); }
+
+  /* HERO */
+  .hero { display: grid; grid-template-columns: 1fr 480px; min-height: 620px; }
+  .hero-left { padding: 80px 56px; display: flex; flex-direction: column; gap: 40px; justify-content: space-between; }
+  .hero-left .kicker { display: inline-flex; align-items: center; gap: 10px; font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); align-self: flex-start; padding: 6px 12px; border: 1px solid var(--terra); border-radius: 100px; }
+  .hero-left .kicker .blink { width: 6px; height: 6px; background: var(--terra); border-radius: 50%; animation: blink 1.6s infinite; }
+  @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0.2; } }
+  .hero-left h1 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 68px; letter-spacing: -0.035em; line-height: 1; margin: 24px 0 0; max-width: 720px; }
+  .hero-left h1 em { color: var(--terra); font-style: italic; font-weight: 600; }
+  .hero-left .lede { font-size: 17px; line-height: 1.55; color: var(--stone); max-width: 540px; }
+  .hero-left .ctas { display: flex; gap: 12px; margin-top: 32px; }
+
+  .hero-right { background: var(--teal); color: var(--paper); padding: 60px 48px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-right .palm-bg { position: absolute; right: -40px; bottom: -30px; height: 280px; width: auto; opacity: 0.15; pointer-events: none; }
+  .hero-right .panel-tag { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--terra); text-transform: uppercase; }
+  .hero-right h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 26px; letter-spacing: -0.02em; line-height: 1.15; margin: 16px 0 32px; }
+  .hero-right .case-row { display: flex; flex-direction: column; gap: 0; position: relative; z-index: 1; }
+  .hero-right .case { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.12); align-items: baseline; }
+  .hero-right .case .name { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: -0.015em; }
+  .hero-right .case .stat { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: #9ab2ae; }
+
+  /* TICKER */
+  .ticker { padding: 28px 56px; background: #fff; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 32px; overflow: hidden; }
+  .ticker .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); flex-shrink: 0; }
+  .ticker .logos { display: flex; gap: 36px; align-items: center; flex: 1; flex-wrap: wrap; }
+  .ticker .logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; letter-spacing: -0.02em; color: var(--ink); opacity: 0.6; }
+
+  /* INTRO / VALUE PROP */
+  .intro { padding: 100px 56px; display: grid; grid-template-columns: 280px 1fr; gap: 64px; border-bottom: 1px solid var(--rule); align-items: start; }
+  .intro .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .intro h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 52px; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 32px; max-width: 920px; }
+  .intro h2 em { color: var(--terra); font-style: italic; }
+  .intro .body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .intro .body p { font-size: 16px; line-height: 1.65; color: var(--stone); margin: 0; }
+  .intro .body p strong { color: var(--ink); font-weight: 600; }
+
+  /* STATS BAND */
+  .stats-band { display: grid; grid-template-columns: repeat(4, 1fr); padding: 48px 56px; border-bottom: 1px solid var(--rule); background: var(--paper-2); }
+  .stats-band .stat { padding: 0 32px; border-left: 1px solid var(--rule); }
+  .stats-band .stat:first-child { border-left: none; padding-left: 0; }
+  .stats-band .stat .num { font-family: 'Fraunces', serif; font-weight: 700; font-size: 64px; letter-spacing: -0.04em; line-height: 1; color: var(--ink); }
+  .stats-band .stat .num em { color: var(--terra); font-style: normal; }
+  .stats-band .stat .label { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-top: 8px; }
+
+  /* SERVICES TABLE */
+  .table-section { padding: 100px 56px; }
+  .table-section .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 48px; }
+  .table-section .head h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 56px; letter-spacing: -0.03em; line-height: 1; margin: 0; max-width: 700px; }
+  .table-section .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .table-section .head .legend { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); }
+  .row { display: grid; grid-template-columns: 60px 280px 1fr 220px 160px; gap: 32px; padding: 28px 0; border-top: 1px solid var(--rule); align-items: baseline; transition: background 0.2s; }
+  .row:hover { background: var(--paper-2); }
+  .row.head-row { padding: 16px 0; border-top: none; border-bottom: 2px solid var(--ink); font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
+  .row.head-row:hover { background: transparent; }
+  .row .num { font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--terra); }
+  .row .what { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; line-height: 1.1; }
+  .row .desc { font-size: 14px; color: var(--stone); line-height: 1.55; }
+  .row .for { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--ink); }
+  .row .when { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--stone); letter-spacing: 0.04em; text-align: right; }
+
+  /* WHY US — comparison */
+  .why { padding: 100px 56px; background: var(--ink); color: var(--paper); }
+  .why .head { display: grid; grid-template-columns: 280px 1fr; gap: 48px; margin-bottom: 56px; align-items: baseline; }
+  .why .head .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .why .head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 52px; letter-spacing: -0.03em; line-height: 1; margin: 0; max-width: 800px; }
+  .why .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .compare { display: grid; grid-template-columns: 220px 1fr 1fr; border-top: 1px solid rgba(255,255,255,0.15); }
+  .compare > div { padding: 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; }
+  .compare .col-label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #9ab2ae; }
+  .compare .col-them { color: #9ab2ae; font-size: 15px; line-height: 1.5; }
+  .compare .col-us { color: var(--paper); font-size: 15px; line-height: 1.5; border-left: 2px solid var(--terra); padding-left: 26px; }
+  .compare .col-us strong { color: var(--terra); font-weight: 500; }
+  .compare-head { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; padding-bottom: 18px !important; padding-top: 0 !important; border-bottom: 2px solid var(--terra) !important; }
+  .compare-head.them { color: #9ab2ae; }
+  .compare-head.us { color: var(--terra); }
+
+  /* CASE STUDIES */
+  .cases { padding: 100px 56px; border-top: 1px solid var(--rule); }
+  .cases .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 48px; }
+  .cases .head h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 56px; letter-spacing: -0.03em; line-height: 1; margin: 0; }
+  .cases .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .cases .head .all { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); text-decoration: none; }
+  .case-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .case-card { background: var(--paper); padding: 32px; display: flex; flex-direction: column; gap: 16px; min-height: 360px; transition: background 0.2s; }
+  .case-card:hover { background: #fff; }
+  .case-card.feature { background: var(--teal); color: var(--paper); position: relative; overflow: hidden; }
+  .case-card.feature::after { content: ''; position: absolute; right: -40px; bottom: -30px; width: 200px; height: 200px; background: radial-gradient(circle, var(--terra) 0%, transparent 60%); opacity: 0.25; }
+  .case-card .meta { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); }
+  .case-card.feature .meta { color: var(--terra); }
+  .case-card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 28px; letter-spacing: -0.02em; line-height: 1.1; margin: 0; }
+  .case-card.feature h3 { font-size: 36px; }
+  .case-card p { font-size: 14px; line-height: 1.6; color: var(--stone); margin: 0; }
+  .case-card.feature p { color: rgba(244, 245, 243, 0.85); }
+  .case-card .result { display: flex; gap: 24px; padding-top: 16px; border-top: 1px solid var(--rule); margin-top: auto; position: relative; z-index: 1; }
+  .case-card.feature .result { border-top-color: rgba(255,255,255,0.15); }
+  .case-card .result .r { display: flex; flex-direction: column; gap: 4px; }
+  .case-card .result .r .v { font-family: 'Fraunces', serif; font-weight: 700; font-size: 28px; letter-spacing: -0.025em; line-height: 1; color: var(--ink); }
+  .case-card.feature .result .r .v { color: var(--terra); }
+  .case-card .result .r .l { font-family: 'Geist Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+  .case-card.feature .result .r .l { color: #9ab2ae; }
+
+  /* PROCESS */
+  .process { padding: 100px 56px; background: var(--paper-2); }
+  .process .head { margin-bottom: 60px; }
+  .process .head .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; }
+  .process .head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 56px; letter-spacing: -0.03em; line-height: 1; margin: 0 0 16px; max-width: 800px; }
+  .process .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .process .head p { font-size: 17px; color: var(--stone); line-height: 1.6; max-width: 700px; margin: 0; }
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .phase { background: #fff; padding: 32px; display: flex; flex-direction: column; gap: 16px; min-height: 320px; }
+  .phase .week { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--terra); letter-spacing: 0.16em; text-transform: uppercase; }
+  .phase h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 26px; letter-spacing: -0.02em; line-height: 1.1; margin: 0; }
+  .phase .desc { font-size: 13px; color: var(--stone); line-height: 1.6; flex: 1; }
+  .phase ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .phase ul li { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--ink); padding-left: 12px; position: relative; }
+  .phase ul li::before { content: '→'; position: absolute; left: 0; color: var(--terra); }
+
+  /* TEAM */
+  .team-band { padding: 100px 56px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: #fff; }
+  .team-band .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; }
+  .team-band h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 52px; letter-spacing: -0.03em; line-height: 1; margin: 0 0 56px; max-width: 900px; }
+  .team-band h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .partners { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .partner-card { background: var(--paper); border: 1px solid var(--rule); padding: 36px; display: grid; grid-template-columns: 140px 1fr; gap: 28px; align-items: start; }
+  .partner-card .avatar { width: 140px; height: 140px; background: var(--ink); color: var(--terra); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 64px; letter-spacing: -0.04em; }
+  .partner-card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 28px; letter-spacing: -0.02em; margin: 0; }
+  .partner-card .role { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); margin: 4px 0 14px; }
+  .partner-card p { font-size: 14px; line-height: 1.6; color: var(--stone); margin: 0; }
+  .partner-card .past { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--ink); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .partner-card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .partner-card .tag { font-family: 'Geist Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); padding: 4px 8px; border: 1px solid var(--rule); background: #fff; }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 100px 56px; }
+  .testimonials .head { margin-bottom: 56px; }
+  .testimonials .head .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; }
+  .testimonials .head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 52px; letter-spacing: -0.03em; line-height: 1; margin: 0; max-width: 900px; }
+  .testimonials .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .quotes { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .quote-card { background: var(--paper); padding: 36px; display: flex; flex-direction: column; gap: 24px; }
+  .quote-card.lead { background: #fff; }
+  .quote-card .q { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: -0.015em; line-height: 1.3; color: var(--ink); }
+  .quote-card.lead .q { font-size: 32px; line-height: 1.2; }
+  .quote-card .q em { color: var(--terra); font-style: italic; }
+  .quote-card .att { display: flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--rule); }
+  .quote-card .att .av { width: 36px; height: 36px; background: var(--terra); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 600; font-size: 14px; border-radius: 50%; }
+  .quote-card .att .meta { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--stone); line-height: 1.4; }
+  .quote-card .att .meta strong { color: var(--ink); display: block; font-weight: 600; }
+
+  /* APPROACH PRINCIPLES */
+  .principles { padding: 100px 56px; background: var(--teal); color: var(--paper); }
+  .principles .head { display: grid; grid-template-columns: 280px 1fr; gap: 48px; margin-bottom: 56px; align-items: baseline; }
+  .principles .head .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .principles .head h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 52px; letter-spacing: -0.03em; line-height: 1.05; margin: 0; max-width: 800px; }
+  .principles .head h2 em { color: var(--terra); font-style: italic; }
+  .principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px 64px; }
+  .principle { padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.15); display: grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: baseline; }
+  .principle .n { font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--terra); letter-spacing: 0.16em; }
+  .principle h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 24px; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 8px; }
+  .principle p { font-size: 14px; line-height: 1.6; color: #c4d2cf; margin: 0; }
+
+  /* WRITING / NOTES */
+  .writing { padding: 100px 56px; border-top: 1px solid var(--rule); }
+  .writing .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 48px; }
+  .writing .head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 52px; letter-spacing: -0.03em; line-height: 1; margin: 0; }
+  .writing .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .writing .head .all { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); text-decoration: none; }
+  .articles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .article { display: flex; flex-direction: column; gap: 12px; cursor: pointer; }
+  .article .cover { aspect-ratio: 4/3; background: var(--paper-2); border: 1px solid var(--rule); padding: 24px; display: flex; align-items: flex-end; position: relative; overflow: hidden; transition: transform 0.3s; }
+  .article:hover .cover { transform: translateY(-4px); }
+  .article .cover .pat { position: absolute; inset: 0; opacity: 0.4; }
+  .article .cover.a1 { background: var(--terra); }
+  .article .cover.a1 .pat { background: repeating-linear-gradient(45deg, transparent 0, transparent 8px, rgba(255,255,255,0.2) 8px, rgba(255,255,255,0.2) 9px); }
+  .article .cover.a2 { background: var(--teal); }
+  .article .cover.a2 .pat { background: radial-gradient(circle at 30% 30%, var(--terra) 0%, transparent 50%); }
+  .article .cover.a3 { background: var(--sage); }
+  .article .cover.a3 .pat { background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%); }
+  .article .cover .num { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.85); position: relative; z-index: 1; }
+  .article .meta { display: flex; gap: 16px; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+  .article .meta .cat { color: var(--terra); }
+  .article h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; margin: 0; }
+  .article p { font-size: 14px; line-height: 1.55; color: var(--stone); margin: 0; }
+
+  /* FAQ */
+  .faq { padding: 100px 56px; background: var(--paper-2); border-top: 1px solid var(--rule); }
+  .faq .wrap { display: grid; grid-template-columns: 360px 1fr; gap: 64px; align-items: start; }
+  .faq .head .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; }
+  .faq .head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 48px; letter-spacing: -0.03em; line-height: 1; margin: 0; }
+  .faq .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .faq .head p { font-size: 14px; line-height: 1.6; color: var(--stone); margin: 24px 0 0; }
+  .faq-list { display: flex; flex-direction: column; }
+  .qa { border-top: 1px solid var(--rule); padding: 24px 0; cursor: pointer; }
+  .qa:last-child { border-bottom: 1px solid var(--rule); }
+  .qa summary { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; list-style: none; cursor: pointer; }
+  .qa summary::-webkit-details-marker { display: none; }
+  .qa h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; margin: 0; flex: 1; }
+  .qa .toggle { font-family: 'Geist Mono', monospace; font-size: 18px; color: var(--terra); transition: transform 0.2s; }
+  .qa[open] .toggle { transform: rotate(45deg); }
+  .qa .a { font-size: 15px; line-height: 1.65; color: var(--stone); margin: 16px 0 0; max-width: 720px; }
+
+  /* CTA */
+  .cta-block { background: var(--terra); color: #fff; padding: 100px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; overflow: hidden; }
+  .cta-block .palm-deco { position: absolute; right: -60px; top: -40px; height: 360px; opacity: 0.18; }
+  .cta-block h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 60px; letter-spacing: -0.03em; line-height: 1; margin: 0; position: relative; z-index: 1; }
+  .cta-block .body { font-size: 16px; line-height: 1.6; opacity: 0.92; max-width: 480px; position: relative; z-index: 1; }
+  .cta-block .body p + p { margin-top: 12px; }
+  .cta-block .palm-mini { height: 80px; vertical-align: -20px; }
+
+  /* CONTACT STRIP */
+  .contact { padding: 80px 56px; background: var(--paper); border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+  .contact .col .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 20px; }
+  .contact .col h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 32px; letter-spacing: -0.025em; line-height: 1.1; margin: 0; }
+  .contact .col h3 a { color: var(--ink); text-decoration: none; }
+  .contact .col h3 a:hover { color: var(--terra); }
+  .contact .col p { font-size: 14px; line-height: 1.55; color: var(--stone); margin: 12px 0 0; }
+
+  /* FOOTER */
+  .foot { background: var(--ink); color: var(--paper); padding: 80px 56px 40px; }
+  .foot-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .foot h4 { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin: 0 0 16px; font-weight: 500; }
+  .foot a { display: block; color: var(--paper); text-decoration: none; font-size: 14px; padding: 6px 0; }
+  .foot a:hover { color: var(--terra); }
+  .foot .brand .lockup-h .word { color: var(--paper); font-size: 24px; }
+  .foot .brand .lockup-h .word.health { color: #9ab2ae; font-size: 18px; }
+  .foot .brand .lockup-h .slash { font-size: 32px; }
+  .foot .brand .lockup-h img { height: 36px; }
+  .foot .brand .tag { margin-top: 16px; font-size: 13px; color: #9ab2ae; max-width: 320px; line-height: 1.5; }
+  .foot-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; }
+  .foot-bottom .meta { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #9ab2ae; text-transform: uppercase; }
+  .foot-bottom .legal { display: flex; gap: 24px; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .foot-bottom .legal a { color: #9ab2ae; padding: 0; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="lockup-h">
+      <div style="display:flex; flex-direction:column; line-height:0.85;">
+        <div class="word">Bayshore</div>
+        <div class="word health">Health</div>
+      </div>
+      <div class="slash">/</div>
+      <img src="uploads/palm-recolored.png" alt="palm" />
+    </div>
+    <div class="nav-right">
+      <a href="#practice">Practice</a>
+      <a href="#cases">Case studies</a>
+      <a href="#team">Team</a>
+      <a href="#writing">Writing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn terra" style="padding:10px 18px;" href="#contact">Book diagnostic →</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div>
+        <div class="kicker"><span class="blink"></span>Booking Q3 engagements · Tampa &amp; SF</div>
+        <h1>Healthcare sales is <em>different</em>. Your motion should be too.</h1>
+      </div>
+      <div>
+        <div class="lede">Bayshore is a two-partner operator firm embedding inside healthcare innovators as a fractional revenue function. We build sales infrastructure, open hospital and health-plan doors, and drive deal velocity — not in a deck, but in your CRM, on your calls, against real deals.</div>
+        <div class="ctas">
+          <a class="btn solid" href="#contact">Book a diagnostic call →</a>
+          <a class="btn ghost" href="#team">Meet Adam &amp; Mike</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="uploads/palm-recolored.png" alt="" class="palm-bg" />
+      <div>
+        <div class="panel-tag">→ Where we operate</div>
+        <h2>Four buyer landscapes. Real relationships in each.</h2>
+      </div>
+      <div class="case-row">
+        <div class="case">
+          <div>
+            <div class="name">Hospital systems &amp; IDNs</div>
+            <div class="stat">C-suite + clinical leadership engagement</div>
+          </div>
+          <div class="stat">→ 01</div>
+        </div>
+        <div class="case">
+          <div>
+            <div class="name">Post-acute &amp; care-in-the-home</div>
+            <div class="stat">SNF diversion · TEAM model · discharge planning</div>
+          </div>
+          <div class="stat">→ 02</div>
+        </div>
+        <div class="case">
+          <div>
+            <div class="name">Health plans &amp; value-based care</div>
+            <div class="stat">Risk-based contracting · outcomes programs</div>
+          </div>
+          <div class="stat">→ 03</div>
+        </div>
+        <div class="case">
+          <div>
+            <div class="name">Healthcare AI &amp; digital health</div>
+            <div class="stat">Early POC identification · enterprise sales</div>
+          </div>
+          <div class="stat">→ 04</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="label">Operating in the trenches at →</div>
+    <div class="logos">
+      <div class="logo">Koda Health</div>
+      <div class="logo" style="font-style:italic;">Guaranteed</div>
+      <div class="logo">GenHealth.ai</div>
+      <div class="logo">Serif Health</div>
+      <div class="logo" style="font-style:italic;">Ellipsis</div>
+      <div class="logo">FitOn Health</div>
+      <div class="logo">ShiftMed</div>
+      <div class="logo" style="font-style:italic;">Diagnostic Robotics</div>
+      <div class="logo">Heartbeat</div>
+      <div class="logo">Elektra</div>
+      <div class="logo" style="font-weight:800;">LunaJoy</div>
+      <div class="logo">Kento</div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div>
+      <div class="label">§ 01 — The premise</div>
+    </div>
+    <div>
+      <h2>Most healthcare sales orgs aren't broken because the team is bad. They're broken because the <em>motion</em> was built for the last product, the last buyer, the last fundraise.</h2>
+      <div class="body">
+        <p><strong>You don't need another deck.</strong> You need someone in the room when the CMO pushes back, someone who's seen the procurement cycle compress from eleven months to six, and someone who's already done the Slack-to-CRM-to-board-deck plumbing six times.</p>
+        <p><strong>That's what we are.</strong> Two operators, fifteen-plus years apiece, who run your revenue function from the inside until your team is ready to run it without us — and not a day longer.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-band">
+    <div class="stat"><div class="num"><em>40+</em></div><div class="label">Healthtech engagements</div></div>
+    <div class="stat"><div class="num">15+</div><div class="label">Years inside healthcare</div></div>
+    <div class="stat"><div class="num">$210M</div><div class="label">Pipeline rebuilt in 2024</div></div>
+    <div class="stat"><div class="num">11→6</div><div class="label">Avg. cycle compression (mo.)</div></div>
+  </div>
+
+  <!-- SERVICES TABLE -->
+  <div class="table-section" id="practice">
+    <div class="head">
+      <h2>What we do, <em>plainly</em>.</h2>
+      <div class="legend">→ Engagements · Practice · Timing</div>
+    </div>
+    <div class="row head-row">
+      <div>NO.</div>
+      <div>PRACTICE</div>
+      <div>WHAT YOU GET</div>
+      <div>BUILT FOR</div>
+      <div style="text-align:right;">TIMING</div>
+    </div>
+    <div class="row">
+      <div class="num">01</div>
+      <div class="what">Sales strategy &amp; execution</div>
+      <div class="desc">End-to-end pipeline design and management. Stage-gated playbooks with defined exit criteria. Deal inspection and forecast discipline that holds up to a board meeting.</div>
+      <div class="for">SERIES A · B · C</div>
+      <div class="when">Project · 8–12 wks</div>
+    </div>
+    <div class="row">
+      <div class="num">02</div>
+      <div class="what">Fractional BD leadership</div>
+      <div class="desc">Ongoing retainer engagement. Adam or Mike sits at your leadership table — pipeline reviews, hiring loops, deal coaching, board prep — until you're ready to hire a full-time VP Sales.</div>
+      <div class="for">PRE-SERIES B</div>
+      <div class="when">Retainer · 6 mo. min</div>
+    </div>
+    <div class="row">
+      <div class="num">03</div>
+      <div class="what">Healthcare GTM advisory</div>
+      <div class="desc">Hospital and health-plan navigation, value-based care and post-acute positioning, clinical stakeholder engagement. We bring the relationships and the playbook for buyers others can't reach.</div>
+      <div class="for">SEED · SERIES A</div>
+      <div class="when">Project-based</div>
+    </div>
+    <div class="row">
+      <div class="num">04</div>
+      <div class="what">Deal sprint / close support</div>
+      <div class="desc">Tactical support to close active deals. We embed on a single procurement cycle — security review, MSA redlines, executive sponsorship — and don't leave until the docusign hits.</div>
+      <div class="for">ANY STAGE</div>
+      <div class="when">Sprint · 4–8 wks</div>
+    </div>
+    <div class="row">
+      <div class="num">05</div>
+      <div class="what">RevOps &amp; pipeline health</div>
+      <div class="desc">Pipeline velocity and coverage-ratio optimization. CRM hygiene and stage-conversion analysis. Win/loss review and qualification model refinement. The boring work that compounds.</div>
+      <div class="for">SERIES B+</div>
+      <div class="when">Project · 6 wks</div>
+    </div>
+    <div class="row">
+      <div class="num">06</div>
+      <div class="what">Founder-led to AE-led transition</div>
+      <div class="desc">The handoff most healthtech founders blow. We document the founder's deal pattern, build the AE scorecard, run the first hires, and stay through ramp until your AEs hit quota without you on the call.</div>
+      <div class="for">POST-SEED · SERIES A</div>
+      <div class="when">Retainer · 4–6 mo.</div>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <div class="why">
+    <div class="head">
+      <div class="label">§ 02 — Why us, specifically</div>
+      <h2>What you're <em>actually</em> hiring when you hire Bayshore.</h2>
+    </div>
+    <div class="compare">
+      <div class="compare-head" style="border-left:none;"></div>
+      <div class="compare-head them">A typical sales consultancy</div>
+      <div class="compare-head us">Bayshore</div>
+
+      <div class="col-label">Who shows up</div>
+      <div class="col-them">Senior partner sells, pod of associates delivers — most of them under thirty, none with a sales bag.</div>
+      <div class="col-us"><strong>Adam or Mike, personally.</strong> Same person who pitches you closes alongside your team. No pod, no swap-out at week three.</div>
+
+      <div class="col-label">What you get</div>
+      <div class="col-them">A 60-slide deck and a Notion workspace.</div>
+      <div class="col-us"><strong>A working motion.</strong> CRM rebuilt, playbook in your team's hands, deals in flight, hires made, board update written.</div>
+
+      <div class="col-label">How we measure</div>
+      <div class="col-them">Hours billed, deliverables shipped.</div>
+      <div class="col-us"><strong>Closed-won revenue and cycle time.</strong> If we don't move the metrics, we don't get the renewal. We're aligned by design.</div>
+
+      <div class="col-label">Healthcare depth</div>
+      <div class="col-them">Generalists who'll learn your buyers on your dime.</div>
+      <div class="col-us"><strong>Fifteen years inside.</strong> Hospitals, health plans, VBC, post-acute, AI. We don't ramp on healthcare — we already know it.</div>
+
+      <div class="col-label">Network</div>
+      <div class="col-them">A LinkedIn search.</div>
+      <div class="col-us"><strong>Warm intros to the buyers we know.</strong> CMOs, CNOs, VBC contracting leads, post-acute heads. From actual relationships, not cold outreach.</div>
+
+      <div class="col-label">Exit</div>
+      <div class="col-them">Annual retainers that quietly auto-renew.</div>
+      <div class="col-us"><strong>A handoff plan from day one.</strong> We tell you when you no longer need us — and we mean it.</div>
+    </div>
+  </div>
+
+  <!-- CASE STUDIES -->
+  <div class="cases" id="cases">
+    <div class="head">
+      <div>
+        <h2>Recent <em>engagements</em>.</h2>
+      </div>
+      <a class="all" href="#">All case studies →</a>
+    </div>
+    <div class="case-grid">
+      <div class="case-card feature">
+        <div class="meta">→ Featured · Series B · Care-in-the-home</div>
+        <h3>Rewrote the IDN motion. Closed three flagship systems in eleven weeks.</h3>
+        <p>A care-in-the-home platform with strong product traction was stuck at one paying IDN after eighteen months. We rebuilt the discovery framework around discharge-planning workflows, retrained four AEs on clinical-stakeholder mapping, and personally led the first three pursuits.</p>
+        <div class="result">
+          <div class="r"><div class="v">3</div><div class="l">IDN logos closed · Q1</div></div>
+          <div class="r"><div class="v">−47%</div><div class="l">Cycle time</div></div>
+          <div class="r"><div class="v">$8.2M</div><div class="l">New ARR · 90 days</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="meta">→ Series A · Health plan</div>
+        <h3>Built the payer playbook from zero.</h3>
+        <p>Pre-revenue digital-health company with a payer-facing product and no payer relationships. Six-week GTM sprint: ICP, account map, exec intros, pricing teardown.</p>
+        <div class="result">
+          <div class="r"><div class="v">14</div><div class="l">Plan POCs</div></div>
+          <div class="r"><div class="v">2</div><div class="l">Paid pilots</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="meta">→ Seed · AI / digital health</div>
+        <h3>Founder-led to AE-led, in five months.</h3>
+        <p>AI-native company where the founder was on every call. We hired two AEs, wrote the deal-pattern doc, and ran the ramp. Founder is back in product full-time.</p>
+        <div class="result">
+          <div class="r"><div class="v">2</div><div class="l">AEs ramped</div></div>
+          <div class="r"><div class="v">100%</div><div class="l">Quota attainment</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="process">
+    <div class="head">
+      <div class="label">§ 03 — The process</div>
+      <h2>What an engagement <em>actually</em> looks like.</h2>
+      <p>Sixteen weeks end-to-end. Same template every time because it works; we adapt inside each phase because every team and every buyer is different.</p>
+    </div>
+    <div class="process-grid">
+      <div class="phase">
+        <div class="week">Week 01–04</div>
+        <h3>Diagnose</h3>
+        <div class="desc">Listen to fifty calls. Audit the CRM. Ride along on demos and pipeline reviews. Hand you a 30-page document of what's broken — and the order to fix it.</div>
+        <ul>
+          <li>Call audits</li>
+          <li>CRM hygiene scan</li>
+          <li>Win/loss interviews</li>
+          <li>Pipeline diagnostic</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="week">Week 05–08</div>
+        <h3>Rewire</h3>
+        <div class="desc">Rebuild discovery. Re-segment the ICP. Retool the deal desk. Write the new playbook with your top AEs and clinical advisors in the room.</div>
+        <ul>
+          <li>Discovery framework</li>
+          <li>ICP &amp; account map</li>
+          <li>Stage-gated playbook</li>
+          <li>Forecast cadence</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="week">Week 09–13</div>
+        <h3>Run</h3>
+        <div class="desc">We carry the bag alongside your team. Lead live deals. Coach in real-time. Adjust the motion against actual outcomes, weekly. Close real revenue.</div>
+        <ul>
+          <li>Live deal leadership</li>
+          <li>Weekly pipeline review</li>
+          <li>1:1 AE coaching</li>
+          <li>Exec sponsorship</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="week">Week 14–16</div>
+        <h3>Hand off</h3>
+        <div class="desc">Final playbook. Trained team. Hiring scorecards. The closed-won notification you get the week after we leave — and the next one a month later.</div>
+        <ul>
+          <li>Final playbook</li>
+          <li>AE scorecard</li>
+          <li>Hiring loop</li>
+          <li>Board update</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="team-band" id="team">
+    <div class="label">§ 04 — The partners</div>
+    <h2>Two operators with forty healthtech engagements between them — <em>not consultants</em>.</h2>
+    <div class="partners">
+      <div class="partner-card">
+        <div class="avatar">AT</div>
+        <div>
+          <h3>Adam Teitelman</h3>
+          <div class="role">Founder · Healthcare BD &amp; Revenue</div>
+          <p>Healthcare operator and investor with fifteen-plus years across value-based care, clinical care-in-the-home, and AI-enabled health tech. Senior Director, Providers &amp; Payors at myLaurel. Active GTM advisor to 20+ healthtech companies — Koda Health, GenHealth.ai, Ellipsis, Diagnostic Robotics, ShiftMed, FitOn, Heartbeat, and others.</p>
+          <div class="tags">
+            <span class="tag">VBC</span>
+            <span class="tag">IDN / Hospital</span>
+            <span class="tag">Care-in-Home</span>
+            <span class="tag">Health Plan</span>
+            <span class="tag">Post-Acute</span>
+            <span class="tag">Investor</span>
+          </div>
+          <div class="past">PRIOR · MATHEMATICA · BABYSCRIPTS · HEALEE · ROCKET DOCTOR · QUEUEDR · DELOITTE</div>
+        </div>
+      </div>
+      <div class="partner-card">
+        <div class="avatar">MM</div>
+        <div>
+          <h3>Mike Maseda</h3>
+          <div class="role">Founder · Sales &amp; Operations</div>
+          <p>Two-time founder and chief of staff. Head of Sales &amp; Ops at GenHealth.ai (Agentic OS for healthcare). Previously co-founder &amp; CEO of Circadios (sleep disorders), GM at Axamo, founding member at Propel, Co-Chair Embarc Collective. Builds the systems behind the motion — CRM, RevOps, forecast cadence, hiring scorecards.</p>
+          <div class="tags">
+            <span class="tag">Sales Ops</span>
+            <span class="tag">CRM / RevOps</span>
+            <span class="tag">Founder · 2×</span>
+            <span class="tag">Chief of Staff</span>
+            <span class="tag">AI / Digital Health</span>
+            <span class="tag">Patient Experience</span>
+          </div>
+          <div class="past">PRIOR · GENHEALTH.AI · CIRCADIOS · AXAMO · PROPEL · EMBARC · QUANTIC MBA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="testimonials">
+    <div class="head">
+      <div class="label">§ 05 — In their words</div>
+      <h2>What founders and revenue leaders <em>say</em> after an engagement.</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote-card lead">
+        <div class="q">"Bayshore didn't sell us a framework. They sat in our pipeline reviews for ten weeks and <em>rebuilt it</em> with us — and the deal that closed the week they left paid for the engagement five times over."</div>
+        <div class="att">
+          <div class="av">SL</div>
+          <div class="meta"><strong>VP Revenue</strong>Series B Healthtech · 2025</div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <div class="q">"Adam knows the post-acute buyer better than anyone I've worked with. He shortened our learning curve by a year."</div>
+        <div class="att">
+          <div class="av">JM</div>
+          <div class="meta"><strong>Founder &amp; CEO</strong>Care-in-the-home · Series A</div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <div class="q">"Mike rebuilt our CRM, our forecast, and our hiring loop in eight weeks. Our last board meeting was the calmest one we've ever had."</div>
+        <div class="att">
+          <div class="av">RP</div>
+          <div class="meta"><strong>Co-founder</strong>Healthcare AI · Seed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINCIPLES -->
+  <div class="principles">
+    <div class="head">
+      <div class="label">§ 06 — How we work</div>
+      <h2>Six principles we don't compromise on. <em>Ever.</em></h2>
+    </div>
+    <div class="principles-grid">
+      <div class="principle">
+        <div class="n">— 01 —</div>
+        <div>
+          <h3>Operators, not consultants</h3>
+          <p>We've carried bags, hired AEs, written board decks, and lost deals. Every engagement is led personally by Adam or Mike — not delegated to associates.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="n">— 02 —</div>
+        <div>
+          <h3>Inside the work, not above it</h3>
+          <p>We sit in your pipeline reviews, ride along on demos, and lead live deals. The motion gets built where the motion lives — your CRM, your calls, your team.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="n">— 03 —</div>
+        <div>
+          <h3>Aligned on outcomes</h3>
+          <p>Pipeline coverage, cycle time, closed-won, ramp-to-quota. If we don't move them, we don't get the renewal. Misalignment is by definition our problem.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="n">— 04 —</div>
+        <div>
+          <h3>Healthcare-specific, always</h3>
+          <p>Healthcare buyers don't behave like SaaS buyers. We bring fifteen years of scar tissue across IDNs, plans, post-acute, and digital health — not a generic playbook.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="n">— 05 —</div>
+        <div>
+          <h3>Hand the bag back</h3>
+          <p>The goal is your team running the motion without us. Every engagement has a written handoff plan from week one — and we mean it when we say it's time.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="n">— 06 —</div>
+        <div>
+          <h3>Two clients at a time. Maximum.</h3>
+          <p>We turn down work to stay deep in the work we have. If we're saying yes to your engagement, you're getting the partner — not the calendar gap.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="writing" id="writing">
+    <div class="head">
+      <h2>Field <em>notes</em>.</h2>
+      <a class="all" href="#">All writing →</a>
+    </div>
+    <div class="articles">
+      <div class="article">
+        <div class="cover a1">
+          <div class="pat"></div>
+          <div class="num">→ 014</div>
+        </div>
+        <div class="meta"><span class="cat">Field note</span><span>8 min read</span><span>Mar 2026</span></div>
+        <h3>The eleven-month enterprise cycle is a choice. Here's how to compress it.</h3>
+        <p>Six concrete moves we make in the first ninety days that consistently take three to four months out of the average healthtech enterprise cycle.</p>
+      </div>
+      <div class="article">
+        <div class="cover a2">
+          <div class="pat"></div>
+          <div class="num">→ 013</div>
+        </div>
+        <div class="meta"><span class="cat">Playbook</span><span>12 min read</span><span>Feb 2026</span></div>
+        <h3>What founder-led sales looks like when it's working — and three signs it isn't.</h3>
+        <p>The pattern we see in fifty pipeline reviews a year. When founder-led is your moat, when it's your bottleneck, and how to tell.</p>
+      </div>
+      <div class="article">
+        <div class="cover a3">
+          <div class="pat"></div>
+          <div class="num">→ 012</div>
+        </div>
+        <div class="meta"><span class="cat">Buyer brief</span><span>6 min read</span><span>Jan 2026</span></div>
+        <h3>How discharge planners actually buy: a brief for care-in-the-home founders.</h3>
+        <p>Notes from twenty-plus discharge-planning conversations across IDNs. Who's in the room, who blocks, and how the dollar flow really works.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq" id="faq">
+    <div class="wrap">
+      <div class="head">
+        <div class="label">§ 07 — Common questions</div>
+        <h2>Things founders <em>ask</em> before an engagement.</h2>
+        <p>If yours isn't here, the diagnostic call is free — we'd rather answer it directly. Most calls run thirty minutes and end with a clear yes or no on fit.</p>
+      </div>
+      <div class="faq-list">
+        <details class="qa" open>
+          <summary><h3>What stage of company do you typically work with?</h3><span class="toggle">+</span></summary>
+          <p class="a">Most engagements are seed through Series C, with a heavy concentration at Series A and B — the stages where founder-led sales has hit a ceiling and the team needs a real motion. We'll also take on later-stage work for specific deal sprints or RevOps fixes, but rarely full rebuilds.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>Do you take equity in lieu of cash?</h3><span class="toggle">+</span></summary>
+          <p class="a">For early-stage retainers, sometimes — typically a hybrid of cash and warrant coverage. We're operators with conviction, not a fund, so we'll only do this when we'd be willing to write a check ourselves.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>How fast can we start?</h3><span class="toggle">+</span></summary>
+          <p class="a">Diagnostic engagements typically kick off within two weeks of contract. Full embedded rebuilds are usually a 3–4 week ramp. We hold one engagement slot open per quarter for time-sensitive deal sprints — ask if you're chasing a specific procurement deadline.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>Will you sign an NDA before the diagnostic call?</h3><span class="toggle">+</span></summary>
+          <p class="a">Yes. We'll also send you a one-pager on the firm, references from three founders we've worked with, and a sample diagnostic deliverable so you know exactly what you're buying.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>How do you price?</h3><span class="toggle">+</span></summary>
+          <p class="a">Project work is fixed-fee against scope. Fractional retainers are monthly with a 6-month minimum. Deal sprints are flat-fee plus a closed-won kicker. Pricing tracks roughly to the cost of one VP Sales hire — we're explicitly cheaper than the wrong full-time hire, and explicitly more expensive than a junior consultant.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>What if it's not working?</h3><span class="toggle">+</span></summary>
+          <p class="a">We do a thirty-day no-questions-asked exit on every engagement. If we're not earning it, you shouldn't keep paying for it — and we'd rather know early so we can refer you somewhere better suited.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>Where are you based and do you travel?</h3><span class="toggle">+</span></summary>
+          <p class="a">Tampa and San Francisco. We travel for material moments — kickoffs, key pursuits, exec-sponsor meetings, board prep — and we work remotely with your team the rest of the time. Travel is included in retainer pricing.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block" id="contact">
+    <img src="uploads/palm-recolored.png" alt="" class="palm-deco" />
+    <div>
+      <h2>Eleven months in and your enterprise deal is still stuck at procurement<img src="uploads/palm-recolored.png" alt="" class="palm-mini" />?</h2>
+    </div>
+    <div>
+      <div class="body">
+        <p>Most healthcare sales orgs aren't broken because the team is bad. They're broken because the motion was built for the last product, the last buyer, the last fundraise.</p>
+        <p>We've seen it — and rebuilt it — forty times. The first call is thirty minutes, no deck, and ends with a clear yes or no on fit.</p>
+      </div>
+      <div style="margin-top:32px; display:flex; gap:12px;">
+        <a class="btn ghost" style="color:#fff; border-color:#fff;" href="#">Book a diagnostic →</a>
+        <a class="btn ghost" style="color:#fff; border-color:rgba(255,255,255,0.4);" href="#">Read the approach</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="col">
+      <div class="label">→ Email</div>
+      <h3><a href="mailto:hello@bayshore.health">hello@bayshore.health</a></h3>
+      <p>For diagnostic calls, references, or specific deal-sprint inquiries.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Tampa, FL</div>
+      <h3>108 S Trask St</h3>
+      <p>Adam &amp; the BD practice. Convenient to most East-coast IDNs and the Tampa healthtech corridor.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ San Francisco, CA</div>
+      <h3>SoMa</h3>
+      <p>Mike &amp; the AI / digital-health practice. Five-minute walk to most healthtech investors and west-coast HQs.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-top">
+      <div class="brand">
+        <div class="lockup-h">
+          <div style="display:flex; flex-direction:column; line-height:0.85;">
+            <div class="word">Bayshore</div>
+            <div class="word health">Health</div>
+          </div>
+          <div class="slash">/</div>
+          <img src="uploads/palm-recolored.png" alt="palm" />
+        </div>
+        <div class="tag">A boutique healthcare BD and revenue advisory. Operators, not consultants. Tampa &amp; San Francisco. Booking Q3 2026 engagements.</div>
+      </div>
+      <div>
+        <h4>Practice</h4>
+        <a href="#">Sales strategy</a>
+        <a href="#">Fractional BD</a>
+        <a href="#">GTM advisory</a>
+        <a href="#">Deal sprint</a>
+        <a href="#">RevOps</a>
+        <a href="#">Founder→AE</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Adam Teitelman</a>
+        <a href="#">Mike Maseda</a>
+        <a href="#">Clients</a>
+        <a href="#">Case studies</a>
+        <a href="#">Writing</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
+        <a href="#">Tampa, FL</a>
+        <a href="#">San Francisco, CA</a>
+        <a href="#">LinkedIn ↗</a>
+        <a href="#">Substack ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="meta">© 2026 Bayshore Health · BAY · 025</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -69,8 +69,11 @@
   /* TICKER */
   .ticker { padding: 28px 56px; background: #fff; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 32px; overflow: hidden; }
   .ticker .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); flex-shrink: 0; }
-  .ticker .logos { display: flex; gap: 36px; align-items: center; flex: 1; flex-wrap: wrap; }
-  .ticker .logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; letter-spacing: -0.02em; color: var(--ink); opacity: 0.6; }
+  .ticker .logos { display: flex; gap: 36px; align-items: center; flex: 1; flex-wrap: wrap; row-gap: 18px; }
+  .ticker .logo { height: 28px; width: auto; max-width: 140px; object-fit: contain; opacity: 0.75; filter: grayscale(0.15); transition: opacity 0.2s, filter 0.2s; display: block; }
+  .ticker .logo:hover { opacity: 1; filter: grayscale(0); }
+  .ticker .logo-text { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; letter-spacing: -0.02em; color: var(--ink); opacity: 0.6; transition: opacity 0.2s; }
+  .ticker .logo-text:hover { opacity: 1; }
 
   /* INTRO / VALUE PROP */
   .intro { padding: 100px 56px; display: grid; grid-template-columns: 280px 1fr; gap: 64px; border-bottom: 1px solid var(--rule); align-items: start; }
@@ -361,20 +364,31 @@
   <div class="ticker">
     <div class="label">Operating in the trenches at →</div>
     <div class="logos">
-      <div class="logo">Koda Health</div>
-      <div class="logo" style="font-style:italic;">Guaranteed</div>
-      <div class="logo">GenHealth.ai</div>
-      <div class="logo">Serif Health</div>
-      <div class="logo" style="font-style:italic;">Ellipsis</div>
-      <div class="logo">FitOn Health</div>
-      <div class="logo">ShiftMed</div>
-      <div class="logo" style="font-style:italic;">Diagnostic Robotics</div>
-      <div class="logo">Heartbeat</div>
-      <div class="logo">Elektra</div>
-      <div class="logo" style="font-weight:800;">LunaJoy</div>
-      <div class="logo">Kento</div>
+      <img class="logo" src="https://icons.duckduckgo.com/ip3/koda.health.ico" alt="Koda Health" title="Koda Health" />
+      <span class="logo-text" style="font-style:italic;" title="Guaranteed">Guaranteed</span>
+      <img class="logo" src="https://icons.duckduckgo.com/ip3/genhealth.ai.ico" alt="GenHealth.ai" title="GenHealth.ai" />
+      <span class="logo-text" title="Serif Health">Serif Health</span>
+      <img class="logo" src="https://icons.duckduckgo.com/ip3/ellipsishealth.com.ico" alt="Ellipsis Health" title="Ellipsis Health" />
+      <img class="logo" src="https://icons.duckduckgo.com/ip3/fitonhealth.com.ico" alt="FitOn Health" title="FitOn Health" />
+      <img class="logo" src="https://icons.duckduckgo.com/ip3/shiftmed.com.ico" alt="ShiftMed" title="ShiftMed" />
+      <img class="logo" src="https://icons.duckduckgo.com/ip3/diagnosticrobotics.com.ico" alt="Diagnostic Robotics" title="Diagnostic Robotics" />
+      <img class="logo" src="https://icons.duckduckgo.com/ip3/heartbeathealth.com.ico" alt="Heartbeat Health" title="Heartbeat Health" />
+      <img class="logo" src="https://icons.duckduckgo.com/ip3/elektrahealth.com.ico" alt="Elektra Health" title="Elektra Health" />
+      <img class="logo" src="https://icons.duckduckgo.com/ip3/hellolunajoy.com.ico" alt="LunaJoy" title="LunaJoy" />
+      <img class="logo" src="https://icons.duckduckgo.com/ip3/kentohealth.com.ico" alt="Kento Health" title="Kento Health" />
     </div>
   </div>
+  <script>
+    // Replace any logo image that fails to load with the company name as a wordmark
+    document.querySelectorAll('.ticker img.logo').forEach(function(img){
+      img.addEventListener('error', function(){
+        var span = document.createElement('span');
+        span.className = 'logo-text';
+        span.textContent = img.alt;
+        img.replaceWith(span);
+      });
+    });
+  </script>
 
   <!-- INTRO -->
   <div class="intro">

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Book a diagnostic — Bayshore Health</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="uploads/palm-recolored.png" />
+<link rel="apple-touch-icon" href="uploads/palm-recolored.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .book-grid { padding: 80px 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: start; }
+
+  .book-form { background: #fff; border: 1px solid var(--rule); padding: 48px; }
+  .book-form h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 32px; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 8px; }
+  .book-form .sub { font-size: 14px; color: var(--stone); margin: 0 0 32px; }
+  .book-form .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+  .book-form .field.row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .book-form label { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .book-form input, .book-form select, .book-form textarea { padding: 14px 16px; font-family: 'Geist', sans-serif; font-size: 15px; background: var(--paper); color: var(--ink); border: 1px solid var(--rule); }
+  .book-form input:focus, .book-form select:focus, .book-form textarea:focus { outline: none; border-color: var(--terra); background: #fff; }
+  .book-form textarea { resize: vertical; min-height: 120px; line-height: 1.5; }
+  .book-form .submit-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 12px; padding-top: 24px; border-top: 1px solid var(--rule); }
+  .book-form .submit-row .note { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+  .book-form button { padding: 16px 28px; font-family: 'Geist Mono', monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; background: var(--terra); color: #fff; border: 1px solid var(--terra); cursor: pointer; transition: transform 0.15s; }
+  .book-form button:hover { transform: translateY(-1px); }
+  .book-form .ok { display: none; padding: 24px; background: var(--paper-2); border-left: 3px solid var(--sage); margin-top: 24px; font-size: 14px; line-height: 1.6; color: var(--ink); }
+  .book-form.sent .ok { display: block; }
+  .book-form.sent form { display: none; }
+
+  .book-side .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; }
+  .book-side h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 48px; letter-spacing: -0.03em; line-height: 1; margin: 0 0 24px; }
+  .book-side h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .book-side > p { font-size: 16px; line-height: 1.6; color: var(--stone); margin: 0 0 40px; max-width: 520px; }
+
+  .step-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+  .step { padding: 24px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: baseline; }
+  .step .n { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--terra); letter-spacing: 0.16em; }
+  .step h4 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 8px; }
+  .step p { font-size: 14px; line-height: 1.6; color: var(--stone); margin: 0; }
+
+  .alt-block { padding: 80px 56px; background: var(--paper-2); border-top: 1px solid var(--rule); display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .alt-card { background: #fff; padding: 32px; border: 1px solid var(--rule); }
+  .alt-card .label { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 14px; }
+  .alt-card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 12px; }
+  .alt-card p { font-size: 14px; line-height: 1.6; color: var(--stone); margin: 0 0 20px; }
+  .alt-card a { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); text-decoration: none; border-bottom: 1px solid var(--terra); padding-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- NAV -->
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+    <div class="lockup-h">
+      <div style="display:flex; flex-direction:column; line-height:0.85;">
+        <div class="word">Bayshore</div>
+        <div class="word health">Health</div>
+      </div>
+      <div class="slash">/</div>
+      <img src="uploads/palm-recolored.png" alt="palm" />
+    </div>
+    </a>
+    <div class="nav-right">
+      <a href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="team.html">Team</a>
+      <a href="writing.html">Writing</a>
+      <a href="faq.html">FAQ</a>
+      <a class="btn terra active" style="padding:10px 18px;" href="contact.html">Book diagnostic →</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="label">§ Diagnostic call</div>
+    <h1>Thirty minutes. No deck. Clear yes or no on <em>fit</em>.</h1>
+    <p class="lede">Tell us a little about where you are and what you're stuck on. We read these in batches twice a week and respond personally — no automated forms, no sequenced follow-up. If we're not the right fit we'll tell you on the call and point you somewhere better.</p>
+  </div>
+
+  <!-- BOOK GRID -->
+  <div class="book-grid">
+
+    <!-- FORM -->
+    <div class="book-form" id="bookForm">
+      <h2>Tell us where you're stuck.</h2>
+      <p class="sub">All fields take you about a minute. The "stuck on" box is the one we actually read first.</p>
+      <form onsubmit="event.preventDefault(); document.getElementById('bookForm').classList.add('sent'); window.scrollTo({top: document.getElementById('bookForm').offsetTop - 80, behavior: 'smooth'});">
+        <div class="field row">
+          <div class="field">
+            <label for="name">→ Name</label>
+            <input id="name" name="name" type="text" required placeholder="Jane Founder" />
+          </div>
+          <div class="field">
+            <label for="email">→ Email</label>
+            <input id="email" name="email" type="email" required placeholder="jane@yourcompany.com" />
+          </div>
+        </div>
+        <div class="field row">
+          <div class="field">
+            <label for="company">→ Company</label>
+            <input id="company" name="company" type="text" required placeholder="Your healthtech co." />
+          </div>
+          <div class="field">
+            <label for="stage">→ Stage</label>
+            <select id="stage" name="stage" required>
+              <option value="">Select stage</option>
+              <option>Pre-seed</option>
+              <option>Seed</option>
+              <option>Series A</option>
+              <option>Series B</option>
+              <option>Series C+</option>
+              <option>Bootstrapped / other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field row">
+          <div class="field">
+            <label for="role">→ Your role</label>
+            <select id="role" name="role" required>
+              <option value="">Select role</option>
+              <option>Founder / CEO</option>
+              <option>President / COO</option>
+              <option>VP Sales / CRO</option>
+              <option>Head of GTM / BD</option>
+              <option>Head of Ops / RevOps</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="urgency">→ Urgency</label>
+            <select id="urgency" name="urgency" required>
+              <option value="">Select urgency</option>
+              <option>Specific procurement deadline</option>
+              <option>Next quarter rebuild</option>
+              <option>Exploring · no rush</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="stuck">→ What are you stuck on?</label>
+          <textarea id="stuck" name="stuck" required placeholder="One paragraph is enough. The shape of the problem, not the full backstory. e.g., 'Stuck at one paying IDN after 14 months. Discovery framework was built for VBC plans but the buyer is discharge planning. Two AEs cycled through.'"></textarea>
+        </div>
+        <div class="field">
+          <label for="ref">→ How'd you find us? (optional)</label>
+          <input id="ref" name="ref" type="text" placeholder="A founder, a deck, a Substack, etc." />
+        </div>
+        <div class="submit-row">
+          <div class="note">→ We respond within 48 hours · Confidential</div>
+          <button type="submit">Request diagnostic →</button>
+        </div>
+      </form>
+      <div class="ok">
+        <strong>Got it.</strong> We'll read this in the next batch (typically within 48 business hours) and reply personally with two or three call times. In the meantime, we'll send a one-pager on the firm and a sample diagnostic deliverable so you can see the shape of what comes back.
+      </div>
+    </div>
+
+    <!-- SIDE — what to expect -->
+    <div class="book-side">
+      <div class="label">§ What to expect</div>
+      <h2>Four steps. <em>That's it.</em></h2>
+      <p>We don't run a sales cycle. The point of the diagnostic call is to be useful in thirty minutes whether or not you ever hire us — so the steps below are the same regardless of fit.</p>
+      <div class="step-list">
+        <div class="step">
+          <div class="n">— 01 —</div>
+          <div>
+            <h4>You submit the form</h4>
+            <p>We read it personally. No CRM, no sequence. If we've solved a similar shape of problem we'll say so in the reply.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">— 02 —</div>
+          <div>
+            <h4>We send context</h4>
+            <p>A one-pager on the firm, three founder references, and a sanitized sample diagnostic deliverable so you know what you're buying.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">— 03 —</div>
+          <div>
+            <h4>30-minute call</h4>
+            <p>We listen for ten, share what we've seen for ten, and end with a clear yes/no on fit and a recommended engagement shape.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">— 04 —</div>
+          <div>
+            <h4>Scope or referral</h4>
+            <p>If it's a yes, we send a written scope within 48 hours. If it's a no, we send a one-line referral to the firm or operator who's a better fit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ALT CONTACT METHODS -->
+  <div class="alt-block">
+    <div class="alt-card">
+      <div class="label">→ Email</div>
+      <h3>Skip the form.</h3>
+      <p>If a paragraph in your inbox client is faster, send it — same answer, same 48-hour turnaround.</p>
+      <a href="mailto:hello@bayshore.health">hello@bayshore.health →</a>
+    </div>
+    <div class="alt-card">
+      <div class="label">→ Refer / introduction</div>
+      <h3>You're a founder we've worked with.</h3>
+      <p>If a Bayshore client referred you, mention their name in the form or the email subject and we'll prioritize the read.</p>
+      <a href="mailto:hello@bayshore.health?subject=Referral%20from%20...">Send a referral →</a>
+    </div>
+    <div class="alt-card">
+      <div class="label">→ Press, podcasts, talks</div>
+      <h3>Different inbox.</h3>
+      <p>For media, podcast, or speaking inquiries, email below. We answer about a third of these — usually founder-facing podcasts.</p>
+      <a href="mailto:press@bayshore.health">press@bayshore.health →</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="col">
+      <div class="label">→ Email</div>
+      <h3><a href="mailto:hello@bayshore.health">hello@bayshore.health</a></h3>
+      <p>For diagnostic calls, references, or specific deal-sprint inquiries.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Based in</div>
+      <h3>Tampa, FL</h3>
+      <p>Where the practice is anchored. We travel for kickoffs, key pursuits, and exec-sponsor meetings — wherever the deal is.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Diagnostic call</div>
+      <h3>30 minutes. No deck.</h3>
+      <p>The first call ends with a clear yes or no on fit. We'll send references and a sample deliverable beforehand if it helps.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-top">
+      <div class="brand">
+        <div class="lockup-h">
+          <div style="display:flex; flex-direction:column; line-height:0.85;">
+            <div class="word">Bayshore</div>
+            <div class="word health">Health</div>
+          </div>
+          <div class="slash">/</div>
+          <img src="uploads/palm-recolored.png" alt="palm" />
+        </div>
+        <div class="tag">A boutique healthcare BD and revenue advisory. Operators, not consultants. Tampa &amp; San Francisco. Booking Q3 2026 engagements.</div>
+      </div>
+      <div>
+        <h4>Practice</h4>
+        <a href="practice.html">Sales strategy</a>
+        <a href="practice.html">Fractional BD</a>
+        <a href="practice.html">GTM advisory</a>
+        <a href="practice.html">Deal sprint</a>
+        <a href="practice.html">RevOps</a>
+        <a href="practice.html">AI-native GTM</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="team.html">About</a>
+        <a href="team.html#adam">Adam Teitelman</a>
+        <a href="team.html#mike">Mike Maseda</a>
+        <a href="case-studies.html">Case studies</a>
+        <a href="writing.html">Writing</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
+        <a href="contact.html">Book a call</a>
+        <a href="#">LinkedIn ↗</a>
+        <a href="#">Substack ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="meta">© 2026 Bayshore Health · BAY · 025</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

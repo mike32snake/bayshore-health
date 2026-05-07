@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Team — Bayshore Health</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="uploads/palm-recolored.png" />
+<link rel="apple-touch-icon" href="uploads/palm-recolored.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .partner-section { padding: 100px 56px; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 360px 1fr; gap: 80px; align-items: start; }
+  .partner-section:first-of-type { border-top: none; }
+  .partner-section.dark { background: var(--ink); color: var(--paper); border-top: none; }
+  .partner-section.dark .ps-bio p { color: #b5c4c0; }
+  .partner-section.dark .ps-bio p strong { color: var(--paper); font-weight: 500; }
+  .partner-section.dark .label { color: var(--terra); }
+  .partner-section.dark .ps-meta .v { color: var(--paper); }
+  .partner-section.dark .ps-meta .v.muted { color: #9ab2ae; }
+  .partner-section.dark .past-list { color: #b5c4c0; }
+  .partner-section.dark .past-list li { border-color: rgba(255,255,255,0.12); }
+
+  .ps-side .avatar { width: 280px; height: 280px; background: var(--ink); color: var(--terra); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 132px; letter-spacing: -0.05em; line-height: 1; }
+  .partner-section.dark .ps-side .avatar { background: var(--terra); color: var(--ink); }
+  .ps-side .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-top: 32px; }
+  .ps-side .ps-meta { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+  .ps-side .ps-meta .row { display: flex; flex-direction: column; gap: 4px; }
+  .ps-side .ps-meta .k { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
+  .ps-side .ps-meta .v { font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 500; }
+  .ps-side .ps-meta .v.muted { color: var(--stone); font-weight: 400; }
+
+  .ps-bio h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 64px; letter-spacing: -0.035em; line-height: 1; margin: 0 0 8px; }
+  .ps-bio .role { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 32px; }
+  .ps-bio p { font-size: 17px; line-height: 1.65; color: var(--stone); margin: 0 0 18px; max-width: 780px; }
+  .ps-bio p strong { color: var(--ink); font-weight: 600; }
+  .ps-bio .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 28px; }
+  .ps-bio .tag { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 12px; border: 1px solid var(--rule); }
+  .partner-section.dark .ps-bio .tag { border-color: rgba(255,255,255,0.18); color: var(--paper); }
+
+  .past-block { margin-top: 40px; }
+  .past-block .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 20px; }
+  .past-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .past-list li { padding: 14px 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .past-list li:nth-child(2) { border-top: 1px solid var(--rule); }
+  .past-list .role { font-family: 'Fraunces', serif; font-size: 15px; font-weight: 500; }
+  .past-list .place { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--stone); letter-spacing: 0.06em; }
+
+  .why-two { padding: 100px 56px; background: var(--paper-2); border-top: 1px solid var(--rule); display: grid; grid-template-columns: 360px 1fr; gap: 64px; }
+  .why-two .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; }
+  .why-two h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 52px; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 32px; max-width: 800px; }
+  .why-two h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .why-two .body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .why-two .body p { font-size: 16px; line-height: 1.65; color: var(--stone); margin: 0; }
+  .why-two .body p strong { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- NAV -->
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+    <div class="lockup-h">
+      <div style="display:flex; flex-direction:column; line-height:0.85;">
+        <div class="word">Bayshore</div>
+        <div class="word health">Health</div>
+      </div>
+      <div class="slash">/</div>
+      <img src="uploads/palm-recolored.png" alt="palm" />
+    </div>
+    </a>
+    <div class="nav-right">
+      <a href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a class="active" href="team.html">Team</a>
+      <a href="writing.html">Writing</a>
+      <a href="faq.html">FAQ</a>
+      <a class="btn terra" style="padding:10px 18px;" href="contact.html">Book diagnostic →</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="label">§ The team</div>
+    <h1>Two operators. Forty engagements. <em>No pod.</em></h1>
+    <p class="lede">Bayshore is intentionally two people. We turn down work to stay deep in the work we have, and the same partner you talk to on the diagnostic call is the one who shows up in your pipeline review. Below is who we are, what we've shipped, and why we cap at two clients at a time.</p>
+  </div>
+
+  <!-- ADAM -->
+  <div class="partner-section dark" id="adam">
+    <div class="ps-side">
+      <div class="avatar">A</div>
+      <div class="label">→ Anchor specialty</div>
+      <div class="ps-meta">
+        <div class="row"><div class="k">Years inside healthcare</div><div class="v">15+</div></div>
+        <div class="row"><div class="k">Healthtech engagements</div><div class="v">25+</div></div>
+        <div class="row"><div class="k">Buyer depth</div><div class="v muted">IDN · health plan · post-acute · VBC</div></div>
+        <div class="row"><div class="k">Based</div><div class="v muted">Tampa, FL</div></div>
+      </div>
+    </div>
+    <div class="ps-bio">
+      <h2>Adam Teitelman</h2>
+      <div class="role">Founder · Healthcare BD &amp; Revenue</div>
+      <p>Healthcare operator and investor with fifteen-plus years across value-based care, clinical care-in-the-home, and AI-enabled health tech. <strong>Senior Director, Providers &amp; Payors at myLaurel</strong>, where he runs an operating role inside a high-growth care-in-the-home company alongside the advisory practice.</p>
+      <p>Active GTM advisor to twenty-plus healthtech companies — from pre-seed to Series C — covering hospital and IDN motion design, payer pursuit strategy, value-based-care contracting, and clinical-stakeholder mapping. The kind of work most consultancies promise on a deck and Adam has actually run as an in-seat operator.</p>
+      <p>Earlier: <strong>Director at Mathematica</strong> (Healthcare/Payor/Life Sciences), CRO at Healee, Cone Health Ventures, advisor to CareRev, co-founder/COO/CRO of Rocket Doctor, VP Growth at Babyscripts, Senior Director at QueueDr (acquired by Phreesia), Deloitte Human Capital. Co-founder, Luma Society (Tampa).</p>
+      <div class="tags">
+        <span class="tag">VBC</span>
+        <span class="tag">IDN / Hospital</span>
+        <span class="tag">Care-in-Home</span>
+        <span class="tag">Health Plan</span>
+        <span class="tag">Post-Acute</span>
+        <span class="tag">Investor</span>
+        <span class="tag">Operator</span>
+      </div>
+      <div class="past-block">
+        <div class="label">→ Selected GTM advisory roster</div>
+        <ul class="past-list">
+          <li><span class="role">Koda Health</span><span class="place">Advance care</span></li>
+          <li><span class="role">Guaranteed</span><span class="place">End-of-life care</span></li>
+          <li><span class="role">Diagnostic Robotics</span><span class="place">Clinical AI</span></li>
+          <li><span class="role">Ellipsis Health</span><span class="place">Voice biomarker</span></li>
+          <li><span class="role">Serif Health</span><span class="place">Provider data</span></li>
+          <li><span class="role">FitOn Health</span><span class="place">Employer benefit</span></li>
+          <li><span class="role">ShiftMed</span><span class="place">Clinical workforce</span></li>
+          <li><span class="role">Heartbeat Health</span><span class="place">Cardiology</span></li>
+          <li><span class="role">Elektra Health</span><span class="place">Women's health</span></li>
+          <li><span class="role">LunaJoy</span><span class="place">Mental health</span></li>
+          <li><span class="role">Kento Health</span><span class="place">Cardiometabolic</span></li>
+          <li><span class="role">Impruvon, Converse, Revuud, +9</span><span class="place">Multi-stage</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- MIKE -->
+  <div class="partner-section" id="mike">
+    <div class="ps-side">
+      <div class="avatar">M</div>
+      <div class="label">→ Anchor specialty</div>
+      <div class="ps-meta">
+        <div class="row"><div class="k">Companies built / scaled</div><div class="v">5+</div></div>
+        <div class="row"><div class="k">Founder roles</div><div class="v">2× CEO / Co-founder</div></div>
+        <div class="row"><div class="k">Operator depth</div><div class="v muted">Sales ops · RevTech · AI-native GTM</div></div>
+        <div class="row"><div class="k">Based</div><div class="v muted">Tampa, FL</div></div>
+      </div>
+    </div>
+    <div class="ps-bio">
+      <h2>Mike Maseda</h2>
+      <div class="role">Founder · Sales &amp; Operations · AI-Native GTM</div>
+      <p>Two-time founder and chief of staff. <strong>Head of Sales &amp; Ops at GenHealth.ai</strong> — an Agentic OS for healthcare — where he runs the GTM motion for an AI-native product that doesn't fit the existing healthcare-software category. The reason AI-native GTM design ended up on the Bayshore menu.</p>
+      <p>Builds the systems behind the motion: CRM, RevOps, forecast cadence, hiring scorecards, sales-tech stack. The boring plumbing that compounds. He's the one who'll restructure your CRM in week three, set up your forecast model in week five, and make sure your AEs have a tooling layer that doesn't fight them.</p>
+      <p>Earlier: <strong>Co-founder &amp; CEO of Circadios</strong> (sleep-disorder digital health), GM at Axamo, founding member at Propel, Co-Chair Embarc Collective. Quantic MBA. University of Chicago Economics.</p>
+      <div class="tags">
+        <span class="tag">Sales Ops</span>
+        <span class="tag">CRM / RevOps</span>
+        <span class="tag">Founder · 2×</span>
+        <span class="tag">Chief of Staff</span>
+        <span class="tag">AI / Agentic Healthtech</span>
+        <span class="tag">Patient Experience</span>
+        <span class="tag">Operator</span>
+      </div>
+      <div class="past-block">
+        <div class="label">→ Selected operator history</div>
+        <ul class="past-list">
+          <li><span class="role">Head of Sales &amp; Ops</span><span class="place">GenHealth.ai · current</span></li>
+          <li><span class="role">Head of Operations</span><span class="place">GenHealth.ai · prior</span></li>
+          <li><span class="role">Co-founder &amp; CEO</span><span class="place">Circadios</span></li>
+          <li><span class="role">GM</span><span class="place">Axamo</span></li>
+          <li><span class="role">Founding member</span><span class="place">Propel</span></li>
+          <li><span class="role">Co-Chair</span><span class="place">Embarc Collective</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY TWO -->
+  <div class="why-two">
+    <div>
+      <div class="label">§ Why two</div>
+    </div>
+    <div>
+      <h2>We cap engagements at <em>two</em> at a time. Always.</h2>
+      <div class="body">
+        <p><strong>The math is straightforward.</strong> An embedded engagement at Bayshore quality means about 25 hours a week from a partner — pipeline reviews, call audits, deal coaching, exec sponsorship, board prep. Two clients fills a partner's week. Three doesn't.</p>
+        <p><strong>The honesty is also straightforward.</strong> Most consultancies grow by adding bodies and selling deeper into existing accounts. We grow by saying no. If we're saying yes to your engagement, you're getting the partner — not the calendar gap, not a junior associate, not a "deliverable team." That's the whole product.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <img src="uploads/palm-recolored.png" alt="" class="palm-deco" />
+    <div>
+      <h2>Want to know if there's a slot open?</h2>
+    </div>
+    <div>
+      <div class="body">
+        <p>The diagnostic call is also where we're honest about availability. We'll tell you up front if we're booked — and, when we are, who in our network we'd point you toward.</p>
+      </div>
+      <div style="margin-top:32px; display:flex; gap:12px;">
+        <a class="btn ghost" style="color:#fff; border-color:#fff;" href="contact.html">Book the diagnostic →</a>
+        <a class="btn ghost" style="color:#fff; border-color:rgba(255,255,255,0.4);" href="practice.html">See the practice</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="col">
+      <div class="label">→ Email</div>
+      <h3><a href="mailto:hello@bayshore.health">hello@bayshore.health</a></h3>
+      <p>For diagnostic calls, references, or specific deal-sprint inquiries.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Based in</div>
+      <h3>Tampa, FL</h3>
+      <p>Where the practice is anchored. We travel for kickoffs, key pursuits, and exec-sponsor meetings — wherever the deal is.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Diagnostic call</div>
+      <h3>30 minutes. No deck.</h3>
+      <p>The first call ends with a clear yes or no on fit. We'll send references and a sample deliverable beforehand if it helps.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-top">
+      <div class="brand">
+        <div class="lockup-h">
+          <div style="display:flex; flex-direction:column; line-height:0.85;">
+            <div class="word">Bayshore</div>
+            <div class="word health">Health</div>
+          </div>
+          <div class="slash">/</div>
+          <img src="uploads/palm-recolored.png" alt="palm" />
+        </div>
+        <div class="tag">A boutique healthcare BD and revenue advisory. Operators, not consultants. Tampa &amp; San Francisco. Booking Q3 2026 engagements.</div>
+      </div>
+      <div>
+        <h4>Practice</h4>
+        <a href="practice.html">Sales strategy</a>
+        <a href="practice.html">Fractional BD</a>
+        <a href="practice.html">GTM advisory</a>
+        <a href="practice.html">Deal sprint</a>
+        <a href="practice.html">RevOps</a>
+        <a href="practice.html">AI-native GTM</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="team.html">About</a>
+        <a href="team.html#adam">Adam Teitelman</a>
+        <a href="team.html#mike">Mike Maseda</a>
+        <a href="case-studies.html">Case studies</a>
+        <a href="writing.html">Writing</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
+        <a href="contact.html">Book a call</a>
+        <a href="#">LinkedIn ↗</a>
+        <a href="#">Substack ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="meta">© 2026 Bayshore Health · BAY · 025</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

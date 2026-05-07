@@ -1,0 +1,81 @@
+/* Bayshore Health — shared base styles */
+
+:root {
+  --ink: #0e1d28;
+  --teal: #1a3942;
+  --terra: #d97757;
+  --sage: #3a7a5a;
+  --stone: #5a6b65;
+  --paper: #f4f5f3;
+  --paper-2: #ecede9;
+  --rule: #d8dcd5;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--paper); font-family: 'Geist', sans-serif; color: var(--ink); }
+
+a { color: inherit; }
+
+/* Brand lockup */
+.lockup-h { display: flex; align-items: center; gap: 8px; }
+.lockup-h .word { font-family: 'Fraunces', serif; font-weight: 800; letter-spacing: -0.045em; line-height: 0.9; font-variation-settings: "opsz" 144; color: var(--ink); }
+.lockup-h .health { color: var(--stone); }
+.lockup-h .slash { font-family: 'Geist Mono', monospace; font-weight: 500; color: var(--terra); line-height: 1; }
+.lockup-h img { display: block; object-fit: contain; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Geist Mono', monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; padding: 14px 22px; text-decoration: none; cursor: pointer; border: 1px solid currentColor; transition: all 0.2s; }
+.btn.solid { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn.terra { background: var(--terra); color: #fff; border-color: var(--terra); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn:hover { transform: translateY(-1px); }
+
+.container { width: 100%; max-width: 1440px; margin: 0 auto; }
+
+/* NAV */
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 56px; border-bottom: 1px solid var(--rule); background: #fff; position: sticky; top: 0; z-index: 50; }
+.nav .lockup-h .word { font-size: 22px; }
+.nav .lockup-h .word.health { font-size: 16px; }
+.nav .lockup-h .slash { font-size: 28px; }
+.nav .lockup-h img { height: 32px; }
+.nav-right { display: flex; align-items: center; gap: 28px; }
+.nav-right a { font-family: 'Geist', sans-serif; font-weight: 500; font-size: 13px; color: var(--ink); text-decoration: none; }
+.nav-right a:hover { color: var(--terra); }
+.nav-right a.active { color: var(--terra); }
+
+/* CTA block */
+.cta-block { background: var(--terra); color: #fff; padding: 100px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; overflow: hidden; }
+.cta-block .palm-deco { position: absolute; right: -60px; top: -40px; height: 360px; opacity: 0.18; }
+.cta-block h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 60px; letter-spacing: -0.03em; line-height: 1; margin: 0; position: relative; z-index: 1; }
+.cta-block .body { font-size: 16px; line-height: 1.6; opacity: 0.92; max-width: 480px; position: relative; z-index: 1; }
+.cta-block .body p + p { margin-top: 12px; }
+
+/* Contact strip */
+.contact { padding: 80px 56px; background: var(--paper); border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+.contact .col .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 20px; }
+.contact .col h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 32px; letter-spacing: -0.025em; line-height: 1.1; margin: 0; }
+.contact .col h3 a { color: var(--ink); text-decoration: none; }
+.contact .col h3 a:hover { color: var(--terra); }
+.contact .col p { font-size: 14px; line-height: 1.55; color: var(--stone); margin: 12px 0 0; }
+
+/* Footer */
+.foot { background: var(--ink); color: var(--paper); padding: 80px 56px 40px; }
+.foot-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.foot h4 { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin: 0 0 16px; font-weight: 500; }
+.foot a { display: block; color: var(--paper); text-decoration: none; font-size: 14px; padding: 6px 0; }
+.foot a:hover { color: var(--terra); }
+.foot .brand .lockup-h .word { color: var(--paper); font-size: 24px; }
+.foot .brand .lockup-h .word.health { color: #9ab2ae; font-size: 18px; }
+.foot .brand .lockup-h .slash { font-size: 32px; }
+.foot .brand .lockup-h img { height: 36px; }
+.foot .brand .tag { margin-top: 16px; font-size: 13px; color: #9ab2ae; max-width: 320px; line-height: 1.5; }
+.foot-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; }
+.foot-bottom .meta { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #9ab2ae; text-transform: uppercase; }
+.foot-bottom .legal { display: flex; gap: 24px; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+.foot-bottom .legal a { color: #9ab2ae; padding: 0; }
+
+/* Generic page hero (for non-home pages) */
+.page-hero { padding: 80px 56px 64px; border-bottom: 1px solid var(--rule); }
+.page-hero .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 20px; }
+.page-hero h1 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 80px; letter-spacing: -0.04em; line-height: 0.95; margin: 0; max-width: 1100px; }
+.page-hero h1 em { color: var(--terra); font-style: italic; font-weight: 600; }
+.page-hero .lede { font-size: 18px; line-height: 1.55; color: var(--stone); max-width: 720px; margin: 32px 0 0; }

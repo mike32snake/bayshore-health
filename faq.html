@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>FAQ — Bayshore Health</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="uploads/palm-recolored.png" />
+<link rel="apple-touch-icon" href="uploads/palm-recolored.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .faq-page { padding: 80px 56px; display: grid; grid-template-columns: 320px 1fr; gap: 80px; align-items: start; }
+  .faq-side { position: sticky; top: 100px; }
+  .faq-side .group { margin-bottom: 32px; }
+  .faq-side .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 14px; }
+  .faq-side a { display: block; font-family: 'Geist', sans-serif; font-size: 14px; color: var(--ink); text-decoration: none; padding: 6px 0; opacity: 0.7; transition: opacity 0.15s, color 0.15s; }
+  .faq-side a:hover { opacity: 1; color: var(--terra); }
+
+  .faq-main h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 36px; letter-spacing: -0.025em; margin: 0 0 8px; }
+  .faq-main h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .faq-main .group-desc { font-size: 14px; color: var(--stone); margin: 0 0 32px; max-width: 640px; }
+  .faq-main .group { margin-bottom: 64px; }
+
+  .qa { border-top: 1px solid var(--rule); padding: 24px 0; cursor: pointer; }
+  .qa:last-child { border-bottom: 1px solid var(--rule); }
+  .qa summary { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; list-style: none; cursor: pointer; }
+  .qa summary::-webkit-details-marker { display: none; }
+  .qa h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; margin: 0; flex: 1; }
+  .qa .toggle { font-family: 'Geist Mono', monospace; font-size: 18px; color: var(--terra); transition: transform 0.25s ease; }
+  .qa[open] .toggle { transform: rotate(45deg); }
+  .qa .a { font-size: 15px; line-height: 1.65; color: var(--stone); margin: 16px 0 0; max-width: 720px; }
+  .qa[open] .a { animation: qaFadeIn 0.28s ease both; }
+  .qa.closing .a { animation: qaFadeOut 0.22s ease both; }
+  .qa.closing .toggle { transform: rotate(0deg); }
+  @keyframes qaFadeIn  { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes qaFadeOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-6px); } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- NAV -->
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+    <div class="lockup-h">
+      <div style="display:flex; flex-direction:column; line-height:0.85;">
+        <div class="word">Bayshore</div>
+        <div class="word health">Health</div>
+      </div>
+      <div class="slash">/</div>
+      <img src="uploads/palm-recolored.png" alt="palm" />
+    </div>
+    </a>
+    <div class="nav-right">
+      <a href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="team.html">Team</a>
+      <a href="writing.html">Writing</a>
+      <a class="active" href="faq.html">FAQ</a>
+      <a class="btn terra" style="padding:10px 18px;" href="contact.html">Book diagnostic →</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="label">§ Common questions</div>
+    <h1>Things founders <em>ask</em> before an engagement.</h1>
+    <p class="lede">If yours isn't here, the diagnostic call is free — we'd rather answer it directly. Most calls run thirty minutes and end with a clear yes or no on fit, including a pointer to someone outside Bayshore if we're not the right firm.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-page">
+
+    <!-- Side index -->
+    <div class="faq-side">
+      <div class="group">
+        <div class="label">→ Sections</div>
+        <a href="#fit">Fit &amp; stage</a>
+        <a href="#engaging">Engaging us</a>
+        <a href="#pricing">Pricing &amp; terms</a>
+        <a href="#process">How we work</a>
+      </div>
+      <div class="group">
+        <div class="label">→ Still stuck?</div>
+        <a href="contact.html" style="color:var(--terra); opacity:1;">Book a diagnostic →</a>
+        <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
+      </div>
+    </div>
+
+    <div class="faq-main">
+
+      <!-- FIT -->
+      <div class="group" id="fit">
+        <h2>Fit &amp; <em>stage</em>.</h2>
+        <p class="group-desc">If you're past these questions and want a faster answer, just book the call.</p>
+
+        <details class="qa" open>
+          <summary><h3>What stage of company do you typically work with?</h3><span class="toggle">+</span></summary>
+          <p class="a">Most engagements are seed through Series C, with a heavy concentration at Series A and B — the stages where founder-led sales has hit a ceiling and the team needs a real motion. We'll also take on later-stage work for specific deal sprints or RevOps fixes, but rarely full rebuilds.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>Are you a fit for non-healthcare companies?</h3><span class="toggle">+</span></summary>
+          <p class="a">No. Bayshore is exclusively healthcare. The reason we move fast for our clients is fifteen years of buyer-side scar tissue across IDNs, plans, post-acute, VBC, and AI-native digital health. That edge disappears immediately if we're ramping on your category — so we don't.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>We're pre-revenue. Is it too early?</h3><span class="toggle">+</span></summary>
+          <p class="a">Often the right time, actually — pre-revenue is when ICP, positioning, and procurement design are easiest to fix. We typically run a project-based GTM advisory or AI-native GTM design engagement at this stage rather than a fractional BD retainer.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>We already have a VP Sales. Can you still help?</h3><span class="toggle">+</span></summary>
+          <p class="a">Yes — usually as a project (deal sprint, RevOps, or healthcare GTM advisory) rather than a retainer. We won't do anything that undercuts your VP. The most common pattern: a VP wants outside help on a specific buyer or procurement cycle and we run alongside, not over.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>What kinds of products fit best?</h3><span class="toggle">+</span></summary>
+          <p class="a">Software, AI/agentic platforms, virtual care, care-in-the-home, clinical workforce, employer-benefit, and value-based-care contracting infrastructure. We've also done payer-pursuit work for diagnostics and devices, but that's less of our daily diet.</p>
+        </details>
+      </div>
+
+      <!-- ENGAGING -->
+      <div class="group" id="engaging">
+        <h2>Engaging <em>us</em>.</h2>
+        <p class="group-desc">The mechanics of starting, scoping, and stopping.</p>
+
+        <details class="qa">
+          <summary><h3>How fast can we start?</h3><span class="toggle">+</span></summary>
+          <p class="a">Diagnostic engagements typically kick off within two weeks of contract. Full embedded rebuilds are usually a 3–4 week ramp. We hold one engagement slot open per quarter for time-sensitive deal sprints — ask if you're chasing a specific procurement deadline.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>Will you sign an NDA before the diagnostic call?</h3><span class="toggle">+</span></summary>
+          <p class="a">Yes. We'll also send you a one-pager on the firm, references from three founders we've worked with, and a sample diagnostic deliverable so you know exactly what you're buying.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>What does the first call actually cover?</h3><span class="toggle">+</span></summary>
+          <p class="a">Thirty minutes. We listen for the first ten — what you're trying to do, what's stuck, what you've already tried. The middle ten is us being honest about whether we've solved a similar shape of problem and how. The last ten is a clear yes/no on fit, plus what an engagement would look like if it's a yes (or who else we'd point you toward if it isn't).</p>
+        </details>
+        <details class="qa">
+          <summary><h3>Do you do exclusivity / non-competes by category?</h3><span class="toggle">+</span></summary>
+          <p class="a">Limited carve-outs only. Because we cap at two engagements at a time, true conflicts are rare — but for direct buyer-overlap situations we'll write a written carve-out for the duration of the retainer. We won't agree to category-wide exclusivity beyond that.</p>
+        </details>
+      </div>
+
+      <!-- PRICING -->
+      <div class="group" id="pricing">
+        <h2>Pricing &amp; <em>terms</em>.</h2>
+        <p class="group-desc">No surprise on the invoice. The shape is always the same.</p>
+
+        <details class="qa">
+          <summary><h3>How do you price?</h3><span class="toggle">+</span></summary>
+          <p class="a">Project work is fixed-fee against scope. Fractional retainers are monthly with a 12-month minimum. Deal sprints are flat-fee plus a closed-won kicker. Pricing tracks roughly to the cost of one VP Sales hire — we're explicitly cheaper than the wrong full-time hire, and explicitly more expensive than a junior consultant.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>Do you take equity in lieu of cash?</h3><span class="toggle">+</span></summary>
+          <p class="a">For early-stage retainers, sometimes — typically a hybrid of cash and warrant coverage. We're operators with conviction, not a fund, so we'll only do this when we'd be willing to write a check ourselves.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>What's the closed-won kicker on deal sprints?</h3><span class="toggle">+</span></summary>
+          <p class="a">A defined percentage of contract ACV, capped, and paid only on actually-signed deals during the sprint window. The intent is alignment, not a windfall — we want a portion of our fee tied to whether we actually closed it. Specifics get negotiated by deal size.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>What if it's not working?</h3><span class="toggle">+</span></summary>
+          <p class="a">We do a thirty-day no-questions-asked exit on every engagement. If we're not earning it, you shouldn't keep paying for it — and we'd rather know early so we can refer you somewhere better suited.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>Are travel and expenses included?</h3><span class="toggle">+</span></summary>
+          <p class="a">Yes for retainers — domestic travel for kickoffs, key pursuits, exec-sponsor meetings, and board prep is rolled in. For project work and sprints, we either include a fixed travel budget in scope or pass through at cost; you choose.</p>
+        </details>
+      </div>
+
+      <!-- PROCESS -->
+      <div class="group" id="process">
+        <h2>How we <em>work</em>.</h2>
+        <p class="group-desc">What it actually looks like once we sign.</p>
+
+        <details class="qa">
+          <summary><h3>Where are you based and do you travel?</h3><span class="toggle">+</span></summary>
+          <p class="a">Tampa, with regular travel. We travel for material moments — kickoffs, key pursuits, exec-sponsor meetings, board prep — and we work remotely with your team the rest of the time. Travel is included in retainer pricing.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>Will Adam or Mike actually show up, or is it associates?</h3><span class="toggle">+</span></summary>
+          <p class="a">Adam or Mike, personally. There are no associates. The same person who pitches you closes alongside your team. The trade-off is we cap engagements at two at a time — see the team page for why.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>How do you measure success?</h3><span class="toggle">+</span></summary>
+          <p class="a">Every engagement has 3–5 written success metrics scoped at week zero. Always quantitative, always pulled from your system of record (CRM, board reporting), and always a mix of leading indicators (pipeline coverage, stage-conversion) and trailing ones (closed-won, cycle time, ramp-to-quota).</p>
+        </details>
+        <details class="qa">
+          <summary><h3>Do you guarantee outcomes?</h3><span class="toggle">+</span></summary>
+          <p class="a">Honest answer: no — anyone who guarantees enterprise B2B sales outcomes is selling something else. We do guarantee process: defined success metrics, a 30-day no-questions exit, transparent pipeline reviews, and the closed-won kicker on sprints. If we're not moving the metrics, the misalignment is by design our problem.</p>
+        </details>
+        <details class="qa">
+          <summary><h3>What's the handoff like at the end?</h3><span class="toggle">+</span></summary>
+          <p class="a">A written final playbook, a working CRM and forecast model, a hiring scorecard for the team you're keeping, and a board-update narrative that summarizes the engagement. Plus thirty days of "as-needed" Slack access post-handoff for follow-up questions, included.</p>
+        </details>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <img src="uploads/palm-recolored.png" alt="" class="palm-deco" />
+    <div>
+      <h2>Question not answered above?</h2>
+    </div>
+    <div>
+      <div class="body">
+        <p>Email us, or just book the diagnostic call directly — we'd rather answer the specific version of the question than write a generic one.</p>
+      </div>
+      <div style="margin-top:32px; display:flex; gap:12px;">
+        <a class="btn ghost" style="color:#fff; border-color:#fff;" href="contact.html">Book the diagnostic →</a>
+        <a class="btn ghost" style="color:#fff; border-color:rgba(255,255,255,0.4);" href="mailto:hello@bayshore.health">Email us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="col">
+      <div class="label">→ Email</div>
+      <h3><a href="mailto:hello@bayshore.health">hello@bayshore.health</a></h3>
+      <p>For diagnostic calls, references, or specific deal-sprint inquiries.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Based in</div>
+      <h3>Tampa, FL</h3>
+      <p>Where the practice is anchored. We travel for kickoffs, key pursuits, and exec-sponsor meetings — wherever the deal is.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Diagnostic call</div>
+      <h3>30 minutes. No deck.</h3>
+      <p>The first call ends with a clear yes or no on fit. We'll send references and a sample deliverable beforehand if it helps.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-top">
+      <div class="brand">
+        <div class="lockup-h">
+          <div style="display:flex; flex-direction:column; line-height:0.85;">
+            <div class="word">Bayshore</div>
+            <div class="word health">Health</div>
+          </div>
+          <div class="slash">/</div>
+          <img src="uploads/palm-recolored.png" alt="palm" />
+        </div>
+        <div class="tag">A boutique healthcare BD and revenue advisory. Operators, not consultants. Tampa &amp; San Francisco. Booking Q3 2026 engagements.</div>
+      </div>
+      <div>
+        <h4>Practice</h4>
+        <a href="practice.html">Sales strategy</a>
+        <a href="practice.html">Fractional BD</a>
+        <a href="practice.html">GTM advisory</a>
+        <a href="practice.html">Deal sprint</a>
+        <a href="practice.html">RevOps</a>
+        <a href="practice.html">AI-native GTM</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="team.html">About</a>
+        <a href="team.html#adam">Adam Teitelman</a>
+        <a href="team.html#mike">Mike Maseda</a>
+        <a href="case-studies.html">Case studies</a>
+        <a href="writing.html">Writing</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
+        <a href="contact.html">Book a call</a>
+        <a href="#">LinkedIn ↗</a>
+        <a href="#">Substack ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="meta">© 2026 Bayshore Health · BAY · 025</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+  // FAQ open/close fade animation
+  (function(){
+    document.querySelectorAll('details.qa').forEach(function(qa){
+      var summary = qa.querySelector('summary');
+      if (!summary) return;
+      summary.addEventListener('click', function(e){
+        if (!qa.open) return;
+        e.preventDefault();
+        if (qa.classList.contains('closing')) return;
+        qa.classList.add('closing');
+        var answer = qa.querySelector('.a');
+        var done = function(){
+          qa.classList.remove('closing');
+          qa.open = false;
+          if (answer) answer.removeEventListener('animationend', done);
+        };
+        if (answer) {
+          answer.addEventListener('animationend', done);
+        } else {
+          setTimeout(done, 220);
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>

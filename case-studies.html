@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Case Studies — Bayshore Health</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="uploads/palm-recolored.png" />
+<link rel="apple-touch-icon" href="uploads/palm-recolored.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .cs-section { padding: 100px 56px; border-top: 1px solid var(--rule); }
+  .cs-section:first-of-type { border-top: none; }
+  .cs-section.dark { background: var(--ink); color: var(--paper); border-top: none; position: relative; overflow: hidden; }
+  .cs-section.dark::after { content: ''; position: absolute; right: -100px; top: -50px; width: 380px; height: 380px; background: radial-gradient(circle, var(--terra) 0%, transparent 60%); opacity: 0.18; pointer-events: none; }
+  .cs-meta { display: grid; grid-template-columns: 280px 1fr; gap: 64px; margin-bottom: 32px; align-items: baseline; }
+  .cs-meta .tag { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .cs-meta .tag .v { color: var(--stone); display: block; margin-top: 6px; }
+  .cs-section.dark .tag .v { color: #9ab2ae; }
+  .cs-section h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 56px; letter-spacing: -0.03em; line-height: 1.04; margin: 0; max-width: 880px; position: relative; z-index: 1; }
+  .cs-section h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+
+  .cs-body { display: grid; grid-template-columns: 280px 1fr; gap: 64px; margin-top: 56px; align-items: start; }
+  .cs-body .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .cs-body .narrative p { font-size: 17px; line-height: 1.65; color: var(--stone); margin: 0 0 20px; max-width: 720px; }
+  .cs-section.dark .narrative p { color: #b5c4c0; }
+  .cs-body .narrative p strong { color: var(--ink); font-weight: 600; }
+  .cs-section.dark .narrative p strong { color: var(--paper); font-weight: 500; }
+
+  .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 56px; }
+  .cs-section.dark .results-grid { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.12); }
+  .result { background: var(--paper); padding: 32px; }
+  .cs-section.dark .result { background: var(--ink); }
+  .result .v { font-family: 'Fraunces', serif; font-weight: 700; font-size: 56px; letter-spacing: -0.04em; line-height: 1; color: var(--ink); }
+  .cs-section.dark .result .v { color: var(--terra); }
+  .result .l { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-top: 14px; }
+
+  .cs-quote { padding: 80px 56px; background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .cs-quote .q { font-family: 'Fraunces', serif; font-weight: 500; font-size: 36px; line-height: 1.25; letter-spacing: -0.02em; max-width: 1100px; margin: 0 auto; }
+  .cs-quote .q em { color: var(--terra); font-style: italic; }
+  .cs-quote .att { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin: 32px auto 0; max-width: 1100px; }
+  .cs-quote .att strong { color: var(--ink); font-weight: 600; margin-right: 16px; }
+
+  .more-block { padding: 80px 56px; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 280px 1fr; gap: 64px; }
+  .more-block .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .more-block h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 36px; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 16px; max-width: 720px; }
+  .more-block p { font-size: 16px; line-height: 1.6; color: var(--stone); margin: 0; max-width: 640px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- NAV -->
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+    <div class="lockup-h">
+      <div style="display:flex; flex-direction:column; line-height:0.85;">
+        <div class="word">Bayshore</div>
+        <div class="word health">Health</div>
+      </div>
+      <div class="slash">/</div>
+      <img src="uploads/palm-recolored.png" alt="palm" />
+    </div>
+    </a>
+    <div class="nav-right">
+      <a href="practice.html">Practice</a>
+      <a class="active" href="case-studies.html">Case studies</a>
+      <a href="team.html">Team</a>
+      <a href="writing.html">Writing</a>
+      <a href="faq.html">FAQ</a>
+      <a class="btn terra" style="padding:10px 18px;" href="contact.html">Book diagnostic →</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="label">§ Case studies</div>
+    <h1>Forty engagements. Three we can talk <em>publicly</em>.</h1>
+    <p class="lede">Healthcare buyers expect discretion. Most of our work happens under NDA, on cap-table-sensitive procurement cycles, or inside hospital systems that don't enjoy being a marketing case study. The three below are sanitized, anonymized, and accurate. References to specific founders, executives, and revenue numbers are available on request after the diagnostic call.</p>
+  </div>
+
+  <!-- CASE 1 — feature -->
+  <div class="cs-section dark">
+    <div class="cs-meta">
+      <div class="tag">→ Featured · Series B<span class="v">Care-in-the-home platform</span></div>
+    </div>
+    <h2>Rewrote the IDN motion. Closed three flagship systems in <em>eleven weeks</em>.</h2>
+    <div class="cs-body">
+      <div class="label">→ The situation</div>
+      <div class="narrative">
+        <p>A care-in-the-home platform with strong product traction and a reference customer was stuck at one paying integrated delivery network after eighteen months of selling. The discovery framework was built for value-based-care plans; the buyer was the IDN's discharge-planning leadership. <strong>The motion didn't fit the buyer.</strong></p>
+        <p>By the time we engaged, four AEs had cycled through five-month tenures with the founder taking over each pursuit at month three. Pipeline coverage looked healthy on the dashboard but every late-stage deal was the same kind of stuck.</p>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="label">→ What we did</div>
+      <div class="narrative">
+        <p><strong>Adam led the engagement</strong> with Mike on RevOps. Twelve weeks: rebuild discovery around discharge-planning workflow (not VBC contracting), retrain the four AEs on clinical-stakeholder mapping, and personally lead the first three IDN pursuits while the team observed. We sat in twenty-six pipeline reviews and rode forty-one demos.</p>
+        <p>Week six was the first signed pilot. Week nine and week eleven were the next two. The motion was hardened by the time we left at week sixteen — the next IDN closed the week after our handoff, with the AE running it solo.</p>
+      </div>
+    </div>
+    <div class="results-grid">
+      <div class="result"><div class="v">3</div><div class="l">IDN logos closed · Q1</div></div>
+      <div class="result"><div class="v">−47%</div><div class="l">Cycle time</div></div>
+      <div class="result"><div class="v">$8.2M</div><div class="l">New ARR · 90 days</div></div>
+      <div class="result"><div class="v">4</div><div class="l">AEs retrained &amp; ramped</div></div>
+    </div>
+  </div>
+
+  <!-- QUOTE 1 -->
+  <div class="cs-quote">
+    <div class="q">"Bayshore didn't sell us a framework. They sat in our pipeline reviews for ten weeks and <em>rebuilt it</em> with us — and the deal that closed the week they left paid for the engagement five times over."</div>
+    <div class="att"><strong>VP Revenue</strong>Series B Healthtech · 2025</div>
+  </div>
+
+  <!-- CASE 2 -->
+  <div class="cs-section">
+    <div class="cs-meta">
+      <div class="tag">→ Series A<span class="v">Digital health · payer-facing</span></div>
+    </div>
+    <h2>Built the payer playbook from <em>zero</em>.</h2>
+    <div class="cs-body">
+      <div class="label">→ The situation</div>
+      <div class="narrative">
+        <p>A pre-revenue digital-health company with a clinically validated product and a payer-facing wedge — but zero direct payer relationships, no procurement playbook, and a founder who had run two consumer companies and was learning the buyer in real time. Six weeks until the next board meeting.</p>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="label">→ What we did</div>
+      <div class="narrative">
+        <p><strong>Six-week sprint</strong> covering ICP refinement, account map across the top fifteen national plans, executive intros into each (Adam's network), pricing teardown against three comparable wedges, and a procurement-ready value story.</p>
+        <p>By week six the founder had fourteen plan POCs, two of which converted to paid pilots within the next quarter. The board meeting went well.</p>
+      </div>
+    </div>
+    <div class="results-grid">
+      <div class="result"><div class="v">14</div><div class="l">Plan POCs</div></div>
+      <div class="result"><div class="v">2</div><div class="l">Paid pilots</div></div>
+      <div class="result"><div class="v">6 wks</div><div class="l">Time to first signed plan</div></div>
+      <div class="result"><div class="v">$340k</div><div class="l">Pilot ARR</div></div>
+    </div>
+  </div>
+
+  <!-- QUOTE 2 -->
+  <div class="cs-quote">
+    <div class="q">"Adam knows the post-acute and payer buyer better than anyone I've worked with. He <em>shortened our learning curve by a year</em>."</div>
+    <div class="att"><strong>Founder &amp; CEO</strong>Care-in-the-home · Series A</div>
+  </div>
+
+  <!-- CASE 3 -->
+  <div class="cs-section">
+    <div class="cs-meta">
+      <div class="tag">→ Seed<span class="v">Healthcare AI / digital health</span></div>
+    </div>
+    <h2>Founder-led to AE-led, in <em>five months</em>.</h2>
+    <div class="cs-body">
+      <div class="label">→ The situation</div>
+      <div class="narrative">
+        <p>An AI-native healthtech company where the founder was on every demo, every discovery call, and every procurement review. Pipeline was strong but throughput was capped at one founder's calendar. Two new AE hires had been considered for nine months; neither happened because the founder didn't trust the deal pattern was coachable.</p>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="label">→ What we did</div>
+      <div class="narrative">
+        <p><strong>Mike led the engagement</strong> with Adam on the buyer-side coaching. Documented the founder's deal pattern across twelve recorded calls, converted it into an AE scorecard and ramp plan, ran the hiring loop for two AEs, and stayed through ramp.</p>
+        <p>The founder was off late-stage demos within ninety days. Both AEs hit quota in their second full quarter. The founder is now spending two-thirds of their time back in product.</p>
+      </div>
+    </div>
+    <div class="results-grid">
+      <div class="result"><div class="v">2</div><div class="l">AEs ramped</div></div>
+      <div class="result"><div class="v">100%</div><div class="l">Quota attainment Q2</div></div>
+      <div class="result"><div class="v">−68%</div><div class="l">Founder calls / week</div></div>
+      <div class="result"><div class="v">5 mo</div><div class="l">End to end</div></div>
+    </div>
+  </div>
+
+  <!-- More on request -->
+  <div class="more-block">
+    <div class="label">→ More on request</div>
+    <div>
+      <h2>The other thirty-seven engagements live behind NDA.</h2>
+      <p>If you're considering Bayshore for a specific situation — a payer pursuit, an IDN procurement cycle, an AI-native GTM rebuild — we'll match you to the closest analog from past work and put you on the phone with a reference. Ask on the diagnostic call.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <img src="uploads/palm-recolored.png" alt="" class="palm-deco" />
+    <div>
+      <h2>Want a reference for a specific situation?</h2>
+    </div>
+    <div>
+      <div class="body">
+        <p>Tell us the shape of the problem on the diagnostic call. If we've solved a version of it, we'll connect you with a founder who lived it.</p>
+      </div>
+      <div style="margin-top:32px; display:flex; gap:12px;">
+        <a class="btn ghost" style="color:#fff; border-color:#fff;" href="contact.html">Book the diagnostic →</a>
+        <a class="btn ghost" style="color:#fff; border-color:rgba(255,255,255,0.4);" href="practice.html">See the practice</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="col">
+      <div class="label">→ Email</div>
+      <h3><a href="mailto:hello@bayshore.health">hello@bayshore.health</a></h3>
+      <p>For diagnostic calls, references, or specific deal-sprint inquiries.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Based in</div>
+      <h3>Tampa, FL</h3>
+      <p>Where the practice is anchored. We travel for kickoffs, key pursuits, and exec-sponsor meetings — wherever the deal is.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Diagnostic call</div>
+      <h3>30 minutes. No deck.</h3>
+      <p>The first call ends with a clear yes or no on fit. We'll send references and a sample deliverable beforehand if it helps.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-top">
+      <div class="brand">
+        <div class="lockup-h">
+          <div style="display:flex; flex-direction:column; line-height:0.85;">
+            <div class="word">Bayshore</div>
+            <div class="word health">Health</div>
+          </div>
+          <div class="slash">/</div>
+          <img src="uploads/palm-recolored.png" alt="palm" />
+        </div>
+        <div class="tag">A boutique healthcare BD and revenue advisory. Operators, not consultants. Tampa &amp; San Francisco. Booking Q3 2026 engagements.</div>
+      </div>
+      <div>
+        <h4>Practice</h4>
+        <a href="practice.html">Sales strategy</a>
+        <a href="practice.html">Fractional BD</a>
+        <a href="practice.html">GTM advisory</a>
+        <a href="practice.html">Deal sprint</a>
+        <a href="practice.html">RevOps</a>
+        <a href="practice.html">AI-native GTM</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="team.html">About</a>
+        <a href="team.html">Adam Teitelman</a>
+        <a href="team.html">Mike Maseda</a>
+        <a href="case-studies.html">Case studies</a>
+        <a href="writing.html">Writing</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
+        <a href="contact.html">Book a call</a>
+        <a href="#">LinkedIn ↗</a>
+        <a href="#">Substack ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="meta">© 2026 Bayshore Health · BAY · 025</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

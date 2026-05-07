@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Practice — Bayshore Health</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="uploads/palm-recolored.png" />
+<link rel="apple-touch-icon" href="uploads/palm-recolored.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .practice-grid { padding: 80px 56px; display: grid; gap: 0; }
+  .pr-row { display: grid; grid-template-columns: 80px 1fr 1.4fr; gap: 56px; padding: 56px 0; border-top: 1px solid var(--rule); align-items: start; }
+  .pr-row:last-child { border-bottom: 1px solid var(--rule); }
+  .pr-num { font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--terra); letter-spacing: 0.16em; }
+  .pr-head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 36px; letter-spacing: -0.025em; line-height: 1.05; margin: 0 0 18px; }
+  .pr-head .meta { display: flex; flex-direction: column; gap: 6px; font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--stone); margin-top: 24px; }
+  .pr-head .meta .k { color: var(--terra); text-transform: uppercase; letter-spacing: 0.16em; font-size: 10px; }
+  .pr-head .meta .v { color: var(--ink); }
+  .pr-body p { font-size: 16px; line-height: 1.65; color: var(--stone); margin: 0 0 20px; max-width: 620px; }
+  .pr-body strong { color: var(--ink); font-weight: 600; }
+  .pr-body .deliv-label { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin: 28px 0 14px; }
+  .pr-body ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+  .pr-body ul li { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--ink); padding-left: 18px; position: relative; line-height: 1.5; }
+  .pr-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--terra); }
+  .lead-row { display: flex; align-items: center; gap: 10px; margin-top: 22px; font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--stone); }
+  .lead-row .av { width: 28px; height: 28px; background: var(--ink); color: var(--terra); display: inline-flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 12px; }
+  .lead-row .av.terra { background: var(--terra); color: #fff; }
+  .intro-band { padding: 80px 56px; background: var(--paper-2); border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 280px 1fr; gap: 64px; }
+  .intro-band .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .intro-band p { font-size: 17px; line-height: 1.6; color: var(--stone); margin: 0 0 16px; max-width: 720px; }
+  .intro-band p strong { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- NAV -->
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+    <div class="lockup-h">
+      <div style="display:flex; flex-direction:column; line-height:0.85;">
+        <div class="word">Bayshore</div>
+        <div class="word health">Health</div>
+      </div>
+      <div class="slash">/</div>
+      <img src="uploads/palm-recolored.png" alt="palm" />
+    </div>
+    </a>
+    <div class="nav-right">
+      <a class="active" href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="team.html">Team</a>
+      <a href="writing.html">Writing</a>
+      <a href="faq.html">FAQ</a>
+      <a class="btn terra" style="padding:10px 18px;" href="contact.html">Book diagnostic →</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="label">§ Practice</div>
+    <h1>Eight ways we <em>show up</em>. One outcome: a working revenue motion.</h1>
+    <p class="lede">Most Bayshore engagements are not a single SKU — they're a combination. Here's the menu, the timing, and who from the partnership leads each one. If you're not sure where you sit, the diagnostic call sorts it in thirty minutes.</p>
+  </div>
+
+  <!-- INTRO BAND -->
+  <div class="intro-band">
+    <div class="label">→ How to read this</div>
+    <div>
+      <p><strong>Project work</strong> is fixed-fee against scope, six to twelve weeks, with a written deliverable at the end. Right when you have a specific bottleneck and a deadline.</p>
+      <p><strong>Retainers</strong> are monthly with a twelve-month minimum. Right when you need a partner sitting at the leadership table — pipeline reviews, hiring loops, board prep — until your team is ready to run it without us.</p>
+      <p><strong>Sprints</strong> are flat-fee plus a closed-won kicker. Right when there's a single procurement cycle that has to land. We embed and don't leave until docusign hits.</p>
+    </div>
+  </div>
+
+  <!-- PRACTICE ROWS -->
+  <div class="practice-grid">
+
+    <div class="pr-row">
+      <div class="pr-num">01</div>
+      <div class="pr-head">
+        <h2>Sales strategy &amp; execution</h2>
+        <div class="meta">
+          <div><span class="k">Built for</span></div>
+          <div><span class="v">Series A · B · C</span></div>
+          <div style="margin-top:10px;"><span class="k">Engagement</span></div>
+          <div><span class="v">Project · 8–12 weeks</span></div>
+        </div>
+        <div class="lead-row"><span class="av terra">A</span> Adam leads</div>
+      </div>
+      <div class="pr-body">
+        <p>End-to-end pipeline design and management for healthtech companies whose motion has outgrown their first version of "founder + AE + spreadsheet." We rebuild the engine — discovery, deal stages, exit criteria, forecast, deal inspection — and make it survive a board meeting.</p>
+        <p>This is the most common rebuild project we run. By week twelve you have a defensible plan, a CRM you trust, and the first cohort of deals moving against the new motion.</p>
+        <div class="deliv-label">→ What you get</div>
+        <ul>
+          <li>Stage-gated playbook</li>
+          <li>Discovery framework</li>
+          <li>Deal-inspection cadence</li>
+          <li>Forecast model</li>
+          <li>Deal-desk workflow</li>
+          <li>Pipeline-coverage targets</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pr-row">
+      <div class="pr-num">02</div>
+      <div class="pr-head">
+        <h2>Fractional BD leadership</h2>
+        <div class="meta">
+          <div><span class="k">Built for</span></div>
+          <div><span class="v">Pre-Series B</span></div>
+          <div style="margin-top:10px;"><span class="k">Engagement</span></div>
+          <div><span class="v">Retainer · 12-month minimum</span></div>
+        </div>
+        <div class="lead-row"><span class="av terra">A</span> Adam leads</div>
+      </div>
+      <div class="pr-body">
+        <p>Adam sits at your leadership table as the head of revenue function until you're ready to hire a permanent VP Sales. Pipeline reviews, board prep, AE coaching, hiring loops, exec sponsorship on key deals.</p>
+        <p>The point isn't to delay the hire — it's to make the hire land well. Most companies hiring a VP Sales pre-revenue end up firing them at 18 months. We bridge that gap and hand off a working motion to a leader who's set up to succeed.</p>
+        <div class="deliv-label">→ What you get</div>
+        <ul>
+          <li>Weekly pipeline review</li>
+          <li>Board update authorship</li>
+          <li>VP Sales hiring loop</li>
+          <li>1:1 AE coaching</li>
+          <li>Exec deal sponsorship</li>
+          <li>Quarterly metric review</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pr-row">
+      <div class="pr-num">03</div>
+      <div class="pr-head">
+        <h2>Healthcare GTM advisory</h2>
+        <div class="meta">
+          <div><span class="k">Built for</span></div>
+          <div><span class="v">Seed · Series A</span></div>
+          <div style="margin-top:10px;"><span class="k">Engagement</span></div>
+          <div><span class="v">Project-based</span></div>
+        </div>
+        <div class="lead-row"><span class="av terra">A</span> Adam leads</div>
+      </div>
+      <div class="pr-body">
+        <p>The buyer-specific deep work most healthtech companies skip and pay for later. Hospital and IDN navigation. Health plan and value-based-care contracting. Post-acute and care-in-the-home positioning. Clinical-stakeholder mapping.</p>
+        <p>We bring the relationships and the playbook for the buyers other consultancies can't reach — because we've sat across the table from them, in some cases for fifteen years.</p>
+        <div class="deliv-label">→ What you get</div>
+        <ul>
+          <li>Buyer landscape map</li>
+          <li>ICP &amp; account list</li>
+          <li>Warm intros (qualified)</li>
+          <li>Positioning teardown</li>
+          <li>Procurement playbook</li>
+          <li>Clinical-stakeholder map</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pr-row">
+      <div class="pr-num">04</div>
+      <div class="pr-head">
+        <h2>Deal sprint / close support</h2>
+        <div class="meta">
+          <div><span class="k">Built for</span></div>
+          <div><span class="v">Any stage</span></div>
+          <div style="margin-top:10px;"><span class="k">Engagement</span></div>
+          <div><span class="v">Sprint · 4–8 weeks · flat fee + closed-won kicker</span></div>
+        </div>
+        <div class="lead-row"><span class="av terra">A</span> Adam leads &nbsp;·&nbsp; <span class="av">M</span> Mike supports</div>
+      </div>
+      <div class="pr-body">
+        <p>Tactical support to close a single, specific procurement cycle. Security review. MSA redlines. Executive sponsor matching. Champion enablement. We embed alongside your AE and don't leave until the contract is signed — or we tell you it isn't going to land, early enough to redirect.</p>
+        <p>Aligned by design: a portion of the fee is contingent on closed-won. If we don't close it, we don't get paid for it.</p>
+        <div class="deliv-label">→ What you get</div>
+        <ul>
+          <li>Account war room</li>
+          <li>Security review support</li>
+          <li>MSA / DPA redlines</li>
+          <li>Champion enablement</li>
+          <li>Exec-to-exec intros</li>
+          <li>Procurement timeline plan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pr-row">
+      <div class="pr-num">05</div>
+      <div class="pr-head">
+        <h2>RevOps &amp; pipeline health</h2>
+        <div class="meta">
+          <div><span class="k">Built for</span></div>
+          <div><span class="v">Series B+</span></div>
+          <div style="margin-top:10px;"><span class="k">Engagement</span></div>
+          <div><span class="v">Project · 6 weeks</span></div>
+        </div>
+        <div class="lead-row"><span class="av">M</span> Mike leads</div>
+      </div>
+      <div class="pr-body">
+        <p>The boring work that compounds. Coverage-ratio analysis. Stage-conversion math. Win/loss interviews. Qualification model refinement. CRM hygiene. Forecast accuracy.</p>
+        <p>If your pipeline looks fine on the dashboard but the forecast keeps missing, this is the engagement. We find what your reports are hiding.</p>
+        <div class="deliv-label">→ What you get</div>
+        <ul>
+          <li>Pipeline-coverage audit</li>
+          <li>Stage-conversion analysis</li>
+          <li>Win/loss interviews (10+)</li>
+          <li>Qualification model</li>
+          <li>CRM hygiene cleanup</li>
+          <li>Forecast accuracy review</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pr-row">
+      <div class="pr-num">06</div>
+      <div class="pr-head">
+        <h2>Founder-led to AE-led transition</h2>
+        <div class="meta">
+          <div><span class="k">Built for</span></div>
+          <div><span class="v">Post-Seed · Series A</span></div>
+          <div style="margin-top:10px;"><span class="k">Engagement</span></div>
+          <div><span class="v">Retainer · 4–6 months</span></div>
+        </div>
+        <div class="lead-row"><span class="av terra">A</span> Adam leads &nbsp;·&nbsp; <span class="av">M</span> Mike supports</div>
+      </div>
+      <div class="pr-body">
+        <p>The handoff most healthtech founders blow. We document the founder's deal pattern — what they're doing intuitively that others miss — convert it into a coachable AE motion, build the scorecard, run the first hires, and stay through ramp until your AEs hit quota without you on the call.</p>
+        <p>Your goal here isn't just hiring. It's getting yourself out of the inbox so you can run product again.</p>
+        <div class="deliv-label">→ What you get</div>
+        <ul>
+          <li>Founder deal-pattern doc</li>
+          <li>AE scorecard</li>
+          <li>Hiring loop (2 AEs)</li>
+          <li>Ramp plan / first 90 days</li>
+          <li>Discovery rebuild</li>
+          <li>Founder calendar audit</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pr-row">
+      <div class="pr-num">07</div>
+      <div class="pr-head">
+        <h2>AI-native GTM design</h2>
+        <div class="meta">
+          <div><span class="k">Built for</span></div>
+          <div><span class="v">AI · Seed · Series A</span></div>
+          <div style="margin-top:10px;"><span class="k">Engagement</span></div>
+          <div><span class="v">Project · 6–8 weeks</span></div>
+        </div>
+        <div class="lead-row"><span class="av">M</span> Mike leads</div>
+      </div>
+      <div class="pr-body">
+        <p>Positioning, packaging, and pricing for AI and agentic products in healthcare — where the buyer doesn't have a category yet. ICP work that filters for early adopters willing to do the integration. Reference patterns for how an AI lands inside a clinical or operational workflow without breaking what's already working.</p>
+        <p>The trap most AI-native companies fall into: selling capability instead of outcome. We translate the technology into a procurement-ready value story for healthcare buyers who don't care how it works, only what it changes.</p>
+        <div class="deliv-label">→ What you get</div>
+        <ul>
+          <li>Category &amp; positioning brief</li>
+          <li>Packaging &amp; pricing model</li>
+          <li>Early-adopter ICP filter</li>
+          <li>Workflow-fit reference</li>
+          <li>Procurement framing</li>
+          <li>Champion enablement deck</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pr-row">
+      <div class="pr-num">08</div>
+      <div class="pr-head">
+        <h2>RevTech &amp; sales-tech stack</h2>
+        <div class="meta">
+          <div><span class="k">Built for</span></div>
+          <div><span class="v">Series A · B</span></div>
+          <div style="margin-top:10px;"><span class="k">Engagement</span></div>
+          <div><span class="v">Project · 4–6 weeks</span></div>
+        </div>
+        <div class="lead-row"><span class="av">M</span> Mike leads</div>
+      </div>
+      <div class="pr-body">
+        <p>CRM, forecasting, and sales-engagement audit and rebuild — plus AI woven into the motion itself, not just the product. The plumbing layer beneath the playbook.</p>
+        <p>We run a full audit of what your team uses every day, where the duplication lives, and where AI can compound output rather than add another tab. Most teams over-tool by 30–40%; we typically finish with a leaner stack and faster reps.</p>
+        <div class="deliv-label">→ What you get</div>
+        <ul>
+          <li>Stack audit + cost review</li>
+          <li>CRM cleanup &amp; rebuild</li>
+          <li>Forecast tooling</li>
+          <li>AI-augmented workflows</li>
+          <li>Enablement-content system</li>
+          <li>Implementation runbook</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block" id="contact">
+    <img src="uploads/palm-recolored.png" alt="" class="palm-deco" />
+    <div>
+      <h2>Not sure which one fits? That's what the call is for.</h2>
+    </div>
+    <div>
+      <div class="body">
+        <p>The first call is thirty minutes, no deck, and ends with a clear yes or no on fit — including a pointer to the practice that matches your problem (or, when honest, to someone outside Bayshore who'd serve you better).</p>
+      </div>
+      <div style="margin-top:32px; display:flex; gap:12px;">
+        <a class="btn ghost" style="color:#fff; border-color:#fff;" href="contact.html">Book the diagnostic →</a>
+        <a class="btn ghost" style="color:#fff; border-color:rgba(255,255,255,0.4);" href="case-studies.html">See case studies</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="col">
+      <div class="label">→ Email</div>
+      <h3><a href="mailto:hello@bayshore.health">hello@bayshore.health</a></h3>
+      <p>For diagnostic calls, references, or specific deal-sprint inquiries.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Based in</div>
+      <h3>Tampa, FL</h3>
+      <p>Where the practice is anchored. We travel for kickoffs, key pursuits, and exec-sponsor meetings — wherever the deal is.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Diagnostic call</div>
+      <h3>30 minutes. No deck.</h3>
+      <p>The first call ends with a clear yes or no on fit. We'll send references and a sample deliverable beforehand if it helps.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-top">
+      <div class="brand">
+        <div class="lockup-h">
+          <div style="display:flex; flex-direction:column; line-height:0.85;">
+            <div class="word">Bayshore</div>
+            <div class="word health">Health</div>
+          </div>
+          <div class="slash">/</div>
+          <img src="uploads/palm-recolored.png" alt="palm" />
+        </div>
+        <div class="tag">A boutique healthcare BD and revenue advisory. Operators, not consultants. Tampa &amp; San Francisco. Booking Q3 2026 engagements.</div>
+      </div>
+      <div>
+        <h4>Practice</h4>
+        <a href="practice.html">Sales strategy</a>
+        <a href="practice.html">Fractional BD</a>
+        <a href="practice.html">GTM advisory</a>
+        <a href="practice.html">Deal sprint</a>
+        <a href="practice.html">RevOps</a>
+        <a href="practice.html">AI-native GTM</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="team.html">About</a>
+        <a href="team.html">Adam Teitelman</a>
+        <a href="team.html">Mike Maseda</a>
+        <a href="case-studies.html">Case studies</a>
+        <a href="writing.html">Writing</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
+        <a href="contact.html">Book a call</a>
+        <a href="#">LinkedIn ↗</a>
+        <a href="#">Substack ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="meta">© 2026 Bayshore Health · BAY · 025</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

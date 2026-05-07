@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Writing — Bayshore Health</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="uploads/palm-recolored.png" />
+<link rel="apple-touch-icon" href="uploads/palm-recolored.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .feature-section { padding: 80px 56px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .feature-cover { aspect-ratio: 5/4; background: var(--terra); position: relative; overflow: hidden; padding: 32px; display: flex; align-items: flex-end; }
+  .feature-cover .pat { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent 0, transparent 10px, rgba(255,255,255,0.18) 10px, rgba(255,255,255,0.18) 11px); opacity: 0.6; }
+  .feature-cover .num { font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.95); position: relative; z-index: 1; }
+  .feature-body .meta { display: flex; gap: 16px; font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-bottom: 24px; }
+  .feature-body .meta .cat { color: var(--terra); }
+  .feature-body h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 56px; letter-spacing: -0.03em; line-height: 1.04; margin: 0 0 24px; }
+  .feature-body h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .feature-body p { font-size: 17px; line-height: 1.6; color: var(--stone); margin: 0 0 28px; max-width: 600px; }
+  .feature-body a.read { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); text-decoration: none; border-bottom: 1px solid var(--terra); padding-bottom: 4px; }
+
+  .articles-grid { padding: 80px 56px; }
+  .articles-grid .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 56px; }
+  .articles-grid .head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 36px; letter-spacing: -0.025em; margin: 0; }
+  .articles-grid .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .articles-grid .head .tabs { display: flex; gap: 24px; }
+  .articles-grid .head .tabs a { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); text-decoration: none; padding-bottom: 6px; border-bottom: 1px solid transparent; }
+  .articles-grid .head .tabs a.on { color: var(--terra); border-bottom-color: var(--terra); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+  .article { display: flex; flex-direction: column; gap: 14px; cursor: pointer; }
+  .article .cover { aspect-ratio: 4/3; padding: 24px; display: flex; align-items: flex-end; position: relative; overflow: hidden; transition: transform 0.3s; border: 1px solid var(--rule); }
+  .article:hover .cover { transform: translateY(-4px); }
+  .article .cover .pat { position: absolute; inset: 0; opacity: 0.4; }
+  .article .cover .num { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.9); position: relative; z-index: 1; }
+  .article .cover.t1 { background: var(--terra); }
+  .article .cover.t1 .pat { background: repeating-linear-gradient(45deg, transparent 0, transparent 8px, rgba(255,255,255,0.2) 8px, rgba(255,255,255,0.2) 9px); }
+  .article .cover.t2 { background: var(--teal); }
+  .article .cover.t2 .pat { background: radial-gradient(circle at 30% 30%, var(--terra) 0%, transparent 50%); }
+  .article .cover.t3 { background: var(--sage); }
+  .article .cover.t3 .pat { background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%); }
+  .article .cover.t4 { background: var(--ink); }
+  .article .cover.t4 .pat { background: radial-gradient(circle at 70% 50%, var(--terra) 0%, transparent 60%); opacity: 0.5; }
+  .article .cover.t5 { background: var(--paper-2); }
+  .article .cover.t5 .pat { background: repeating-linear-gradient(0deg, transparent 0, transparent 22px, var(--terra) 22px, var(--terra) 23px); opacity: 0.5; }
+  .article .cover.t5 .num { color: var(--ink); }
+  .article .cover.t6 { background: var(--stone); }
+  .article .cover.t6 .pat { background: linear-gradient(45deg, transparent 0%, var(--terra) 100%); opacity: 0.4; }
+  .article .meta { display: flex; gap: 14px; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+  .article .meta .cat { color: var(--terra); }
+  .article h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; margin: 0; }
+  .article p { font-size: 14px; line-height: 1.55; color: var(--stone); margin: 0; }
+
+  .subscribe { padding: 100px 56px; background: var(--ink); color: var(--paper); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .subscribe .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; }
+  .subscribe h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 52px; letter-spacing: -0.03em; line-height: 1.05; margin: 0; max-width: 540px; }
+  .subscribe h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .subscribe p { font-size: 16px; line-height: 1.6; color: #b5c4c0; margin: 0 0 24px; max-width: 480px; }
+  .sub-form { display: flex; gap: 12px; max-width: 480px; }
+  .sub-form input { flex: 1; padding: 16px 18px; font-family: 'Geist', sans-serif; font-size: 14px; background: transparent; color: var(--paper); border: 1px solid rgba(255,255,255,0.25); }
+  .sub-form input:focus { outline: none; border-color: var(--terra); }
+  .sub-form button { padding: 16px 22px; font-family: 'Geist Mono', monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; background: var(--terra); color: #fff; border: 1px solid var(--terra); cursor: pointer; }
+  .sub-meta { display: flex; gap: 24px; margin-top: 20px; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9ab2ae; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- NAV -->
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+    <div class="lockup-h">
+      <div style="display:flex; flex-direction:column; line-height:0.85;">
+        <div class="word">Bayshore</div>
+        <div class="word health">Health</div>
+      </div>
+      <div class="slash">/</div>
+      <img src="uploads/palm-recolored.png" alt="palm" />
+    </div>
+    </a>
+    <div class="nav-right">
+      <a href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="team.html">Team</a>
+      <a class="active" href="writing.html">Writing</a>
+      <a href="faq.html">FAQ</a>
+      <a class="btn terra" style="padding:10px 18px;" href="contact.html">Book diagnostic →</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="label">§ Field notes</div>
+    <h1>What we see across <em>forty</em> healthtech pipelines.</h1>
+    <p class="lede">We write when the same pattern keeps showing up across engagements — never to publish for publication's sake. Most pieces start as a memo to a client, then get sanitized and posted because three other founders asked the same question that month.</p>
+  </div>
+
+  <!-- FEATURE -->
+  <div class="feature-section">
+    <div class="feature-cover">
+      <div class="pat"></div>
+      <div class="num">→ Featured · 014</div>
+    </div>
+    <div class="feature-body">
+      <div class="meta"><span class="cat">Field note</span><span>8 min read</span><span>Mar 2026</span></div>
+      <h2>The eleven-month enterprise cycle is a <em>choice</em>. Here's how to compress it.</h2>
+      <p>Six concrete moves we make in the first ninety days that consistently take three to four months out of the average healthtech enterprise cycle. Some of them are obvious; the ones nobody does are the ones that matter most.</p>
+      <a class="read" href="#">Read the full piece →</a>
+    </div>
+  </div>
+
+  <!-- ARCHIVE -->
+  <div class="articles-grid">
+    <div class="head">
+      <h2>The <em>archive</em>.</h2>
+      <div class="tabs">
+        <a class="on" href="#">All</a>
+        <a href="#">Field notes</a>
+        <a href="#">Playbooks</a>
+        <a href="#">Buyer briefs</a>
+      </div>
+    </div>
+    <div class="grid-3">
+
+      <div class="article">
+        <div class="cover t2"><div class="pat"></div><div class="num">→ 013</div></div>
+        <div class="meta"><span class="cat">Playbook</span><span>12 min</span><span>Feb 2026</span></div>
+        <h3>What founder-led sales looks like when it's working — and three signs it isn't.</h3>
+        <p>The pattern we see in fifty pipeline reviews a year. When founder-led is your moat, when it's your bottleneck, and how to tell.</p>
+      </div>
+
+      <div class="article">
+        <div class="cover t3"><div class="pat"></div><div class="num">→ 012</div></div>
+        <div class="meta"><span class="cat">Buyer brief</span><span>6 min</span><span>Jan 2026</span></div>
+        <h3>How discharge planners actually buy: a brief for care-in-the-home founders.</h3>
+        <p>Notes from twenty-plus discharge-planning conversations across IDNs. Who's in the room, who blocks, and how the dollar flow really works.</p>
+      </div>
+
+      <div class="article">
+        <div class="cover t4"><div class="pat"></div><div class="num">→ 011</div></div>
+        <div class="meta"><span class="cat">Field note</span><span>9 min</span><span>Dec 2025</span></div>
+        <h3>The AI-native GTM trap: selling capability instead of outcome.</h3>
+        <p>Why the most technically impressive AI healthcare startups consistently underprice and under-position — and the three-question reframing that fixes it.</p>
+      </div>
+
+      <div class="article">
+        <div class="cover t5"><div class="pat"></div><div class="num">→ 010</div></div>
+        <div class="meta"><span class="cat">Playbook</span><span>10 min</span><span>Nov 2025</span></div>
+        <h3>Pipeline coverage is not a coverage ratio. It's a pacing question.</h3>
+        <p>The metric every board asks about and almost no early-stage healthtech reports correctly. Plus the four conversion benchmarks worth tracking weekly.</p>
+      </div>
+
+      <div class="article">
+        <div class="cover t6"><div class="pat"></div><div class="num">→ 009</div></div>
+        <div class="meta"><span class="cat">Buyer brief</span><span>7 min</span><span>Oct 2025</span></div>
+        <h3>Selling into payers: what happens after the first warm intro.</h3>
+        <p>The thirty-day flow from "the SVP is interested" to "the contracting team has the doc," with the steps founders most commonly skip and pay for.</p>
+      </div>
+
+      <div class="article">
+        <div class="cover t1"><div class="pat"></div><div class="num">→ 008</div></div>
+        <div class="meta"><span class="cat">Field note</span><span>5 min</span><span>Sep 2025</span></div>
+        <h3>Founder-to-AE handoff: the deal pattern doc nobody writes.</h3>
+        <p>A short template we use to capture what the founder is doing intuitively that the first AE will miss — before the founder is off the calls.</p>
+      </div>
+
+      <div class="article">
+        <div class="cover t2"><div class="pat"></div><div class="num">→ 007</div></div>
+        <div class="meta"><span class="cat">Playbook</span><span>11 min</span><span>Aug 2025</span></div>
+        <h3>RevTech audit in one afternoon: the seven questions that surface 80% of stack waste.</h3>
+        <p>Most healthtech sales orgs over-tool by 30–40%. The audit you can run yourself before bringing in anyone, including us.</p>
+      </div>
+
+      <div class="article">
+        <div class="cover t3"><div class="pat"></div><div class="num">→ 006</div></div>
+        <div class="meta"><span class="cat">Buyer brief</span><span>8 min</span><span>Jul 2025</span></div>
+        <h3>VBC contracting for digital-health founders: what the term sheets actually look like.</h3>
+        <p>Risk corridors, attribution, savings shares, and the redlines we routinely advise our clients to draw — and the ones we tell them to give up.</p>
+      </div>
+
+      <div class="article">
+        <div class="cover t4"><div class="pat"></div><div class="num">→ 005</div></div>
+        <div class="meta"><span class="cat">Field note</span><span>6 min</span><span>Jun 2025</span></div>
+        <h3>The first AE hire is not the founder's clone. It's the founder's mirror.</h3>
+        <p>Why the most successful early-stage AE hires we've placed look nothing like the founder — and what that does to the hiring scorecard.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUBSCRIBE -->
+  <div class="subscribe">
+    <div>
+      <div class="label">→ Subscribe</div>
+      <h2>Field notes in your inbox <em>once a month</em>.</h2>
+    </div>
+    <div>
+      <p>One email per month. Always one of the field notes above (or a new one), plus a short "what we're seeing in pipelines this month" addendum. Nothing else. Easy to unsubscribe.</p>
+      <form class="sub-form" onsubmit="event.preventDefault(); alert('Subscribe flow: connect to your email provider.');">
+        <input type="email" placeholder="you@founder.com" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="sub-meta">
+        <span>Monthly · No tracking</span>
+        <span>2,400+ healthtech founders</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <img src="uploads/palm-recolored.png" alt="" class="palm-deco" />
+    <div>
+      <h2>Working on something specific? Send us the question.</h2>
+    </div>
+    <div>
+      <div class="body">
+        <p>If you're stuck on a specific procurement cycle, GTM rebuild, or hire and want a thirty-minute thought partner, the diagnostic call is free and ends with a clear yes or no on whether we can help.</p>
+      </div>
+      <div style="margin-top:32px; display:flex; gap:12px;">
+        <a class="btn ghost" style="color:#fff; border-color:#fff;" href="contact.html">Book the diagnostic →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="col">
+      <div class="label">→ Email</div>
+      <h3><a href="mailto:hello@bayshore.health">hello@bayshore.health</a></h3>
+      <p>For diagnostic calls, references, or specific deal-sprint inquiries.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Based in</div>
+      <h3>Tampa, FL</h3>
+      <p>Where the practice is anchored. We travel for kickoffs, key pursuits, and exec-sponsor meetings — wherever the deal is.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Diagnostic call</div>
+      <h3>30 minutes. No deck.</h3>
+      <p>The first call ends with a clear yes or no on fit. We'll send references and a sample deliverable beforehand if it helps.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-top">
+      <div class="brand">
+        <div class="lockup-h">
+          <div style="display:flex; flex-direction:column; line-height:0.85;">
+            <div class="word">Bayshore</div>
+            <div class="word health">Health</div>
+          </div>
+          <div class="slash">/</div>
+          <img src="uploads/palm-recolored.png" alt="palm" />
+        </div>
+        <div class="tag">A boutique healthcare BD and revenue advisory. Operators, not consultants. Tampa &amp; San Francisco. Booking Q3 2026 engagements.</div>
+      </div>
+      <div>
+        <h4>Practice</h4>
+        <a href="practice.html">Sales strategy</a>
+        <a href="practice.html">Fractional BD</a>
+        <a href="practice.html">GTM advisory</a>
+        <a href="practice.html">Deal sprint</a>
+        <a href="practice.html">RevOps</a>
+        <a href="practice.html">AI-native GTM</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="team.html">About</a>
+        <a href="team.html#adam">Adam Teitelman</a>
+        <a href="team.html#mike">Mike Maseda</a>
+        <a href="case-studies.html">Case studies</a>
+        <a href="writing.html">Writing</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
+        <a href="contact.html">Book a call</a>
+        <a href="#">LinkedIn ↗</a>
+        <a href="#">Substack ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="meta">© 2026 Bayshore Health · BAY · 025</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

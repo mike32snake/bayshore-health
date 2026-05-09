@@ -262,17 +262,18 @@
   .qa h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; margin: 0; flex: 1; }
   .qa .toggle { font-family: 'Geist Mono', monospace; font-size: 18px; color: var(--terra); transition: transform 0.25s ease; }
   .qa[open] .toggle { transform: rotate(45deg); }
-  /* CSS-only bidirectional FAQ animation. display:block overrides the
-     default <details> behavior of hiding non-summary children, so the
-     body element is always rendered (just collapsed via height:0).
-     interpolate-size on :root lets height transition to/from auto. */
-  .qa .a { display: block !important; font-size: 15px; line-height: 1.65; color: var(--stone); max-width: 720px;
-           height: 0; opacity: 0; margin: 0; overflow: hidden; transform: translateY(-6px);
-           transition: height 320ms cubic-bezier(0.4, 0, 0.2, 1),
-                       opacity 240ms cubic-bezier(0.4, 0, 0.2, 1),
-                       margin 320ms cubic-bezier(0.4, 0, 0.2, 1),
-                       transform 240ms cubic-bezier(0.4, 0, 0.2, 1); }
-  .qa[open] .a { height: auto; opacity: 1; margin: 16px 0 0; transform: translateY(0); }
+  /* Bidirectional FAQ animation via grid-template-rows. Works in all
+     modern browsers (Chrome, Safari, Firefox). The .a-wrap is always
+     rendered (display: grid !important overrides default <details>
+     hiding), with rows transitioning between 0fr and 1fr to expand/
+     collapse the inner answer. */
+  .qa .a-wrap { display: grid !important; grid-template-rows: 0fr; opacity: 0; transform: translateY(-6px);
+                transition: grid-template-rows 320ms cubic-bezier(0.4, 0, 0.2, 1),
+                            opacity 240ms cubic-bezier(0.4, 0, 0.2, 1),
+                            transform 240ms cubic-bezier(0.4, 0, 0.2, 1); }
+  .qa[open] .a-wrap { grid-template-rows: 1fr; opacity: 1; transform: translateY(0); }
+  .qa .a-wrap > .a { overflow: hidden; min-height: 0; }
+  .qa .a { font-size: 15px; line-height: 1.65; color: var(--stone); max-width: 720px; margin: 0; padding-top: 16px; }
 
   /* CTA */
   .cta-block { background: var(--terra); color: #fff; padding: 100px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; overflow: hidden; }
@@ -730,23 +731,23 @@
       <div class="faq-list">
         <details class="qa" open>
           <summary><h3>What stage of company do you typically work with?</h3><span class="toggle">+</span></summary>
-          <p class="a">Most engagements are seed through Series C, with a heavy concentration at Series A and B — the stages where founder-led sales has hit a ceiling and the team needs a real motion. We'll also take on later-stage work for specific deal sprints or RevOps fixes, but rarely full rebuilds.</p>
+          <div class="a-wrap"><p class="a">Most engagements are seed through Series C, with a heavy concentration at Series A and B — the stages where founder-led sales has hit a ceiling and the team needs a real motion. We'll also take on later-stage work for specific deal sprints or RevOps fixes, but rarely full rebuilds.</p></div>
         </details>
         <details class="qa">
           <summary><h3>Do you take equity in lieu of cash?</h3><span class="toggle">+</span></summary>
-          <p class="a">For early-stage retainers, sometimes — typically a hybrid of cash and warrant coverage. We're operators with conviction, not a fund, so we'll only do this when we'd be willing to write a check ourselves.</p>
+          <div class="a-wrap"><p class="a">For early-stage retainers, sometimes — typically a hybrid of cash and warrant coverage. We're operators with conviction, not a fund, so we'll only do this when we'd be willing to write a check ourselves.</p></div>
         </details>
         <details class="qa">
           <summary><h3>How fast can we start?</h3><span class="toggle">+</span></summary>
-          <p class="a">Consultation engagements typically kick off within two weeks of contract. Full embedded rebuilds are usually a 3–4 week ramp. We hold one engagement slot open per quarter for time-sensitive deal sprints — ask if you're chasing a specific procurement deadline.</p>
+          <div class="a-wrap"><p class="a">Consultation engagements typically kick off within two weeks of contract. Full embedded rebuilds are usually a 3–4 week ramp. We hold one engagement slot open per quarter for time-sensitive deal sprints — ask if you're chasing a specific procurement deadline.</p></div>
         </details>
         <details class="qa">
           <summary><h3>How do you price?</h3><span class="toggle">+</span></summary>
-          <p class="a">Project work is fixed-fee against scope. Fractional retainers are monthly with a 12-month minimum. Deal sprints are flat-fee plus a closed-won kicker. Pricing tracks roughly to the cost of one VP Sales hire — we're explicitly cheaper than the wrong full-time hire, and explicitly more expensive than a junior consultant.</p>
+          <div class="a-wrap"><p class="a">Project work is fixed-fee against scope. Fractional retainers are monthly with a 12-month minimum. Deal sprints are flat-fee plus a closed-won kicker. Pricing tracks roughly to the cost of one VP Sales hire — we're explicitly cheaper than the wrong full-time hire, and explicitly more expensive than a junior consultant.</p></div>
         </details>
         <details class="qa">
           <summary><h3>Where are you based and do you travel?</h3><span class="toggle">+</span></summary>
-          <p class="a">Tampa and San Francisco. We travel for material moments — kickoffs, key pursuits, exec-sponsor meetings, board prep — and we work remotely with your team the rest of the time. Travel is included in retainer pricing.</p>
+          <div class="a-wrap"><p class="a">Tampa and San Francisco. We travel for material moments — kickoffs, key pursuits, exec-sponsor meetings, board prep — and we work remotely with your team the rest of the time. Travel is included in retainer pricing.</p></div>
         </details>
       </div>
     </div>

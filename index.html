@@ -121,12 +121,13 @@
   .why .head .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
   .why .head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 52px; letter-spacing: -0.03em; line-height: 1; margin: 0; max-width: 800px; }
   .why .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
-  .compare { display: grid; grid-template-columns: 220px 1fr 1fr; border-top: 2px solid var(--terra); }
+  .compare { display: grid; grid-template-columns: 200px 1fr 1.35fr; border-top: 2px solid var(--terra); }
   .compare > div { padding: 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: flex-start; }
   .compare .col-label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #9ab2ae; }
   .compare .col-them { color: #9ab2ae; font-size: 15px; line-height: 1.5; }
-  .compare .col-us { color: var(--paper); font-size: 15px; line-height: 1.5; border-left: 2px solid var(--terra); padding-left: 26px; }
-  .compare .col-us strong { color: var(--terra); font-weight: 500; }
+  .compare > .col-us { color: var(--paper); font-size: 15px; line-height: 1.5; border-left: 2px solid var(--terra); padding-left: 26px; display: grid; grid-template-columns: 190px 1fr; gap: 28px; align-items: baseline; }
+  .compare .col-us .us-tag { color: var(--terra); font-weight: 500; }
+  .compare .col-us .us-text { color: var(--paper); }
   .compare-head { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; padding-top: 24px !important; padding-bottom: 24px !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; }
   .compare-head.them { color: #9ab2ae; }
   .compare-head.us { color: var(--terra); }
@@ -520,27 +521,27 @@
 
       <div class="col-label">Who shows up</div>
       <div class="col-them">Senior partner sells, pod of associates delivers — most of them under thirty, none with a sales bag.</div>
-      <div class="col-us"><strong>Adam or Mike, personally.</strong> Same person who pitches you closes alongside your team. No pod, no swap-out at week three.</div>
+      <div class="col-us"><span class="us-tag">Adam or Mike, personally.</span><span class="us-text">Same person who pitches you closes alongside your team. No pod, no swap-out at week three.</span></div>
 
       <div class="col-label">What you get</div>
       <div class="col-them">A 60-slide deck and a Notion workspace.</div>
-      <div class="col-us"><strong>A working motion.</strong> CRM rebuilt, playbook in your team's hands, deals in flight, hires made, board update written.</div>
+      <div class="col-us"><span class="us-tag">A working motion.</span><span class="us-text">CRM rebuilt, playbook in your team's hands, deals in flight, hires made, board update written.</span></div>
 
       <div class="col-label">How we measure</div>
       <div class="col-them">Hours billed, deliverables shipped.</div>
-      <div class="col-us"><strong>Closed-won revenue and cycle time.</strong> If we don't move the metrics, we don't get the renewal. We're aligned by design.</div>
+      <div class="col-us"><span class="us-tag">Closed-won revenue and cycle time.</span><span class="us-text">If we don't move the metrics, we don't get the renewal. We're aligned by design.</span></div>
 
       <div class="col-label">Healthcare depth</div>
       <div class="col-them">Generalists who'll learn your buyers on your dime.</div>
-      <div class="col-us"><strong>Fifteen years inside.</strong> Hospitals, health plans, VBC, post-acute, AI. We don't ramp on healthcare — we already know it.</div>
+      <div class="col-us"><span class="us-tag">Fifteen years inside.</span><span class="us-text">Hospitals, health plans, VBC, post-acute, AI. We don't ramp on healthcare — we already know it.</span></div>
 
       <div class="col-label">Network</div>
       <div class="col-them">A LinkedIn search.</div>
-      <div class="col-us"><strong>Warm intros to the buyers we know.</strong> CMOs, CNOs, VBC contracting leads, post-acute heads. From actual relationships, not cold outreach.</div>
+      <div class="col-us"><span class="us-tag">Warm intros to the buyers we know.</span><span class="us-text">CMOs, CNOs, VBC contracting leads, post-acute heads. From actual relationships, not cold outreach.</span></div>
 
       <div class="col-label">Exit</div>
       <div class="col-them">Annual retainers that quietly auto-renew.</div>
-      <div class="col-us"><strong>A handoff plan from day one.</strong> We tell you when you no longer need us — and we mean it.</div>
+      <div class="col-us"><span class="us-tag">A handoff plan from day one.</span><span class="us-text">We tell you when you no longer need us — and we mean it.</span></div>
     </div>
   </div>
 
@@ -600,8 +601,8 @@
         <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--stone); margin-top:12px;">Distinct organizations represented</div>
       </div>
       <div style="background:#fff; padding: 32px;">
-        <div style="font-family:'Fraunces',serif; font-weight:700; font-size:64px; letter-spacing:-0.04em; line-height:1; color:var(--ink);">30+</div>
-        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--stone); margin-top:12px;">U.S. states with at least one relationship</div>
+        <div style="font-family:'Fraunces',serif; font-weight:700; font-size:64px; letter-spacing:-0.04em; line-height:1; color:var(--ink);">20+</div>
+        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--stone); margin-top:12px;">Top-25 IDNs in the active network</div>
       </div>
       <div style="background:#fff; padding: 32px;">
         <div style="font-family:'Fraunces',serif; font-weight:700; font-size:64px; letter-spacing:-0.04em; line-height:1; color:var(--ink);">50+</div>
@@ -691,7 +692,7 @@
   <div class="principles">
     <div class="head">
       <div class="label">§ 06 — How we work</div>
-      <h2>Six principles we don't compromise on. <em>Ever.</em></h2>
+      <h2>Five principles we don't compromise on. <em>Ever.</em></h2>
     </div>
     <div class="principles-grid">
       <div class="principle">
@@ -727,13 +728,6 @@
         <div>
           <h3>Hand the bag back</h3>
           <p>The goal is your team running the motion without us. Every engagement has a written handoff plan from week one — and we mean it when we say it's time.</p>
-        </div>
-      </div>
-      <div class="principle">
-        <div class="n">— 06 —</div>
-        <div>
-          <h3>Two clients at a time. Maximum.</h3>
-          <p>We turn down work to stay deep in the work we have. If we're saying yes to your engagement, you're getting the partner — not the calendar gap.</p>
         </div>
       </div>
     </div>

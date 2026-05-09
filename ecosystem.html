@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Executive Ecosystem — Bayshore Health</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="uploads/palm-recolored.png" />
+<link rel="apple-touch-icon" href="uploads/palm-recolored.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* STATS BAND */
+  .eco-stats { display: grid; grid-template-columns: repeat(4, 1fr); padding: 56px; border-bottom: 1px solid var(--rule); background: var(--paper-2); }
+  .eco-stats .stat { padding: 0 32px; border-left: 1px solid var(--rule); }
+  .eco-stats .stat:first-child { border-left: none; padding-left: 0; }
+  .eco-stats .stat .num { font-family: 'Fraunces', serif; font-weight: 700; font-size: 72px; letter-spacing: -0.04em; line-height: 1; color: var(--ink); }
+  .eco-stats .stat .num em { color: var(--terra); font-style: normal; }
+  .eco-stats .stat .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-top: 12px; line-height: 1.5; }
+
+  /* INTRO BAND */
+  .eco-intro { padding: 80px 56px; display: grid; grid-template-columns: 280px 1fr; gap: 64px; border-bottom: 1px solid var(--rule); }
+  .eco-intro .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .eco-intro p { font-size: 17px; line-height: 1.65; color: var(--stone); margin: 0 0 16px; max-width: 720px; }
+  .eco-intro p strong { color: var(--ink); font-weight: 600; }
+
+  /* SEGMENTS — bar viz */
+  .segments { padding: 100px 56px; border-bottom: 1px solid var(--rule); }
+  .seg-head { display: grid; grid-template-columns: 280px 1fr; gap: 48px; margin-bottom: 56px; align-items: baseline; }
+  .seg-head .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .seg-head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 48px; letter-spacing: -0.03em; line-height: 1; margin: 0; max-width: 800px; }
+  .seg-head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+
+  .seg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .seg-block h3 { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin: 0 0 24px; font-weight: 500; }
+  .bar-list { display: flex; flex-direction: column; gap: 14px; }
+  .bar-row { display: grid; grid-template-columns: 240px 1fr 60px; gap: 18px; align-items: center; }
+  .bar-row .name { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; letter-spacing: -0.015em; color: var(--ink); }
+  .bar-row .track { height: 8px; background: var(--paper-2); position: relative; overflow: hidden; }
+  .bar-row .fill { height: 100%; background: var(--terra); transform-origin: left; }
+  .bar-row .fill.teal { background: var(--teal); }
+  .bar-row .fill.sage { background: var(--sage); }
+  .bar-row .fill.ink { background: var(--ink); }
+  .bar-row .count { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--stone); text-align: right; letter-spacing: 0.04em; }
+
+  /* PROFILE CARDS */
+  .profiles { padding: 100px 56px; background: var(--ink); color: var(--paper); border-bottom: 1px solid var(--rule); }
+  .profiles .head { display: grid; grid-template-columns: 280px 1fr; gap: 48px; margin-bottom: 56px; align-items: baseline; }
+  .profiles .head .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .profiles .head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 48px; letter-spacing: -0.03em; line-height: 1; margin: 0 0 16px; max-width: 800px; }
+  .profiles .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .profiles .head p { font-size: 15px; line-height: 1.6; color: #b5c4c0; margin: 0; max-width: 720px; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.12); }
+  .pcard { background: var(--ink); padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 220px; transition: background 0.2s; }
+  .pcard:hover { background: #142833; }
+  .pcard .silhouette { width: 48px; height: 48px; border-radius: 50%; background: var(--terra); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; letter-spacing: -0.03em; opacity: 0.85; }
+  .pcard .silhouette.teal { background: #2c5563; color: var(--paper); }
+  .pcard .silhouette.sage { background: var(--sage); color: var(--paper); }
+  .pcard .silhouette.stone { background: var(--stone); color: var(--paper); }
+  .pcard .title { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.2; color: var(--paper); }
+  .pcard .org { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9ab2ae; line-height: 1.6; }
+  .pcard .region { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.12); }
+
+  /* GEO / REACH */
+  .reach { padding: 100px 56px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 280px 1fr; gap: 64px; }
+  .reach .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .reach h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 48px; letter-spacing: -0.03em; line-height: 1; margin: 0 0 24px; max-width: 800px; }
+  .reach h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .reach p { font-size: 16px; line-height: 1.65; color: var(--stone); margin: 0 0 32px; max-width: 720px; }
+  .region-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 24px; }
+  .region-cell { background: var(--paper); padding: 24px; }
+  .region-cell .name { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 6px; }
+  .region-cell .meta { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); line-height: 1.6; }
+  .region-cell .meta .num { color: var(--terra); }
+
+  /* HOW WE USE IT */
+  .use-block { padding: 100px 56px; background: var(--paper-2); border-bottom: 1px solid var(--rule); }
+  .use-block .head { display: grid; grid-template-columns: 280px 1fr; gap: 48px; margin-bottom: 56px; align-items: baseline; }
+  .use-block .head .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
+  .use-block .head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 48px; letter-spacing: -0.03em; line-height: 1; margin: 0; max-width: 800px; }
+  .use-block .head h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
+  .use-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .use-card { background: #fff; padding: 32px; border: 1px solid var(--rule); display: flex; flex-direction: column; gap: 16px; }
+  .use-card .n { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--terra); letter-spacing: 0.16em; }
+  .use-card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 26px; letter-spacing: -0.02em; line-height: 1.15; margin: 0; }
+  .use-card p { font-size: 14px; line-height: 1.6; color: var(--stone); margin: 0; }
+
+  @media (max-width: 1100px) {
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+    .region-grid { grid-template-columns: repeat(2, 1fr); }
+    .use-grid { grid-template-columns: 1fr; }
+    .seg-grid { grid-template-columns: 1fr; }
+    .eco-stats { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- NAV -->
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+    <div class="lockup-h">
+      <div style="display:flex; flex-direction:column; line-height:0.85;">
+        <div class="word">Bayshore</div>
+        <div class="word health">Health</div>
+      </div>
+      <div class="slash">/</div>
+      <img src="uploads/palm-recolored.png" alt="palm" />
+    </div>
+    </a>
+    <div class="nav-right">
+      <a href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="team.html">Team</a>
+      <a class="active" href="ecosystem.html">Ecosystem</a>
+      <a href="faq.html">FAQ</a>
+      <a class="btn terra" style="padding:10px 18px;" href="contact.html">Book diagnostic →</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="label">§ Executive Ecosystem</div>
+    <h1>The hardest people in healthcare to <em>get to</em>. We can.</h1>
+    <p class="lede">Bayshore's value isn't just the playbook — it's the network behind it. Two decades of operator and advisory work has built an active, current ecosystem of senior decision-makers across health systems, plans, MSOs, IPAs, ACOs, and risk-bearing groups. The page below shows the shape of that network. The names stay private until you're a client.</p>
+  </div>
+
+  <!-- STATS BAND -->
+  <div class="eco-stats">
+    <div class="stat"><div class="num"><em>220+</em></div><div class="label">Senior executives in the active network</div></div>
+    <div class="stat"><div class="num">100+</div><div class="label">Distinct organizations represented</div></div>
+    <div class="stat"><div class="num">30+</div><div class="label">U.S. states with at least one relationship</div></div>
+    <div class="stat"><div class="num">50+</div><div class="label">C-suite-level contacts (CEO/CMO/CIO/COO/CFO)</div></div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="eco-intro">
+    <div>
+      <div class="label">→ Why this matters</div>
+    </div>
+    <div>
+      <p><strong>Healthcare isn't a market you cold-call into.</strong> The buyers who matter — clinical leadership, service-line VPs, innovation and venture heads, payor contracting, ACO medical directors — don't take meetings off LinkedIn outreach. They take meetings from people who've been in the room with them for years.</p>
+      <p><strong>That's the shortcut we sell.</strong> Not introductions in the abstract — qualified, warm intros from a relationship you can't replicate. We don't broker the names; we run the pursuit alongside you, with our credibility on the line in the same conversation as yours.</p>
+    </div>
+  </div>
+
+  <!-- SEGMENTS — visual breakdown -->
+  <div class="segments">
+    <div class="seg-head">
+      <div class="label">§ 01 — Composition</div>
+      <h2>Where the <em>relationships</em> live.</h2>
+    </div>
+    <div class="seg-grid">
+
+      <div class="seg-block">
+        <h3>→ By buyer type</h3>
+        <div class="bar-list">
+          <div class="bar-row">
+            <div class="name">Health systems &amp; IDNs</div>
+            <div class="track"><div class="fill" style="width:100%;"></div></div>
+            <div class="count">~110</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Health plans &amp; payors</div>
+            <div class="track"><div class="fill teal" style="width:35%;"></div></div>
+            <div class="count">~38</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">ACOs &amp; risk-bearing</div>
+            <div class="track"><div class="fill teal" style="width:32%;"></div></div>
+            <div class="count">~35</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">MSOs &amp; IPAs</div>
+            <div class="track"><div class="fill teal" style="width:18%;"></div></div>
+            <div class="count">~20</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Innovation &amp; ventures</div>
+            <div class="track"><div class="fill sage" style="width:22%;"></div></div>
+            <div class="count">~24</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">PBMs &amp; ancillary</div>
+            <div class="track"><div class="fill sage" style="width:8%;"></div></div>
+            <div class="count">~8</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seg-block">
+        <h3>→ By function we reach</h3>
+        <div class="bar-list">
+          <div class="bar-row">
+            <div class="name">Administrative / Ops</div>
+            <div class="track"><div class="fill" style="width:100%;"></div></div>
+            <div class="count">~75</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Innovation / Venture</div>
+            <div class="track"><div class="fill teal" style="width:55%;"></div></div>
+            <div class="count">~42</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Clinical / CMO</div>
+            <div class="track"><div class="fill teal" style="width:50%;"></div></div>
+            <div class="count">~38</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Information / Tech</div>
+            <div class="track"><div class="fill sage" style="width:38%;"></div></div>
+            <div class="count">~28</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Population health / VBC</div>
+            <div class="track"><div class="fill sage" style="width:30%;"></div></div>
+            <div class="count">~22</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Managed care / Contracting</div>
+            <div class="track"><div class="fill ink" style="width:20%;"></div></div>
+            <div class="count">~15</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seg-block">
+        <h3>→ By seniority</h3>
+        <div class="bar-list">
+          <div class="bar-row">
+            <div class="name">CEO / President</div>
+            <div class="track"><div class="fill" style="width:35%;"></div></div>
+            <div class="count">~17</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">C-suite (CMO / CIO / COO / CFO)</div>
+            <div class="track"><div class="fill" style="width:75%;"></div></div>
+            <div class="count">~38</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">EVP / SVP</div>
+            <div class="track"><div class="fill teal" style="width:55%;"></div></div>
+            <div class="count">~28</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">VP / AVP</div>
+            <div class="track"><div class="fill teal" style="width:100%;"></div></div>
+            <div class="count">~52</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Director / Managing Director</div>
+            <div class="track"><div class="fill sage" style="width:90%;"></div></div>
+            <div class="count">~46</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Medical Director / Chief of Service</div>
+            <div class="track"><div class="fill sage" style="width:60%;"></div></div>
+            <div class="count">~30</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seg-block">
+        <h3>→ Org size cohort (health systems)</h3>
+        <div class="bar-list">
+          <div class="bar-row">
+            <div class="name">Top-25 national IDNs</div>
+            <div class="track"><div class="fill" style="width:80%;"></div></div>
+            <div class="count">~22</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Large regional systems</div>
+            <div class="track"><div class="fill teal" style="width:100%;"></div></div>
+            <div class="count">~30</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Academic medical centers</div>
+            <div class="track"><div class="fill teal" style="width:60%;"></div></div>
+            <div class="count">~18</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Community / mid-market</div>
+            <div class="track"><div class="fill sage" style="width:75%;"></div></div>
+            <div class="count">~22</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Children's hospitals</div>
+            <div class="track"><div class="fill sage" style="width:25%;"></div></div>
+            <div class="count">~7</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ANONYMIZED PROFILES -->
+  <div class="profiles">
+    <div class="head">
+      <div>
+        <div class="label">§ 02 — Who they could be</div>
+      </div>
+      <div>
+        <h2>A sample of the <em>profiles</em> you could be put in front of.</h2>
+        <p>Each card represents a real person currently in the network. Names, organizations, and identifying details are intentionally redacted — but the title, segment, and region are accurate. On the diagnostic call, we'll tell you which of these match a deal you're chasing.</p>
+      </div>
+    </div>
+    <div class="card-grid">
+
+      <div class="pcard">
+        <div class="silhouette">CE</div>
+        <div class="title">Chief Executive Officer</div>
+        <div class="org">Top-25 IDN · 11 hospitals</div>
+        <div class="region">→ Northeast</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette teal">CM</div>
+        <div class="title">Chief Medical Officer</div>
+        <div class="org">National Medicare Advantage payor</div>
+        <div class="region">→ National</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette sage">VP</div>
+        <div class="title">VP, Ventures &amp; Innovation</div>
+        <div class="org">Academic medical center · West Coast</div>
+        <div class="region">→ West</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette stone">CI</div>
+        <div class="title">Chief Information Officer</div>
+        <div class="org">Specialty surgical hospital · NY metro</div>
+        <div class="region">→ Northeast</div>
+      </div>
+
+      <div class="pcard">
+        <div class="silhouette teal">VP</div>
+        <div class="title">SVP, Managed Care &amp; Contracting</div>
+        <div class="org">Large regional system · Mid-Atlantic</div>
+        <div class="region">→ Mid-Atlantic</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette">CO</div>
+        <div class="title">Chief Operating Officer</div>
+        <div class="org">Community-IDN · Ohio Valley</div>
+        <div class="region">→ Midwest</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette sage">DR</div>
+        <div class="title">Director, Innovation</div>
+        <div class="org">Tampa-area academic system</div>
+        <div class="region">→ Southeast</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette stone">MD</div>
+        <div class="title">Managing Director, Health Plan</div>
+        <div class="org">Blues plan · five-state footprint</div>
+        <div class="region">→ Multi-region</div>
+      </div>
+
+      <div class="pcard">
+        <div class="silhouette teal">CG</div>
+        <div class="title">Chief Growth Officer</div>
+        <div class="org">National cardiology MSO</div>
+        <div class="region">→ National</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette">CM</div>
+        <div class="title">CMO, ACO REACH</div>
+        <div class="org">Risk-bearing primary-care MSO</div>
+        <div class="region">→ Southeast</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette sage">VP</div>
+        <div class="title">VP, Population Health &amp; VBC</div>
+        <div class="org">Top-15 IDN · Southeast</div>
+        <div class="region">→ Southeast</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette stone">DR</div>
+        <div class="title">Director, Strategic Partnerships</div>
+        <div class="org">National Blues plan</div>
+        <div class="region">→ Mid-Atlantic</div>
+      </div>
+
+      <div class="pcard">
+        <div class="silhouette teal">CF</div>
+        <div class="title">CFO, Health Network</div>
+        <div class="org">University-affiliated system · South</div>
+        <div class="region">→ South</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette">CE</div>
+        <div class="title">CEO, Risk-Bearing Group</div>
+        <div class="org">Multi-state medical-group platform</div>
+        <div class="region">→ National</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette sage">VP</div>
+        <div class="title">VP, Ambulatory Operations</div>
+        <div class="org">Pediatric academic system</div>
+        <div class="region">→ Midwest</div>
+      </div>
+      <div class="pcard">
+        <div class="silhouette stone">DR</div>
+        <div class="title">Director, Network Development</div>
+        <div class="org">Primary-care platform · 1.5M lives</div>
+        <div class="region">→ National</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GEO REACH -->
+  <div class="reach">
+    <div>
+      <div class="label">§ 03 — Geographic spread</div>
+    </div>
+    <div>
+      <h2>Active relationships in <em>every</em> US region.</h2>
+      <p>The network skews to where we operate (Florida, Mid-Atlantic, Northeast) but is genuinely national. If you're chasing a specific procurement cycle in a specific market, ask — there's a high probability we have someone close to it.</p>
+      <div class="region-grid">
+        <div class="region-cell"><div class="name">Northeast</div><div class="meta">NY · NJ · PA · MA · CT · MD<br><span class="num">~55 contacts</span></div></div>
+        <div class="region-cell"><div class="name">Southeast</div><div class="meta">FL · GA · NC · SC · TN<br><span class="num">~60 contacts</span></div></div>
+        <div class="region-cell"><div class="name">Midwest</div><div class="meta">IL · OH · MI · IN · WI · MN · IA<br><span class="num">~40 contacts</span></div></div>
+        <div class="region-cell"><div class="name">South</div><div class="meta">TX · LA · AL · KY · WV<br><span class="num">~22 contacts</span></div></div>
+        <div class="region-cell"><div class="name">Mid-Atlantic</div><div class="meta">VA · DC · DE<br><span class="num">~18 contacts</span></div></div>
+        <div class="region-cell"><div class="name">West</div><div class="meta">CA · CO · AZ · NV · ID · OR<br><span class="num">~25 contacts</span></div></div>
+        <div class="region-cell"><div class="name">National plans</div><div class="meta">Multi-state payors &amp; MSOs<br><span class="num">~35 relationships</span></div></div>
+        <div class="region-cell"><div class="name">Specialty &amp; ancillary</div><div class="meta">PBM · labs · post-acute · ventures<br><span class="num">~18 contacts</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW WE USE IT -->
+  <div class="use-block">
+    <div class="head">
+      <div>
+        <div class="label">§ 04 — How we use it</div>
+      </div>
+      <div>
+        <h2>The network isn't a <em>brokerage</em>. It's leverage on your pursuit.</h2>
+      </div>
+    </div>
+    <div class="use-grid">
+      <div class="use-card">
+        <div class="n">— 01 —</div>
+        <h3>Targeted intro, not a list</h3>
+        <p>You name the buyer or the procurement cycle. We tell you who in the network is closest, what the relationship is worth in that context, and whether a warm intro will actually move the deal forward — or whether to skip it.</p>
+      </div>
+      <div class="use-card">
+        <div class="n">— 02 —</div>
+        <h3>Co-pursued, not handed off</h3>
+        <p>When we make the intro, we stay in the conversation. The first call is three of us — the buyer, you, us — and we frame the meeting against what we know matters to that specific exec. Your AE leads the second call.</p>
+      </div>
+      <div class="use-card">
+        <div class="n">— 03 —</div>
+        <h3>Maintained, not stale</h3>
+        <p>We don't keep relationships alive by mass email. The network stays current because we're in active operator and advisory roles inside it — Adam at myLaurel, Mike at GenHealth.ai — and our friends update us when they move.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <img src="uploads/palm-recolored.png" alt="" class="palm-deco" />
+    <div>
+      <h2>Want to know if we know your buyer?</h2>
+    </div>
+    <div>
+      <div class="body">
+        <p>Tell us the org, the title, and the procurement cycle on the diagnostic call. We'll tell you in thirty minutes whether there's a relationship worth pulling on — and if there isn't, we'll be honest about that too.</p>
+      </div>
+      <div style="margin-top:32px; display:flex; gap:12px;">
+        <a class="btn ghost" style="color:#fff; border-color:#fff;" href="contact.html">Book the diagnostic →</a>
+        <a class="btn ghost" style="color:#fff; border-color:rgba(255,255,255,0.4);" href="practice.html">See the practice</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="col">
+      <div class="label">→ Email</div>
+      <h3><a href="mailto:hello@bayshore.health">hello@bayshore.health</a></h3>
+      <p>For diagnostic calls, references, or specific deal-sprint inquiries.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Based in</div>
+      <h3>Tampa, FL</h3>
+      <p>Where the practice is anchored. We travel for kickoffs, key pursuits, and exec-sponsor meetings — wherever the deal is.</p>
+    </div>
+    <div class="col">
+      <div class="label">→ Diagnostic call</div>
+      <h3>30 minutes. No deck.</h3>
+      <p>The first call ends with a clear yes or no on fit. We'll send references and a sample deliverable beforehand if it helps.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-top">
+      <div class="brand">
+        <div class="lockup-h">
+          <div style="display:flex; flex-direction:column; line-height:0.85;">
+            <div class="word">Bayshore</div>
+            <div class="word health">Health</div>
+          </div>
+          <div class="slash">/</div>
+          <img src="uploads/palm-recolored.png" alt="palm" />
+        </div>
+        <div class="tag">A boutique healthcare BD and revenue advisory. Operators, not consultants. Tampa &amp; San Francisco. Booking Q3 2026 engagements.</div>
+      </div>
+      <div>
+        <h4>Practice</h4>
+        <a href="practice.html">Sales strategy</a>
+        <a href="practice.html">Fractional BD</a>
+        <a href="practice.html">GTM advisory</a>
+        <a href="practice.html">Deal sprint</a>
+        <a href="practice.html">RevOps</a>
+        <a href="practice.html">AI-native GTM</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="team.html">About</a>
+        <a href="team.html#adam">Adam Teitelman</a>
+        <a href="team.html#mike">Mike Maseda</a>
+        <a href="case-studies.html">Case studies</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
+        <a href="contact.html">Book a call</a>
+        <a href="#">LinkedIn ↗</a>
+        <a href="#">Substack ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="meta">© 2026 Bayshore Health · BAY · 025</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

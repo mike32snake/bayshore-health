@@ -212,11 +212,16 @@
   .principles .head .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
   .principles .head h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 52px; letter-spacing: -0.03em; line-height: 1.05; margin: 0; max-width: 800px; }
   .principles .head h2 em { color: var(--terra); font-style: italic; }
-  .principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px 64px; }
-  .principle { padding: 28px 0; border-top: 1px solid rgba(255,255,255,0.15); display: grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: baseline; }
-  .principle .n { font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--terra); letter-spacing: 0.16em; }
-  .principle h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 24px; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 8px; }
+  .principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 56px; }
+  .principle { padding: 32px 0 24px; border-top: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; gap: 14px; }
+  .principle .n { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--terra); letter-spacing: 0.16em; }
+  .principle h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; margin: 0; }
   .principle p { font-size: 14px; line-height: 1.6; color: #c4d2cf; margin: 0; }
+  .principle.cta-cell { background: rgba(217, 119, 87, 0.08); padding: 32px 28px 28px; border-top: 1px solid var(--terra); }
+  .principle.cta-cell h3 { color: var(--paper); }
+  .principle.cta-cell p { color: #c4d2cf; flex: 1; }
+  .principle.cta-cell a { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); text-decoration: none; align-self: flex-start; padding-bottom: 4px; border-bottom: 1px solid var(--terra); }
+  @media (max-width: 980px) { .principles-grid { grid-template-columns: 1fr; gap: 0; } }
 
   /* WRITING / NOTES */
   .writing { padding: 100px 56px; border-top: 1px solid var(--rule); }
@@ -257,11 +262,8 @@
   .qa .toggle { font-family: 'Geist Mono', monospace; font-size: 18px; color: var(--terra); transition: transform 0.25s ease; }
   .qa[open] .toggle { transform: rotate(45deg); }
   .qa .a { font-size: 15px; line-height: 1.65; color: var(--stone); margin: 16px 0 0; max-width: 720px; }
-  .qa[open] .a { animation: qaFadeIn 0.28s ease both; }
-  .qa.closing .a { animation: qaFadeOut 0.22s ease both; }
-  .qa.closing .toggle { transform: rotate(0deg); }
-  @keyframes qaFadeIn  { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes qaFadeOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-6px); } }
+  /* The .a is animated via JS (height + opacity + transform) for bidirectional smoothness. */
+  .qa.is-animating .a { overflow: hidden; }
 
   /* CTA */
   .cta-block { background: var(--terra); color: #fff; padding: 100px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; overflow: hidden; }
@@ -409,28 +411,63 @@
       });
     })();
 
-    // FAQ open/close fade animation.
-    // Native <details> hides children instantly on close, so we intercept the
-    // close click, play the fadeout, then flip the open attribute.
+    // FAQ open/close animation.
+    // Native <details> instantly toggles its children's display, which kills
+    // any opacity/height transition in either direction. We intercept the
+    // click, animate height + opacity + translate in both directions with the
+    // same duration and easing, then flip the open attribute when the
+    // animation finishes (or just before for opens).
     (function(){
+      var DURATION = 280;
+      var EASING = 'cubic-bezier(0.4, 0, 0.2, 1)';
       document.querySelectorAll('details.qa').forEach(function(qa){
         var summary = qa.querySelector('summary');
-        if (!summary) return;
+        var answer = qa.querySelector('.a');
+        if (!summary || !answer) return;
         summary.addEventListener('click', function(e){
-          if (!qa.open) return; // opening — let the browser handle it; CSS animates the fade-in
           e.preventDefault();
-          if (qa.classList.contains('closing')) return;
-          qa.classList.add('closing');
-          var answer = qa.querySelector('.a');
-          var done = function(){
-            qa.classList.remove('closing');
-            qa.open = false;
-            if (answer) answer.removeEventListener('animationend', done);
+          if (qa.classList.contains('is-animating')) return;
+          qa.classList.add('is-animating');
+          var transition = 'height ' + DURATION + 'ms ' + EASING +
+                          ', opacity ' + DURATION + 'ms ' + EASING +
+                          ', transform ' + DURATION + 'ms ' + EASING;
+          var cleanup = function(){
+            answer.style.transition = '';
+            answer.style.height = '';
+            answer.style.opacity = '';
+            answer.style.transform = '';
+            qa.classList.remove('is-animating');
           };
-          if (answer) {
-            answer.addEventListener('animationend', done);
+          if (qa.open) {
+            // CLOSE: animate from natural height to 0
+            var startHeight = answer.scrollHeight;
+            answer.style.transition = '';
+            answer.style.height = startHeight + 'px';
+            answer.style.opacity = '1';
+            answer.style.transform = 'translateY(0)';
+            answer.offsetHeight; // force reflow before applying transition
+            answer.style.transition = transition;
+            answer.style.height = '0px';
+            answer.style.opacity = '0';
+            answer.style.transform = 'translateY(-6px)';
+            window.setTimeout(function(){
+              qa.open = false;
+              cleanup();
+            }, DURATION);
           } else {
-            setTimeout(done, 220);
+            // OPEN: flip open first so the browser shows the body, then animate
+            qa.open = true;
+            var targetHeight = answer.scrollHeight;
+            answer.style.transition = '';
+            answer.style.height = '0px';
+            answer.style.opacity = '0';
+            answer.style.transform = 'translateY(-6px)';
+            answer.offsetHeight; // force reflow before applying transition
+            answer.style.transition = transition;
+            answer.style.height = targetHeight + 'px';
+            answer.style.opacity = '1';
+            answer.style.transform = 'translateY(0)';
+            window.setTimeout(cleanup, DURATION);
           }
         });
       });
@@ -643,16 +680,16 @@
         <div>
           <h3>Mike Maseda</h3>
           <div class="role">Founder · Sales &amp; Operations</div>
-          <p>Two-time founder and chief of staff. Head of Sales &amp; Ops at GenHealth.ai (Agentic OS for healthcare). Previously co-founder &amp; CEO of Circadios (sleep disorders), GM at Axamo, founding member at Propel, Co-Chair Embarc Collective. Builds the systems behind the motion — CRM, RevOps, forecast cadence, hiring scorecards.</p>
+          <p>Founder and 2x chief of staff. Head of Sales &amp; Ops at GenHealth.ai (Agentic OS for healthcare). Previously co-founder &amp; CEO of Circadios (sleep disorders), Reside Health, Woundtech, Co-Chair Embarc Collective. Builds the systems behind the motion — CRM, RevOps, forecast cadence, hiring scorecards.</p>
           <div class="tags">
             <span class="tag">Sales Ops</span>
             <span class="tag">CRM / RevOps</span>
-            <span class="tag">Founder · 2×</span>
-            <span class="tag">Chief of Staff</span>
+            <span class="tag">Founder</span>
+            <span class="tag">Chief of Staff · 2×</span>
             <span class="tag">AI / Digital Health</span>
             <span class="tag">Patient Experience</span>
           </div>
-          <div class="past">PRIOR · GENHEALTH.AI · CIRCADIOS · AXAMO · PROPEL · EMBARC · QUANTIC MBA</div>
+          <div class="past">PRIOR · GENHEALTH.AI · RESIDE HEALTH · WOUNDTECH · CIRCADIOS · EMBARC · UNIVERSITY OF CHICAGO</div>
         </div>
       </div>
     </div>
@@ -698,38 +735,34 @@
     <div class="principles-grid">
       <div class="principle">
         <div class="n">— 01 —</div>
-        <div>
-          <h3>Operators, not consultants</h3>
-          <p>We've carried bags, hired AEs, written board decks, and lost deals. Every engagement is led personally by Adam or Mike — not delegated to associates.</p>
-        </div>
+        <h3>Operators, not consultants</h3>
+        <p>We've carried bags, hired AEs, written board decks, and lost deals. Every engagement is led personally by Adam or Mike — not delegated to associates.</p>
       </div>
       <div class="principle">
         <div class="n">— 02 —</div>
-        <div>
-          <h3>Inside the work, not above it</h3>
-          <p>We sit in your pipeline reviews, ride along on demos, and lead live deals. The motion gets built where the motion lives — your CRM, your calls, your team.</p>
-        </div>
+        <h3>Inside the work, not above it</h3>
+        <p>We sit in your pipeline reviews, ride along on demos, and lead live deals. The motion gets built where the motion lives — your CRM, your calls, your team.</p>
       </div>
       <div class="principle">
         <div class="n">— 03 —</div>
-        <div>
-          <h3>Aligned on outcomes</h3>
-          <p>Pipeline coverage, cycle time, closed-won, ramp-to-quota. If we don't move them, we don't get the renewal. Misalignment is by definition our problem.</p>
-        </div>
+        <h3>Aligned on outcomes</h3>
+        <p>Pipeline coverage, cycle time, closed-won, ramp-to-quota. If we don't move them, we don't get the renewal. Misalignment is by definition our problem.</p>
       </div>
       <div class="principle">
         <div class="n">— 04 —</div>
-        <div>
-          <h3>Healthcare-specific, always</h3>
-          <p>Healthcare buyers don't behave like SaaS buyers. We bring fifteen years of scar tissue across IDNs, plans, post-acute, and digital health — not a generic playbook.</p>
-        </div>
+        <h3>Healthcare-specific, always</h3>
+        <p>Healthcare buyers don't behave like SaaS buyers. We bring fifteen years of scar tissue across IDNs, plans, post-acute, and digital health — not a generic playbook.</p>
       </div>
       <div class="principle">
         <div class="n">— 05 —</div>
-        <div>
-          <h3>Hand the bag back</h3>
-          <p>The goal is your team running the motion without us. Every engagement has a written handoff plan from week one — and we mean it when we say it's time.</p>
-        </div>
+        <h3>Hand the bag back</h3>
+        <p>The goal is your team running the motion without us. Every engagement has a written handoff plan from week one — and we mean it when we say it's time.</p>
+      </div>
+      <div class="principle cta-cell">
+        <div class="n">→ Talk to us</div>
+        <h3>Which one matters most for you?</h3>
+        <p>30 minutes. No deck. We'll tell you which principle is the one to lean on for your situation — and whether we're the right partner for it.</p>
+        <a href="contact.html">Book a consultation →</a>
       </div>
     </div>
   </div>
@@ -831,7 +864,7 @@
         <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
         <a href="contact.html">Book a consultation</a>
         <a href="ecosystem.html">Executive ecosystem</a>
-        <a href="#">LinkedIn ↗</a>
+        <a href="https://www.linkedin.com/company/bayshore-health/" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
     <div class="foot-bottom">

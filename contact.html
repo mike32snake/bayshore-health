@@ -65,11 +65,7 @@
     </div>
     </a>
     <div class="nav-right">
-      <a href="practice.html">Practice</a>
-      <a href="case-studies.html">Case studies</a>
-      <a href="team.html">Team</a>
       <a href="ecosystem.html">Ecosystem</a>
-      <a href="faq.html">FAQ</a>
       <a class="btn terra active" style="padding:10px 18px;" href="contact.html">Book diagnostic →</a>
     </div>
   </div>
@@ -88,7 +84,12 @@
     <div class="book-form" id="bookForm">
       <h2>Tell us where you're stuck.</h2>
       <p class="sub">All fields take you about a minute. The "stuck on" box is the one we actually read first.</p>
-      <form onsubmit="event.preventDefault(); document.getElementById('bookForm').classList.add('sent'); window.scrollTo({top: document.getElementById('bookForm').offsetTop - 80, behavior: 'smooth'});">
+      <form id="diagnosticForm" action="https://formsubmit.co/hello@bayshore.health" method="POST">
+        <input type="hidden" name="_subject" value="Bayshore Health — new diagnostic request" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_autoresponse" value="Thanks for reaching out — we read these in batches twice a week and will reply personally within 48 business hours with two or three call times. — Adam &amp; Mike" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <div class="field row">
           <div class="field">
             <label for="name">→ Name</label>
@@ -250,31 +251,13 @@
           <div class="slash">/</div>
           <img src="uploads/palm-recolored.png" alt="palm" />
         </div>
-        <div class="tag">A boutique healthcare BD and revenue advisory. Operators, not consultants. Tampa &amp; San Francisco. Booking Q3 2026 engagements.</div>
+        <div class="tag">A boutique healthcare BD and revenue advisory. Operators, not consultants. Tampa-based, national reach. Booking Q3 2026 engagements.</div>
       </div>
-      <div>
-        <h4>Practice</h4>
-        <a href="practice.html">Sales strategy</a>
-        <a href="practice.html">Fractional BD</a>
-        <a href="practice.html">GTM advisory</a>
-        <a href="practice.html">Deal sprint</a>
-        <a href="practice.html">RevOps</a>
-        <a href="practice.html">AI-native GTM</a>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <a href="team.html">About</a>
-        <a href="team.html#adam">Adam Teitelman</a>
-        <a href="team.html#mike">Mike Maseda</a>
-        <a href="case-studies.html">Case studies</a>
-        <a href="faq.html">FAQ</a>
-      </div>
-      <div>
+      <div style="grid-column: span 3;">
         <h4>Connect</h4>
         <a href="mailto:hello@bayshore.health">hello@bayshore.health</a>
-        <a href="contact.html">Book a call</a>
+        <a href="ecosystem.html">Executive ecosystem</a>
         <a href="#">LinkedIn ↗</a>
-        <a href="#">Substack ↗</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -288,5 +271,36 @@
   </div>
 
 </div>
+<script>
+  // Submit the diagnostic form via Formsubmit.co's AJAX endpoint so we can
+  // show the inline success state without a page redirect. If JS fails or
+  // the request errors, the form's standard action POST still works as a
+  // graceful fallback (formsubmit will redirect to its own thank-you page).
+  (function () {
+    var form = document.getElementById('diagnosticForm');
+    if (!form) return;
+    var card = document.getElementById('bookForm');
+    var endpoint = 'https://formsubmit.co/ajax/hello@bayshore.health';
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = v; });
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('submit-failed');
+        card.classList.add('sent');
+        window.scrollTo({ top: card.offsetTop - 80, behavior: 'smooth' });
+      }).catch(function () {
+        if (btn) { btn.disabled = false; btn.textContent = 'Request diagnostic →'; }
+        alert("Couldn't send right now. Email hello@bayshore.health directly and we'll pick it up.");
+      });
+    });
+  })();
+</script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Book a diagnostic — Bayshore Health</title>
+<title>Book a consultation — Bayshore Health</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/png" href="uploads/palm-recolored.png" />
 <link rel="apple-touch-icon" href="uploads/palm-recolored.png" />
@@ -66,13 +66,13 @@
     </a>
     <div class="nav-right">
       <a href="ecosystem.html">Ecosystem</a>
-      <a class="btn terra active" style="padding:10px 18px;" href="contact.html">Book diagnostic →</a>
+      <a class="btn terra active" style="padding:10px 18px;" href="contact.html">Book consultation →</a>
     </div>
   </div>
 
   <!-- HERO -->
   <div class="page-hero">
-    <div class="label">§ Diagnostic call</div>
+    <div class="label">§ Consultation call</div>
     <h1>Thirty minutes. No deck. Clear yes or no on <em>fit</em>.</h1>
     <p class="lede">Tell us a little about where you are and what you're stuck on. We read these in batches twice a week and respond personally — no automated forms, no sequenced follow-up. If we're not the right fit we'll tell you on the call and point you somewhere better.</p>
   </div>
@@ -85,7 +85,7 @@
       <h2>Tell us where you're stuck.</h2>
       <p class="sub">All fields take you about a minute. The "stuck on" box is the one we actually read first.</p>
       <form id="diagnosticForm" action="https://formsubmit.co/hello@bayshore.health" method="POST">
-        <input type="hidden" name="_subject" value="Bayshore Health — new diagnostic request" />
+        <input type="hidden" name="_subject" value="Bayshore Health — new consultation request" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_autoresponse" value="Thanks for reaching out — we read these in batches twice a week and will reply personally within 48 business hours with two or three call times. — Adam &amp; Mike" />
@@ -151,11 +151,11 @@
         </div>
         <div class="submit-row">
           <div class="note">→ We respond within 48 hours · Confidential</div>
-          <button type="submit">Request diagnostic →</button>
+          <button type="submit">Request consultation →</button>
         </div>
       </form>
       <div class="ok">
-        <strong>Got it.</strong> We'll read this in the next batch (typically within 48 business hours) and reply personally with two or three call times. In the meantime, we'll send a one-pager on the firm and a sample diagnostic deliverable so you can see the shape of what comes back.
+        <strong>Got it.</strong> We'll read this in the next batch (typically within 48 business hours) and reply personally with two or three call times. In the meantime, we'll send a one-pager on the firm and a sample consultation deliverable so you can see the shape of what comes back.
       </div>
     </div>
 
@@ -163,7 +163,7 @@
     <div class="book-side">
       <div class="label">§ What to expect</div>
       <h2>Four steps. <em>That's it.</em></h2>
-      <p>We don't run a sales cycle. The point of the diagnostic call is to be useful in thirty minutes whether or not you ever hire us — so the steps below are the same regardless of fit.</p>
+      <p>We don't run a sales cycle. The point of the consultation call is to be useful in thirty minutes whether or not you ever hire us — so the steps below are the same regardless of fit.</p>
       <div class="step-list">
         <div class="step">
           <div class="n">— 01 —</div>
@@ -176,7 +176,7 @@
           <div class="n">— 02 —</div>
           <div>
             <h4>We send context</h4>
-            <p>A one-pager on the firm, three founder references, and a sanitized sample diagnostic deliverable so you know what you're buying.</p>
+            <p>A one-pager on the firm, three founder references, and a sanitized sample consultation deliverable so you know what you're buying.</p>
           </div>
         </div>
         <div class="step">
@@ -225,7 +225,7 @@
     <div class="col">
       <div class="label">→ Email</div>
       <h3><a href="mailto:hello@bayshore.health">hello@bayshore.health</a></h3>
-      <p>For diagnostic calls, references, or specific deal-sprint inquiries.</p>
+      <p>For consultation calls, references, or specific deal-sprint inquiries.</p>
     </div>
     <div class="col">
       <div class="label">→ Based in</div>
@@ -233,7 +233,7 @@
       <p>Where the practice is anchored. We travel for kickoffs, key pursuits, and exec-sponsor meetings — wherever the deal is.</p>
     </div>
     <div class="col">
-      <div class="label">→ Diagnostic call</div>
+      <div class="label">→ Consultation call</div>
       <h3>30 minutes. No deck.</h3>
       <p>The first call ends with a clear yes or no on fit. We'll send references and a sample deliverable beforehand if it helps.</p>
     </div>
@@ -272,7 +272,7 @@
 
 </div>
 <script>
-  // Submit the diagnostic form via Formsubmit.co's AJAX endpoint so we can
+  // Submit the consultation form via Formsubmit.co's AJAX endpoint so we can
   // show the inline success state without a page redirect. If JS fails or
   // the request errors, the form's standard action POST still works as a
   // graceful fallback (formsubmit will redirect to its own thank-you page).
@@ -296,7 +296,7 @@
         card.classList.add('sent');
         window.scrollTo({ top: card.offsetTop - 80, behavior: 'smooth' });
       }).catch(function () {
-        if (btn) { btn.disabled = false; btn.textContent = 'Request diagnostic →'; }
+        if (btn) { btn.disabled = false; btn.textContent = 'Request consultation →'; }
         alert("Couldn't send right now. Email hello@bayshore.health directly and we'll pick it up.");
       });
     });

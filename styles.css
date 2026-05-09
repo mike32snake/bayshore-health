@@ -39,7 +39,7 @@ a { color: inherit; }
 .nav .lockup-h img { height: 32px; }
 .nav-right { display: flex; align-items: center; gap: 28px; }
 .nav-right a { font-family: 'Geist', sans-serif; font-weight: 500; font-size: 13px; color: var(--ink); text-decoration: none; }
-.nav-right a:hover { color: var(--terra); }
+.nav-right a:not(.btn):hover { color: var(--terra); }
 .nav-right a.active { color: var(--terra); }
 
 /* CTA block */

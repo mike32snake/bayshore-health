@@ -41,19 +41,12 @@
 
   .past-block { margin-top: 40px; }
   .past-block .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 20px; }
-  .past-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .past-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; row-gap: 0; }
   .past-list li { padding: 14px 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
-  .past-list li:nth-child(2) { border-top: 1px solid var(--rule); }
-  .past-list .role { font-family: 'Fraunces', serif; font-size: 15px; font-weight: 500; }
-  .past-list .place { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--stone); letter-spacing: 0.06em; }
-
-  .why-two { padding: 100px 56px; background: var(--paper-2); border-top: 1px solid var(--rule); display: grid; grid-template-columns: 360px 1fr; gap: 64px; }
-  .why-two .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; }
-  .why-two h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 52px; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 32px; max-width: 800px; }
-  .why-two h2 em { color: var(--terra); font-style: italic; font-weight: 500; }
-  .why-two .body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-  .why-two .body p { font-size: 16px; line-height: 1.65; color: var(--stone); margin: 0; }
-  .why-two .body p strong { color: var(--ink); font-weight: 600; }
+  .past-list .name { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; letter-spacing: -0.01em; text-transform: none; color: var(--ink); margin: 0; line-height: 1.25; }
+  .past-list .place { font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--stone); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; text-align: right; }
+  .partner-section.dark .past-list .name { color: var(--paper); }
+  .partner-section.dark .past-list .place { color: #9ab2ae; }
 </style>
 </head>
 <body>
@@ -75,7 +68,6 @@
       <a href="practice.html">Practice</a>
       <a href="case-studies.html">Case studies</a>
       <a class="active" href="team.html">Team</a>
-      <a href="writing.html">Writing</a>
       <a href="faq.html">FAQ</a>
       <a class="btn terra" style="padding:10px 18px;" href="contact.html">Book diagnostic →</a>
     </div>
@@ -118,18 +110,18 @@
       <div class="past-block">
         <div class="label">→ Selected GTM advisory roster</div>
         <ul class="past-list">
-          <li><span class="role">Koda Health</span><span class="place">Advance care</span></li>
-          <li><span class="role">Guaranteed</span><span class="place">End-of-life care</span></li>
-          <li><span class="role">Diagnostic Robotics</span><span class="place">Clinical AI</span></li>
-          <li><span class="role">Ellipsis Health</span><span class="place">Voice biomarker</span></li>
-          <li><span class="role">Serif Health</span><span class="place">Provider data</span></li>
-          <li><span class="role">FitOn Health</span><span class="place">Employer benefit</span></li>
-          <li><span class="role">ShiftMed</span><span class="place">Clinical workforce</span></li>
-          <li><span class="role">Heartbeat Health</span><span class="place">Cardiology</span></li>
-          <li><span class="role">Elektra Health</span><span class="place">Women's health</span></li>
-          <li><span class="role">LunaJoy</span><span class="place">Mental health</span></li>
-          <li><span class="role">Kento Health</span><span class="place">Cardiometabolic</span></li>
-          <li><span class="role">Impruvon, Converse, Revuud, +9</span><span class="place">Multi-stage</span></li>
+          <li><span class="name">Koda Health</span><span class="place">Advance care</span></li>
+          <li><span class="name">Guaranteed</span><span class="place">End-of-life care</span></li>
+          <li><span class="name">Diagnostic Robotics</span><span class="place">Clinical AI</span></li>
+          <li><span class="name">Ellipsis Health</span><span class="place">Voice biomarker</span></li>
+          <li><span class="name">Serif Health</span><span class="place">Provider data</span></li>
+          <li><span class="name">FitOn Health</span><span class="place">Employer benefit</span></li>
+          <li><span class="name">ShiftMed</span><span class="place">Clinical workforce</span></li>
+          <li><span class="name">Heartbeat Health</span><span class="place">Cardiology</span></li>
+          <li><span class="name">Elektra Health</span><span class="place">Women's health</span></li>
+          <li><span class="name">LunaJoy</span><span class="place">Mental health</span></li>
+          <li><span class="name">Kento Health</span><span class="place">Cardiometabolic</span></li>
+          <li><span class="name">Impruvon, Converse, Revuud, +9</span><span class="place">Multi-stage</span></li>
         </ul>
       </div>
     </div>
@@ -165,27 +157,13 @@
       <div class="past-block">
         <div class="label">→ Selected operator history</div>
         <ul class="past-list">
-          <li><span class="role">Head of Sales &amp; Ops</span><span class="place">GenHealth.ai · current</span></li>
-          <li><span class="role">Head of Operations</span><span class="place">GenHealth.ai · prior</span></li>
-          <li><span class="role">Co-founder &amp; CEO</span><span class="place">Circadios</span></li>
-          <li><span class="role">GM</span><span class="place">Axamo</span></li>
-          <li><span class="role">Founding member</span><span class="place">Propel</span></li>
-          <li><span class="role">Co-Chair</span><span class="place">Embarc Collective</span></li>
+          <li><span class="name">Head of Sales &amp; Ops</span><span class="place">GenHealth.ai · current</span></li>
+          <li><span class="name">Head of Operations</span><span class="place">GenHealth.ai · prior</span></li>
+          <li><span class="name">Co-founder &amp; CEO</span><span class="place">Circadios</span></li>
+          <li><span class="name">GM</span><span class="place">Axamo</span></li>
+          <li><span class="name">Founding member</span><span class="place">Propel</span></li>
+          <li><span class="name">Co-Chair</span><span class="place">Embarc Collective</span></li>
         </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- WHY TWO -->
-  <div class="why-two">
-    <div>
-      <div class="label">§ Why two</div>
-    </div>
-    <div>
-      <h2>We cap engagements at <em>two</em> at a time. Always.</h2>
-      <div class="body">
-        <p><strong>The math is straightforward.</strong> An embedded engagement at Bayshore quality means about 25 hours a week from a partner — pipeline reviews, call audits, deal coaching, exec sponsorship, board prep. Two clients fills a partner's week. Three doesn't.</p>
-        <p><strong>The honesty is also straightforward.</strong> Most consultancies grow by adding bodies and selling deeper into existing accounts. We grow by saying no. If we're saying yes to your engagement, you're getting the partner — not the calendar gap, not a junior associate, not a "deliverable team." That's the whole product.</p>
       </div>
     </div>
   </div>
@@ -255,7 +233,6 @@
         <a href="team.html#adam">Adam Teitelman</a>
         <a href="team.html#mike">Mike Maseda</a>
         <a href="case-studies.html">Case studies</a>
-        <a href="writing.html">Writing</a>
         <a href="faq.html">FAQ</a>
       </div>
       <div>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<title>Pricing Antipatterns · Free Read · Confido</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="../../uploads/palm-recolored.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_brand.css">
+<style>
+.ap { background: #fff; border: 1px solid var(--rule); padding: 22px 26px; margin: 12px 0; }
+.ap.likely { background: var(--paper-2); border-left: 3px solid #c44569; }
+.ap.unlikely { border-left: 3px solid var(--sage); }
+.ap .hdr { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+.ap .num { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: var(--terra); }
+.ap h4 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; line-height: 1.25; margin: 8px 0 10px; }
+.ap .conf { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; padding: 4px 10px; }
+.ap.likely .conf { background: #c44569; color: #fff; }
+.ap.unlikely .conf { background: var(--sage); color: #fff; }
+.ap.maybe .conf { background: #d4a437; color: #fff; }
+.ap p { font-size: 14px; line-height: 1.6; color: var(--ink); margin: 0 0 8px; }
+.ap p strong { color: var(--ink); font-weight: 600; }
+.ap .signal { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--terra); padding-top: 10px; border-top: 1px solid var(--rule); margin-top: 10px; line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div style="display:flex; align-items:center;">
+    <div class="lockup">
+      <div class="lockup-text"><div class="word b">Bayshore</div><div class="word h">Health</div></div>
+      <div class="slash">/</div>
+      <img src="../../uploads/palm-recolored.png" alt="" />
+    </div>
+    <span class="tier-badge">Free</span>
+  </div>
+  <div class="head-meta">SKU 05 · for <span class="v">Confido Health</span></div>
+</div>
+
+<div class="container">
+<div class="hero">
+  <div class="label">§ 10 pricing antipatterns — scored against Confido</div>
+  <h1>Five we think you're sitting on. <em>Three we think you've avoided.</em></h1>
+  <p class="lede">The 10 most common pricing antipatterns we see in healthtech, scored against what's publicly observable about Confido's positioning, customer mix, and category. Each antipattern is rated by how confident we are Confido is exhibiting it. The ones we'd fix first are red.</p>
+  <div class="meta-row">
+    <div><div class="k">Antipatterns</div><div class="v">10</div></div>
+    <div><div class="k">Hours invested</div><div class="v">~3</div></div>
+    <div><div class="k">Sources</div><div class="v">Confido site + 9 comp set</div></div>
+    <div><div class="k">Confidence</div><div class="v">Inferential</div></div>
+  </div>
+</div>
+</div>
+
+<div class="s">
+  <div class="container">
+
+    <div class="ap likely">
+      <div class="hdr"><div class="num">— 01 —</div><div class="conf">Likely</div></div>
+      <h4>One price for every buyer</h4>
+      <p>Healthcare buyers have radically different willingness to pay. An IDN, a specialty group, an FQHC, and a dental practice see Confido differently and have wildly different ACV ceilings. One price = either underpricing the high-WTP segment or pricing out the low one.</p>
+      <div class="signal">→ <strong>Why we think this:</strong> 4 buyer subtypes in your customer wall. No public-facing pricing tiers. AEs likely improvising on each call.</div>
+    </div>
+
+    <div class="ap likely">
+      <div class="hdr"><div class="num">— 02 —</div><div class="conf">Likely</div></div>
+      <h4>Per-seat pricing for non-seat value</h4>
+      <p>"Per user / month" is the SaaS default but it's the wrong unit for voice AI. Healthcare buyers measure value in calls handled, FTEs replaced, appointments recovered, PMPM — not seats. Talkdesk Healthcare ($225/user/month) is the cautionary tale here; their per-seat model maps badly to actual value delivered.</p>
+      <div class="signal">→ <strong>Why we think this:</strong> Common Series A AI healthtech default. No public pricing page disagrees with this guess.</div>
+    </div>
+
+    <div class="ap likely">
+      <div class="hdr"><div class="num">— 03 —</div><div class="conf">Likely</div></div>
+      <h4>No discount policy — every deal a negotiation</h4>
+      <p>AEs improvise. Founder approves on instinct. Each deal anchors the next one lower. Common pattern at $10M-raised Series A AI healthtech.</p>
+      <div class="signal">→ <strong>Why we think this:</strong> No published discount tiers. Likely no walk-away anchors. AEs probably checking with founder on every >15% discount.</div>
+    </div>
+
+    <div class="ap maybe">
+      <div class="hdr"><div class="num">— 04 —</div><div class="conf" style="background:#d4a437; color:#fff;">Possible</div></div>
+      <h4>Inflated list price that no one pays</h4>
+      <p>"List is $X but everyone pays 30% off" — corrodes trust. Better: list price within 1.3x of actual close price; transparent volume / multi-year discounts.</p>
+      <div class="signal">→ <strong>Why we think possible:</strong> Without published pricing it's hard to tell, but the multi-buyer-subtype mix usually leads to wild list-vs-actual variance.</div>
+    </div>
+
+    <div class="ap likely">
+      <div class="hdr"><div class="num">— 05 —</div><div class="conf">Likely</div></div>
+      <h4>Pricing untethered to ROI math</h4>
+      <p>If the buyer can't show their CFO why this pays back, they can't sign — regardless of how good your product is. Most Series A vendors quote a price; few co-build the math with the buyer using the buyer's inputs.</p>
+      <div class="signal">→ <strong>Why we think this:</strong> No public ROI calculator. "75% of calls handled" is your headline metric — buyer-readable but not buyer-defendable to a CFO.</div>
+    </div>
+
+    <div class="ap maybe">
+      <div class="hdr"><div class="num">— 06 —</div><div class="conf" style="background:#d4a437; color:#fff;">Possible</div></div>
+      <h4>"Pilot pricing" with no path to enterprise</h4>
+      <p>Pilot economics accidentally become enterprise economics. Buyer expects pilot-price forever. Better: pilot pricing has explicit step-function to enterprise on stated milestones, written into pilot proposal.</p>
+      <div class="signal">→ <strong>Why we think possible:</strong> Sub-30-day deployment is a strength but creates risk: if pilot is too cheap, enterprise conversion math breaks at month 6.</div>
+    </div>
+
+    <div class="ap unlikely">
+      <div class="hdr"><div class="num">— 07 —</div><div class="conf">Unlikely</div></div>
+      <h4>No annual commitment, all month-to-month</h4>
+      <p>Predictable in flat market, deadly in healthcare with 6-month sales cycles + 12-month integration paths. Better: annual minimums on enterprise; month-to-month allowed only for pilot.</p>
+      <div class="signal">→ <strong>Why we think unlikely:</strong> Series A health systems sales typically force annual contracts; your enterprise customers (York Hospital) almost certainly already on annual.</div>
+    </div>
+
+    <div class="ap maybe">
+      <div class="hdr"><div class="num">— 08 —</div><div class="conf" style="background:#d4a437; color:#fff;">Possible</div></div>
+      <h4>Add-ons that should be core (or vice versa)</h4>
+      <p>Charging extra for security review or integration support that every buyer requires. Or bundling premium features into base price so no one upgrades. Better: core SKU = minimum-viable buyer-readable product. Add-ons = optional, high-margin, bought after year 1.</p>
+      <div class="signal">→ <strong>Why we think possible:</strong> 3-agent product (Sara/Ryan/Lilly) is hard to package without a clear "what's in entry vs. premium" structure.</div>
+    </div>
+
+    <div class="ap likely">
+      <div class="hdr"><div class="num">— 09 —</div><div class="conf">Likely</div></div>
+      <h4>Pricing that doesn't match the proof</h4>
+      <p>Charge enterprise prices but don't have an enterprise reference customer. Or charge pilot prices when buyer expects 5-vendor RFP comp. Better: pricing tier matches strongest proof point you can show in the room.</p>
+      <div class="signal">→ <strong>Why we think this:</strong> Your reference list is incredibly diverse (hospital + specialty + FQHC + dental) — but each tier likely lacks 3+ similar references. CMIO at IDN #2 will ask "show me another IDN" — you have York. Owner-dentist will ask "show me another small dental" — you have Alpha.</div>
+    </div>
+
+    <div class="ap unlikely">
+      <div class="hdr"><div class="num">— 10 —</div><div class="conf">Unlikely</div></div>
+      <h4>Founder-pricing</h4>
+      <p>Founder sets price by gut. AEs can't defend it. Comp set undocumented. Better: 1-page comp-set anchor with 3–5 analogous vendors, why each isn't a perfect comp, where you sit in the range.</p>
+      <div class="signal">→ <strong>Why we think unlikely:</strong> $10M Series A required investor diligence on pricing model + comp set — you've done at least the surface-level work here.</div>
+    </div>
+  </div>
+</div>
+
+<div class="s alt">
+  <div class="container">
+    <div class="label">§ The headline number</div>
+    <h2>Five likely · two possible · three unlikely.</h2>
+    <div class="score">
+      <div class="lab">→ Bayshore Pricing Health Read</div>
+      <div class="num">9<small> / 20</small></div>
+      <div class="verdict"><em>Pricing is leaking value.</em> Five "likely" antipatterns at 0 each = 0/10 on the high-impact half. Two "possible" at 1 each. Three "unlikely" at 2 each. Total 9/20 = "leaking value." The 3-week paid audit moves the number to 14+ and translates the recovered value into a board-ready deck.</div>
+    </div>
+    <p style="margin-top:24px;">Translation: of $10M raised at Series A, getting pricing right in the next 6 months is worth a 15–25% ACV lift in year 1 — usually $500K–$2M of incremental ARR depending on deal volume. The audit pays back in one re-priced deal.</p>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>This is the read. The build is <em>3 weeks and $5–15K</em>.</h2>
+  <p>$5K lean (forensics + comp set + tiering memo) · $15K full (adds buyer ROI calc + pilot step function + board-ready deck) · $10K bundled with active 90-Day GTM Plan engagement. Mike leads, Adam contributes buyer-side calibration.</p>
+  <div class="btn-row">
+    <a class="btn solid" href="sku-05-paid.html">See the paid audit →</a>
+    <a class="btn ghost-light" href="https://www.bayshore.health/contact.html">Book the consultation</a>
+  </div>
+</div>
+
+<div class="foot">
+  <div>Bayshore Health · <a href="mailto:hello@bayshore.health">hello@bayshore.health</a></div>
+  <div>Free · for Confido Health · Confidential</div>
+</div>
+
+</body>
+</html>

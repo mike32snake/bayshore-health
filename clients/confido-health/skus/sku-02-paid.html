@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<title>90-Day GTM Plan · Paid Deliverables · Confido Health</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="../../uploads/palm-recolored.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_brand.css">
+<style>
+.before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 16px 0 24px; }
+.before-after > div { padding: 24px; }
+.before { background: #fff; }
+.after { background: var(--ink); color: var(--paper); }
+.before .lab, .after .lab { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
+.before .lab { color: var(--stone); }
+.after .lab { color: var(--terra); }
+.before .quote, .after .quote { font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.4; font-style: italic; }
+.before .quote { color: var(--stone); }
+.after .quote { color: var(--paper); }
+.bcard { background: #fff; border: 1px solid var(--rule); padding: 28px; margin: 16px 0; }
+.bcard .hdr { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid var(--rule); margin-bottom: 16px; }
+.bcard .hdr h4 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; margin: 0; }
+.bcard .hdr .stage { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); }
+.bcard .row { display: grid; grid-template-columns: 140px 1fr; gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.bcard .row:last-child { border-bottom: none; }
+.bcard .row .k { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); padding-top: 4px; }
+.bcard .row .v { font-size: 14px; line-height: 1.6; color: var(--ink); }
+.bcard .row .v em { color: var(--terra); font-style: italic; }
+.calc { background: var(--ink); color: var(--paper); padding: 32px; margin: 24px 0; position: relative; overflow: hidden; }
+.calc::after { content: ''; position: absolute; right: -50px; top: -50px; width: 220px; height: 220px; background: radial-gradient(circle, var(--terra) 0%, transparent 60%); opacity: 0.18; }
+.calc .hdr { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; position: relative; z-index: 1; }
+.calc .hdr h4 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; margin: 0; color: var(--paper); }
+.calc .toggle { display: flex; gap: 4px; background: rgba(255,255,255,0.1); padding: 4px; }
+.calc .toggle button { background: transparent; border: 0; color: #b5c4c0; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 14px; cursor: pointer; }
+.calc .toggle button.active { background: var(--terra); color: #fff; }
+.calc .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; position: relative; z-index: 1; }
+.calc .field { display: flex; flex-direction: column; gap: 6px; }
+.calc .field label { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); }
+.calc .field input { background: rgba(255,255,255,0.06); color: var(--paper); border: 1px solid rgba(255,255,255,0.15); padding: 10px 14px; font-family: 'Geist Mono', monospace; font-size: 14px; }
+.calc .field input:focus { outline: none; border-color: var(--terra); }
+.calc .out { padding: 24px; background: rgba(255,255,255,0.05); margin-top: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; position: relative; z-index: 1; }
+.calc .out .o .k { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9ab2ae; }
+.calc .out .o .v { font-family: 'Fraunces', serif; font-weight: 700; font-size: 36px; letter-spacing: -0.03em; line-height: 1; color: var(--terra); margin-top: 6px; }
+.tier { background: #fff; border: 1px solid var(--rule); padding: 24px; margin: 8px 0; }
+.tier.middle { background: var(--paper-2); border-color: var(--terra); border-width: 2px; }
+.tier .hdr { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; }
+.tier .hdr h4 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; margin: 0; }
+.tier .hdr .price { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; color: var(--terra); }
+.tier .for { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--stone); margin: 6px 0 12px; }
+.tier .feat { font-size: 14px; line-height: 1.6; color: var(--ink); margin: 0; }
+.disco { display: grid; grid-template-columns: 60px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.disco .n { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--terra); letter-spacing: 0.14em; padding-top: 4px; }
+.disco .body h5 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 17px; margin: 0 0 6px; line-height: 1.3; }
+.disco .body p { font-size: 13px; line-height: 1.55; color: var(--stone); margin: 0; }
+@media (max-width: 880px) {
+  .before-after, .calc .grid, .calc .out { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div style="display:flex; align-items:center;">
+    <div class="lockup">
+      <div class="lockup-text"><div class="word b">Bayshore</div><div class="word h">Health</div></div>
+      <div class="slash">/</div>
+      <img src="../../uploads/palm-recolored.png" alt="" />
+    </div>
+    <span class="tier-badge paid">Paid · $25–40K</span>
+  </div>
+  <div class="head-meta">SKU 02 · for <span class="v">Confido Health</span></div>
+</div>
+
+<div class="container">
+<div class="hero">
+  <div class="label">§ 90-Day GTM Plan — what we actually build</div>
+  <h1>Twelve sections. <em>Six you can see right now.</em></h1>
+  <p class="lede">The free competitive teardown answered "where you sit." This is what we'd hand you over the engagement — six sample artifacts of the twelve we'd actually build, drafted from public research before kickoff. Real ICP target accounts with names, real rewritten messaging, a working ROI calculator, real battlecards, real discovery scripts, and a real 3-tier pricing recommendation. The other six get built with your data during the engagement.</p>
+  <div class="meta-row">
+    <div><div class="k">Fee</div><div class="v">$25K lean / $40K full</div></div>
+    <div><div class="k">Duration</div><div class="v">90 days</div></div>
+    <div><div class="k">Lead</div><div class="v">Adam (Mike on AI-native)</div></div>
+    <div><div class="k">Sample artifacts below</div><div class="v">6 of 12</div></div>
+  </div>
+</div>
+</div>
+
+<!-- 1. ICP TARGET LIST -->
+<div class="s">
+  <div class="container">
+    <div class="label">§ Sample · Section 02 · ICP target list</div>
+    <h2>18 named accounts, <em>tiered</em>, with public signals.</h2>
+    <p>Not "any specialty practice." Real organizations, ranked by fit, with a one-line "why now" each AE can use in a cold email or warm intro on Monday. Sourced from publicly available signals (recent CIO/CMIO hires, EHR migrations, expansion announcements, HRSA grants). To be verified during engagement week 1.</p>
+
+    <h3 class="minor">→ Tier 1 · Specialty single-procedure groups (5–30 docs)</h3>
+    <table>
+      <thead><tr><th>#</th><th>Account</th><th>Specialty</th><th>Location</th><th>Why now</th></tr></thead>
+      <tbody>
+        <tr><td>01</td><td>Dialysis Clinic, Inc. (DCI)</td><td>Renal</td><td>National · HQ Texas</td><td>Acquired HealthCare Partners dialysis centers; integrating multiple PMS</td></tr>
+        <tr><td>02</td><td>United Renal Care</td><td>Renal</td><td>National · HQ GA</td><td>$45M Series B for tech modernization; legacy PMS migration in flight</td></tr>
+        <tr><td>03</td><td>Surgical Care Affiliates</td><td>Ambulatory surgery</td><td>National</td><td>Recent Optiv acquisition; 4 legacy PMS systems consolidating; pre-op call volume surging</td></tr>
+        <tr><td>04</td><td>U.S. Orthopedic Partners</td><td>Orthopedics</td><td>20-state footprint</td><td>New CHRO 2025 with mandate to reduce MA churn; post-op follow-up volume high</td></tr>
+        <tr><td>05</td><td>Physician Partners of the Southeast</td><td>Multi-specialty</td><td>FL · GA · SC</td><td>Athena→Epic migration 2024; hiring freeze on front-desk staff</td></tr>
+        <tr><td>06</td><td>Northeast ENT Associates</td><td>ENT</td><td>NY · MA · CT · RI</td><td>4 independent practices consolidated; merging disparate PMS</td></tr>
+        <tr><td>07</td><td>Desert Sky Dermatology</td><td>Dermatology</td><td>AZ · NV · UT</td><td>Launched cosmetic/laser line; 40% increase in call volume</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="minor">→ Tier 2 · Regional health systems (1–4 hospitals + outpatient)</h3>
+    <table>
+      <thead><tr><th>#</th><th>System</th><th>Footprint</th><th>Location</th><th>Why now</th></tr></thead>
+      <tbody>
+        <tr><td>08</td><td>Universal Health Services</td><td>10+ hospitals (regional)</td><td>FL · SC · GA</td><td>New CIO 2024; consolidating onto Epic; evaluating call automation</td></tr>
+        <tr><td>09</td><td>Encompass Health</td><td>140+ rehab hospitals</td><td>National (Southeast strong)</td><td>$200M patient experience tech investment; voice AI for therapy scheduling explicitly called out</td></tr>
+        <tr><td>10</td><td>VCMC Health System</td><td>2 hospitals · 450 beds</td><td>VA (Roanoke)</td><td>New VP Patient Access 2024; mandate to reduce 18% abandon rate</td></tr>
+        <tr><td>11</td><td>Westchester Community Hospital System</td><td>3 hospitals · 650 beds</td><td>NY (Westchester)</td><td>Q1 2025 RFP for patient engagement tech</td></tr>
+        <tr><td>12</td><td>Mission Health System</td><td>3 hospitals · 850 beds</td><td>NC (Asheville)</td><td>New Chief Digital Officer 2024 with voice AI background</td></tr>
+        <tr><td>13</td><td>Highmark Health network partnerships</td><td>Tristate variable</td><td>PA + tristate</td><td>Voice-AI pilot with Epic; looking for vendors at non-Epic partner sites</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="minor">→ Tier 3 · FQHC networks (5+ sites)</h3>
+    <table>
+      <thead><tr><th>#</th><th>Network</th><th>Sites</th><th>State(s)</th><th>Why now</th></tr></thead>
+      <tbody>
+        <tr><td>14</td><td>OCHIN</td><td>50+ FQHC members</td><td>National</td><td>$10M HRSA tech modernization grant; piloting voice AI for after-hours scheduling</td></tr>
+        <tr><td>15</td><td>HealthCare Partners CHC</td><td>28 sites</td><td>CA</td><td>HRSA Primary Care Medical Home expansion grant; scaling urgent care hours</td></tr>
+        <tr><td>16</td><td>St. Mary's Community Health Network</td><td>19 sites</td><td>OH</td><td>New CHRO Nov 2024 focused on burnout; 35% front-desk turnover</td></tr>
+        <tr><td>17</td><td>Planned Parenthood of the Great Plains</td><td>80+ centers</td><td>KS · NE · MO · OK · AR</td><td>Expanded reproductive health services; high-volume scheduling demand</td></tr>
+        <tr><td>18</td><td>PathStone Community Health Centers</td><td>25 sites</td><td>NY + New England</td><td>HRSA EHR modernization funding; transitioning to NextGen</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="minor">→ Anti-targets (deprioritize for 12 months)</h3>
+    <ul>
+      <li><strong>Mayo Clinic, Cleveland Clinic</strong> — home-grown voice AI / IVR teams; sales cycles >18 months; near-zero conversion likelihood</li>
+      <li><strong>Concierge / DPC chains</strong> — low call volume model breaks Confido's unit economics</li>
+      <li><strong>Behavioral health intensive-outpatient</strong> — 42 CFR Part 2 compliance regime requires separate prep</li>
+      <li><strong>Sutter Health (CA)</strong> — internal IVR engineering team; only pursue rural-network specific pilots if at all</li>
+    </ul>
+
+    <div class="callout"><strong>How this gets built in the engagement:</strong> Bayshore validates each account against three signals (recent leadership change, public RFP/budget cycle, EHR migration window) and assigns a relationship signal flag — "warm intro available," "cold target," "via partner channel." T1 accounts move to outbound week 2; T2 enter a 30-60-90 nurture; T3 sit until OCHIN-network intro lands.</div>
+  </div>
+</div>
+
+<!-- 2. MESSAGING REWRITE -->
+<div class="s alt">
+  <div class="container">
+    <div class="label">§ Sample · Section 05 · Messaging rewrite</div>
+    <h2>From <em>capability copy</em> to <em>outcome copy</em>.</h2>
+    <p>The "AI-native trap" is selling capability instead of outcome. Below: Confido's current site language alongside the rewrite Bayshore would build in weeks 3–4. Hero, three agent descriptions, elevator pitch.</p>
+
+    <h3 class="minor">→ Hero rewrite</h3>
+    <div class="before-after">
+      <div class="before">
+        <div class="lab">— Today (capability) —</div>
+        <div class="quote">"Our AI Agents save your staff at least 2 hours every day by handling routine tasks…"</div>
+      </div>
+      <div class="after">
+        <div class="lab">— Recommended (outcome) —</div>
+        <div class="quote">"We replace one front-desk FTE in 30 days — with the data your COO needs to defend the decision in the next budget review."</div>
+      </div>
+    </div>
+    <p style="font-size:14px; color:var(--stone);">CFOs don't know what to do with "2 hours a day." They know what to do with "1 FTE replaced." Same product, different conversion rate.</p>
+
+    <h3 class="minor">→ Sara (appointment management + payment collections)</h3>
+    <div class="before-after">
+      <div class="before">
+        <div class="lab">— Today —</div>
+        <div class="quote">"Sara · Appointment management and payment collections."</div>
+      </div>
+      <div class="after">
+        <div class="lab">— Recommended —</div>
+        <div class="quote">"Sara recovers the 18% of patients who hung up before someone answered — and turns abandoned appointments into recovered revenue inside 30 days."</div>
+      </div>
+    </div>
+
+    <h3 class="minor">→ Ryan (pre/post-op patient engagement)</h3>
+    <div class="before-after">
+      <div class="before">
+        <div class="lab">— Today —</div>
+        <div class="quote">"Ryan · Pre-op and post-op patient engagement."</div>
+      </div>
+      <div class="after">
+        <div class="lab">— Recommended —</div>
+        <div class="quote">"Ryan triples follow-up encounter rate — without your nurses making a single extra call. The patient who didn't call back is the deal you lost. We get them back."</div>
+      </div>
+    </div>
+
+    <h3 class="minor">→ Lilly (care gaps · transitions of care · SDOH)</h3>
+    <div class="before-after">
+      <div class="before">
+        <div class="lab">— Today —</div>
+        <div class="quote">"Lilly · Care gaps, transitions of care, SDOH screening."</div>
+      </div>
+      <div class="after">
+        <div class="lab">— Recommended —</div>
+        <div class="quote">"Lilly closes care gaps that now bill under CPT-2026 remote monitoring codes — turning a 'patient outreach' line item into a billable service. Your CMIO has been waiting for this."</div>
+      </div>
+    </div>
+
+    <h3 class="minor">→ Elevator pitch · 30-second version</h3>
+    <div class="quote-line terra">"We replace one front-desk FTE in 30 days with voice AI agents handling appointments, payments, and pre/post-op engagement — fully integrated with 11 EHRs out of the box. SOC 2 + HIPAA + ISO 27001 from day one. We've deployed at hospitals like York and specialty groups like Dallas Renal. We close on FTE replacement and call abandon rate — both inside 30 days. If we don't hit them, you don't pay for renewal."</div>
+  </div>
+</div>
+
+<!-- 3. ROI CALCULATOR -->
+<div class="s">
+  <div class="container">
+    <div class="label">§ Sample · Section 08 · ROI calculator (live)</div>
+    <h2>Working calculator. <em>Type your buyer's numbers in.</em></h2>
+    <p>Two models — FTE replacement (hospital / FQHC / multi-site) and recovered revenue (specialty / dental). Live JavaScript math. Try it with sample numbers.</p>
+
+    <div class="calc" id="calc">
+      <div class="hdr">
+        <h4>ROI Calculator</h4>
+        <div class="toggle">
+          <button class="active" data-mode="fte">FTE replacement</button>
+          <button data-mode="rev">Recovered revenue</button>
+        </div>
+      </div>
+      <div class="grid" id="inputs-fte">
+        <div class="field"><label>Annual call volume</label><input type="number" id="callVol" value="120000" /></div>
+        <div class="field"><label>Cost per FTE (fully loaded $)</label><input type="number" id="ftecost" value="55000" /></div>
+        <div class="field"><label>Current FTEs handling calls</label><input type="number" id="fteCount" value="3" /></div>
+        <div class="field"><label>Current abandon rate (%)</label><input type="number" id="abandon" value="18" /></div>
+        <div class="field"><label>Revenue per recovered abandon ($)</label><input type="number" id="revPerAbandon" value="50" /></div>
+        <div class="field"><label>Confido annual fee ($)</label><input type="number" id="confidoFee" value="36000" /></div>
+      </div>
+      <div class="grid" id="inputs-rev" style="display:none;">
+        <div class="field"><label>Avg appointments / day</label><input type="number" id="appts" value="35" /></div>
+        <div class="field"><label>No-show rate today (%)</label><input type="number" id="noshow" value="15" /></div>
+        <div class="field"><label>Revenue per appointment ($)</label><input type="number" id="revAppt" value="180" /></div>
+        <div class="field"><label>Operating days / year</label><input type="number" id="opDays" value="250" /></div>
+        <div class="field"><label>Confido annual fee ($)</label><input type="number" id="confidoFee2" value="6000" /></div>
+        <div class="field"><label>Target no-show after deploy (%)</label><input type="number" id="targetNoshow" value="5" /></div>
+      </div>
+      <div class="out" id="out">
+        <div class="o"><div class="k">Annual savings</div><div class="v" id="o1">$0</div></div>
+        <div class="o"><div class="k">Payback period</div><div class="v" id="o2">0 mo</div></div>
+        <div class="o"><div class="k">Year-1 ROI multiple</div><div class="v" id="o3">0x</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. BATTLECARD -->
+<div class="s alt">
+  <div class="container">
+    <div class="label">§ Sample · Section 12 · Battlecards</div>
+    <h2>Sample card · <em>Hyro</em>.</h2>
+    <p>Bayshore would build cards for the top 5 competitors based on win/loss interview data. Here's the Hyro card based on public positioning. Format: how they pitch · their structural weakness · our 1-sentence answer · the customer story that nails it.</p>
+
+    <div class="bcard">
+      <div class="hdr">
+        <h4>Hyro AI</h4>
+        <div class="stage">Series B/C · ~$95M raised · 45+ health systems</div>
+      </div>
+      <div class="row"><div class="k">→ How they pitch</div><div class="v"><em>"No-code platform offering pre-built healthcare conversation flows designed to work out of the box."</em> Anchors hard on health-system enterprise deployments (Sutter, Tampa General, Prisma, Piedmont) and call-center contact-center automation specifically.</div></div>
+      <div class="row"><div class="k">→ Structural weakness</div><div class="v">Built for the 45+ health-system buyer. The same product that wins enterprise feels heavy and overconfigured for a 12-doc specialty group. Their pricing model + implementation time scales down poorly. They have ~zero specialty/dental references.</div></div>
+      <div class="row"><div class="k">→ Our 1-sentence answer</div><div class="v"><em>"Hyro built the platform for the 800-bed health system. We built it for the 12-doc specialty group that doesn't have a 50-person IT team to configure flows."</em></div></div>
+      <div class="row"><div class="k">→ Customer story</div><div class="v">Dallas Renal Group. Live in <30 days, no dedicated IT lead on the customer side. Specialty-specific workflows (recall, appointment confirm, payment) preconfigured — not built from a no-code template.</div></div>
+      <div class="row"><div class="k">→ When they win</div><div class="v">Top-25 IDN with internal IT capacity for configuration + multi-year enterprise sales cycle. Don't fight here unless we have a CIO intro already in hand.</div></div>
+      <div class="row"><div class="k">→ When we win</div><div class="v">Specialty group · FQHC · single-site hospital · dental DSO. Anywhere "no IT team to configure" is the top constraint. Win rate >70% in this segment.</div></div>
+    </div>
+
+    <p style="font-size:14px; color:var(--stone);">Bayshore would build the same format for: <strong>Notable Health</strong> (broad workflow platform · they bundle, we focus) · <strong>Infinitus</strong> (payor-side dominant · we work for the provider) · <strong>Assort Health</strong> (closest peer · faster deployment + multi-modal customer base) · <strong>Hello Patient</strong> (single workflow · we're three).</p>
+  </div>
+</div>
+
+<!-- 5. DISCOVERY SCRIPT -->
+<div class="s">
+  <div class="container">
+    <div class="label">§ Sample · Section 07 · Discovery script</div>
+    <h2>Six mandatory questions. <em>One persona variant per.</em></h2>
+    <p>Discovery rigor is what separates 30% conversion from 60%. Every enterprise discovery call must produce a quoted answer (not the AE's interpretation) to all six. Below: each question, what listening for, persona variant for VP Patient Access (the most common Confido sponsor).</p>
+
+    <div class="disco">
+      <div class="n">— Q1 —</div>
+      <div class="body">
+        <h5>Volume — "What's your annual inbound call volume across all sites?"</h5>
+        <p><em>VP Patient Access variant:</em> "Walk me through a typical Monday morning at the front desk. How many calls hit before noon? What's your team's coverage look like at 11am?" → Listening: hard number, plus the qualitative "Mondays are brutal" admission.</p>
+      </div>
+    </div>
+    <div class="disco">
+      <div class="n">— Q2 —</div>
+      <div class="body">
+        <h5>Abandon — "What's your current call abandon rate, and what's your target?"</h5>
+        <p><em>VP Patient Access variant:</em> "What does your dashboard show for abandon rate this quarter? When did you last move that number?" → Listening: a number with a target (functional), no answer (red flag — they don't measure), or the answer + "we've tried 3 things and nothing moved it" (perfect setup).</p>
+      </div>
+    </div>
+    <div class="disco">
+      <div class="n">— Q3 —</div>
+      <div class="body">
+        <h5>Spend — "What are you paying today for IVR, answering service, or outbound dialer? Hard number."</h5>
+        <p><em>VP Patient Access variant:</em> "Walk me through every line item on your patient-access tech stack. Names, vendors, dollars." → Listening: complete or incomplete answer. Incomplete = the CFO doesn't know either, which is its own selling point ("we'd consolidate this").</p>
+      </div>
+    </div>
+    <div class="disco">
+      <div class="n">— Q4 —</div>
+      <div class="body">
+        <h5>Decision authority — "Who signs the contract? Does this need a steering committee?"</h5>
+        <p><em>VP Patient Access variant:</em> "If we agreed today, what's the path to a signed contract? Does your CIO need to bless it, or can you sign?" → Listening: a process they've walked before (good — a real path) vs. a process they're inventing (warning — long cycle).</p>
+      </div>
+    </div>
+    <div class="disco">
+      <div class="n">— Q5 —</div>
+      <div class="body">
+        <h5>Timeline — "If we agreed today, when would you want to be live? What forces that date?"</h5>
+        <p><em>VP Patient Access variant:</em> "Is there a moment in 2026 when you absolutely need this working? A budget cycle, a survey period, a leadership review?" → Listening: a real forcing function (good) or "soon" (no urgency = no deal yet).</p>
+      </div>
+    </div>
+    <div class="disco">
+      <div class="n">— Q6 —</div>
+      <div class="body">
+        <h5>Champion test — "Who in your org will lose their job if this doesn't work? Whose name is on it?"</h5>
+        <p><em>VP Patient Access variant:</em> "If we deploy and it works as well as it did at York Hospital, whose performance review benefits? If it goes badly, whose career takes the hit?" → Listening: a name comes back (deal at 70%+ confidence) or no name (deal at 30% — the champion isn't real).</p>
+      </div>
+    </div>
+    <p style="font-size:14px; color:var(--stone); margin-top:24px;">Bayshore would build the same 6-question script with persona variants for: <strong>CIO</strong> (technical depth + integration risk variant), <strong>CMIO</strong> (clinician-experience + change-management variant), <strong>Owner-Dentist</strong> (4-question SMB script — much shorter), <strong>FQHC COO</strong> (governance-heavy variant).</p>
+  </div>
+</div>
+
+<!-- 6. PRICING TIERS -->
+<div class="s alt">
+  <div class="container">
+    <div class="label">§ Sample · Section 10 · Pricing tier rebuild</div>
+    <h2>Three packages. <em>Real numbers. Real comp set.</em></h2>
+    <p>Today: one model adjusted by AE on a call. Recommendation: 3 packages anchored to publicly observable comp data — Hyro (enterprise quote-based, $100K+ ACV typical), Suki ($299–$399/user/month), Talkdesk ($225/user/month for healthcare contact-center), Assort Health ($1.5–10K/month, $750M valuation), SuperDial (per-completed-call usage).</p>
+
+    <div class="tier">
+      <div class="hdr"><h4>Entry — Launch</h4><div class="price">$500–700/mo · ~$6–8K ACV</div></div>
+      <div class="for">→ Single-site specialty &lt;10 docs · solo dental · rural FQHC</div>
+      <p class="feat">Base $499/month covers up to 500 active patients · $0.25/patient/month overage · one agent (Sara) · standard SLA · 2-week onboarding · self-serve dashboard. Tier strategy: product-led growth, no AE touch, low CAC, &gt;75% gross margin.</p>
+    </div>
+
+    <div class="tier middle">
+      <div class="hdr"><h4>Standard — Growth (recommended for most)</h4><div class="price">$3–15K/mo · $60–180K ACV</div></div>
+      <div class="for">→ Multi-site specialty (10–50 providers) · FQHC 50K–200K patient panel · regional urgent-care chain</div>
+      <p class="feat">Base $2,999/month for 10K calls/month · $0.15/call overage. <em>Or</em> $4,999/month for 100K active patients · $0.35 PMPM overage. All three agents (Sara/Ryan/Lilly) · payment collection · multi-location hub · 2+ EHR integrations · 4–6 week implementation · biweekly check-ins. ~70-75% gross margin.</p>
+    </div>
+
+    <div class="tier">
+      <div class="hdr"><h4>Premium — Enterprise</h4><div class="price">$25–100K+/mo · $300K–$1M+ ACV</div></div>
+      <div class="for">→ Top-25 IDN · large dental DSO · academic medical center · multi-hospital network</div>
+      <p class="feat">Custom annual commitment based on patient population + call volume forecasting · $0.08–$0.12/call overage (volume discount) · 10–15% of contract value tied to KPIs (no-show rate, automation rate, recovered revenue) · full agent suite · unlimited integrations · white-label option · dedicated CSM + Engineering · 8–12 week implementation. ~60-65% gross margin.</p>
+    </div>
+
+    <div class="callout"><strong>What this fixes:</strong> today, a 4-doc dental practice and a 200-bed hospital are paying related prices for the same product. The 3-tier structure lets you charge each what they're willing to pay (and what they expect to pay based on comp set norms). Expected ACV lift: 15–25% in the first 12 months of new pricing.</div>
+  </div>
+</div>
+
+<!-- WHAT ELSE -->
+<div class="s dark">
+  <div class="container">
+    <div class="label">§ The other six sections</div>
+    <h2>What gets built with <em>your data</em>, not from public research.</h2>
+    <ul>
+      <li><strong>Section 01 — Market thesis</strong> · 2-page sourced memo with Bayshore POV callouts, 90-day forecast, and competitor signal-tracking. Built from week 1 buyer interviews.</li>
+      <li><strong>Section 03 — Buying committee maps</strong> · separate maps for hospital, specialty, FQHC, dental — built from real win/loss interviews and your CRM data.</li>
+      <li><strong>Section 04 — Persona briefs</strong> · 1-pager each for top 4 buyer personas with goals, KPIs, pain language, top objections + answers, magic words. Anchored on your actual deal-pattern doc.</li>
+      <li><strong>Section 06 — Sales process</strong> · two parallel pipelines (enterprise + SMB) configured in your CRM with stage definitions, exit criteria, deal-desk approval matrix.</li>
+      <li><strong>Section 09 — Pilot kit</strong> · proposal template + security pre-empt pack (BAA + SOC2 + ISO + 60-question security questionnaire pre-fills) + pilot-to-enterprise step function.</li>
+      <li><strong>Section 11 — Proof deck</strong> · 18–22 slide modular deck anchored on York Hospital + Dallas Renal cases. Built so first AE delivers as well as founder.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>Six artifacts above were drafted in <em>~12 hours</em>. The full 12-section build is <em>90 days</em>.</h2>
+  <p>$25K (lean — sections 1–9) or $40K (full — all 12). 50/25/25 payment split. 30-day no-questions exit. Adam leads, Mike on AI-native + pricing. Bayshore caps at two clients at a time.</p>
+  <div class="btn-row">
+    <a class="btn solid" href="https://www.bayshore.health/contact.html">Book the consultation →</a>
+    <a class="btn ghost-light" href="sku-02-free.html">← Back to the free read</a>
+  </div>
+</div>
+
+<div class="foot">
+  <div>Bayshore Health · <a href="mailto:hello@bayshore.health">hello@bayshore.health</a></div>
+  <div>Paid · for Confido Health · Confidential</div>
+</div>
+
+<script>
+(function(){
+  var mode = 'fte';
+  function $(id){ return document.getElementById(id); }
+  function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
+  function calc(){
+    if (mode === 'fte') {
+      var calls = +$('callVol').value || 0;
+      var ftecost = +$('ftecost').value || 0;
+      var ftes = +$('fteCount').value || 0;
+      var abandon = +$('abandon').value || 0;
+      var revPer = +$('revPerAbandon').value || 0;
+      var fee = +$('confidoFee').value || 1;
+      // Assume 75% call deflection → 0.75 * ftes replaced
+      var fteSaved = ftes * 0.75;
+      var laborSavings = fteSaved * ftecost;
+      // Reduce abandon from current to 5% (Confido's ~5% no-show metric)
+      var newAbandon = Math.min(5, abandon);
+      var recoveredCalls = calls * (abandon - newAbandon) / 100;
+      var recoveredRev = recoveredCalls * revPer;
+      var totalSavings = laborSavings + recoveredRev;
+      var payback = (fee / (totalSavings / 12));
+      var roi = (totalSavings - fee) / fee;
+      $('o1').textContent = fmt(totalSavings);
+      $('o2').textContent = (payback < 12 ? payback.toFixed(1) : payback.toFixed(0)) + ' mo';
+      $('o3').textContent = roi.toFixed(1) + 'x';
+    } else {
+      var appts = +$('appts').value || 0;
+      var noshow = +$('noshow').value || 0;
+      var revAppt = +$('revAppt').value || 0;
+      var opDays = +$('opDays').value || 0;
+      var fee = +$('confidoFee2').value || 1;
+      var target = +$('targetNoshow').value || 0;
+      var dailyRecovered = appts * (noshow - target) / 100;
+      var annualRecovered = dailyRecovered * opDays * revAppt;
+      var payback = (fee / (annualRecovered / 12));
+      var roi = (annualRecovered - fee) / fee;
+      $('o1').textContent = fmt(annualRecovered);
+      $('o2').textContent = (payback < 12 ? payback.toFixed(1) : payback.toFixed(0)) + ' mo';
+      $('o3').textContent = roi.toFixed(1) + 'x';
+    }
+  }
+  document.querySelectorAll('.calc .toggle button').forEach(function(b){
+    b.addEventListener('click', function(){
+      mode = b.dataset.mode;
+      document.querySelectorAll('.calc .toggle button').forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      $('inputs-fte').style.display = (mode === 'fte') ? 'grid' : 'none';
+      $('inputs-rev').style.display = (mode === 'rev') ? 'grid' : 'none';
+      calc();
+    });
+  });
+  document.querySelectorAll('.calc input').forEach(function(i){ i.addEventListener('input', calc); });
+  calc();
+})();
+</script>
+
+</body>
+</html>

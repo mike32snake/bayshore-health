@@ -47,6 +47,22 @@
   .more-block .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
   .more-block h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 36px; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 16px; max-width: 720px; }
   .more-block p { font-size: 16px; line-height: 1.6; color: var(--stone); margin: 0; max-width: 640px; }
+
+  @media (max-width: 900px) {
+    .cs-meta, .cs-body, .more-block { grid-template-columns: 1fr; gap: 28px; }
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 720px) {
+    .cs-section { padding: 56px 20px; }
+    .cs-section h2 { font-size: 34px; }
+    .cs-body { margin-top: 36px; }
+    .results-grid { margin-top: 40px; }
+    .result { padding: 24px; }
+    .result .v { font-size: 40px; }
+    .cs-quote { padding: 48px 20px; }
+    .cs-quote .q { font-size: 24px; }
+    .more-block { padding: 48px 20px; }
+  }
 </style>
 </head>
 <body>
@@ -64,6 +80,8 @@
       <img src="uploads/palm-recolored.png" alt="palm" />
     </div>
     </a>
+    <input type="checkbox" id="navToggle" class="nav-toggle" hidden />
+    <label for="navToggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
     <div class="nav-right">
       <a href="practice.html">Practice</a>
       <a class="active" href="case-studies.html">Case studies</a>

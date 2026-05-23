@@ -307,6 +307,133 @@
   .foot-bottom .meta { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #9ab2ae; text-transform: uppercase; }
   .foot-bottom .legal { display: flex; gap: 24px; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
   .foot-bottom .legal a { color: #9ab2ae; padding: 0; }
+
+  /* ============================================================
+     RESPONSIVE / MOBILE
+     ============================================================ */
+  img { max-width: 100%; }
+  .nav-burger { display: none; }
+
+  /* --- Tablet --- */
+  @media (max-width: 1080px) {
+    .hero { grid-template-columns: 1fr; min-height: 0; }
+    .intro { grid-template-columns: 1fr; gap: 36px; }
+    .why .head, .principles .head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 56px; }
+    .case-grid, .quotes { grid-template-columns: 1fr 1fr; }
+    .case-grid > .case-card.feature { grid-column: span 2; }
+    .quotes > .quote-card.lead { grid-column: span 2; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .articles { grid-template-columns: repeat(2, 1fr); }
+    .partners { grid-template-columns: 1fr; }
+    .faq .wrap { grid-template-columns: 1fr; gap: 40px; }
+    .cta-block { grid-template-columns: 1fr; gap: 32px; }
+    .contact { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
+    .foot-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .principles-grid { grid-template-columns: 1fr 1fr; gap: 0 40px; }
+    .eco-teaser-stats { grid-template-columns: 1fr 1fr !important; }
+  }
+
+  /* --- Nav → hamburger --- */
+  @media (max-width: 860px) {
+    .nav { flex-wrap: wrap; padding: 16px 20px; }
+    .nav-burger { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 5px; width: 44px; height: 36px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .nav-burger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: transform 0.25s ease, opacity 0.2s ease; }
+    .nav-right { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; gap: 0; margin-top: 14px; }
+    .nav-toggle:checked ~ .nav-right { display: flex; }
+    .nav-right a:not(.btn) { padding: 15px 2px; font-size: 16px; border-top: 1px solid var(--rule); }
+    .nav-right a.btn { margin-top: 16px; justify-content: center; padding: 16px 22px; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+
+  /* --- Phone --- */
+  @media (max-width: 720px) {
+    .hero-left { padding: 48px 20px; gap: 28px; }
+    .hero-left h1 { font-size: 40px; }
+    .hero-left .lede { font-size: 16px; }
+    .hero-left .ctas { flex-wrap: wrap; }
+    .hero-right { padding: 40px 20px; }
+    .ticker .label { padding: 0 20px; }
+
+    .intro { padding: 56px 20px; }
+    .intro h2 { font-size: 34px; }
+    .intro .body { grid-template-columns: 1fr; gap: 22px; }
+
+    .stats-band { grid-template-columns: 1fr 1fr; gap: 32px 20px; padding: 40px 20px; }
+    .stats-band .stat { padding: 0; border-left: none; }
+    .stats-band .stat .num { font-size: 46px; }
+
+    .table-section { padding: 56px 20px; }
+    .table-section .head { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
+    .table-section .head h2 { font-size: 34px; }
+    .row { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
+    .row.head-row { display: none; }
+    .row .what { font-size: 20px; }
+    .row .when { text-align: left; }
+
+    .why { padding: 56px 20px; }
+    .why .head { margin-bottom: 40px; }
+    .why .head h2 { font-size: 34px; }
+    .compare { grid-template-columns: 1fr; }
+    .compare > .compare-head { display: none; }
+    .compare > div { padding: 14px 0; }
+    .compare .col-label { color: var(--terra); padding-top: 22px; padding-bottom: 2px; border-bottom: none; }
+    .compare .col-them { padding-top: 2px; border-bottom: none; }
+    .compare .col-them::before { content: 'Typical — '; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #7e8f8a; }
+    .compare > .col-us { grid-template-columns: 1fr; gap: 4px; border-left: 2px solid var(--terra); padding-left: 18px; }
+
+    .cases { padding: 56px 20px; }
+    .cases .head h2 { font-size: 34px; }
+    .case-grid { grid-template-columns: 1fr; }
+    .case-grid > .case-card.feature { grid-column: auto; }
+    .case-card { min-height: 0; }
+    .case-card.feature h3 { font-size: 30px; }
+
+    .process { padding: 56px 20px; }
+    .process .head h2 { font-size: 34px; }
+    .process-grid { grid-template-columns: 1fr; }
+    .phase { min-height: 0; }
+    .eco-teaser-stats { grid-template-columns: 1fr 1fr !important; margin-bottom: 32px; }
+    .eco-teaser-stats > div { padding: 22px !important; }
+    .eco-teaser-stats > div > div:first-child { font-size: 44px !important; }
+
+    .team-band { padding: 56px 20px; }
+    .team-band h2 { font-size: 34px; margin-bottom: 36px; }
+    .partner-card { grid-template-columns: 1fr; gap: 20px; padding: 28px; }
+    .partner-card .avatar { width: 96px; height: 96px; font-size: 44px; }
+
+    .testimonials { padding: 56px 20px; }
+    .testimonials .head h2 { font-size: 34px; }
+    .quotes { grid-template-columns: 1fr; }
+    .quotes > .quote-card.lead { grid-column: auto; }
+    .quote-card .q { font-size: 20px; }
+    .quote-card.lead .q { font-size: 26px; }
+
+    .principles { padding: 56px 20px; }
+    .principles .head h2 { font-size: 34px; }
+    .principles-grid { grid-template-columns: 1fr; gap: 0; }
+
+    .writing { padding: 56px 20px; }
+    .writing .head { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .writing .head h2 { font-size: 34px; }
+    .articles { grid-template-columns: 1fr; }
+
+    .faq { padding: 56px 20px; }
+    .faq .head h2 { font-size: 34px; }
+
+    .cta-block { padding: 56px 20px; gap: 24px; }
+    .cta-block h2 { font-size: 38px; }
+    .cta-block .palm-spot { margin: 0 0 0 20px; height: 70px; width: 70px; }
+
+    .contact { grid-template-columns: 1fr; gap: 36px; padding: 56px 20px; }
+    .contact .col h3 { font-size: 26px; }
+
+    .foot { padding: 56px 20px 32px; }
+    .foot-top { grid-template-columns: 1fr; gap: 32px; padding-bottom: 36px; }
+    .foot-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .foot-bottom .legal { flex-wrap: wrap; gap: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -323,6 +450,8 @@
       <div class="slash">/</div>
       <img src="uploads/palm-recolored.png" alt="palm" />
     </div>
+    <input type="checkbox" id="navToggle" class="nav-toggle" hidden />
+    <label for="navToggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
     <div class="nav-right">
       <a href="ecosystem.html">Executive Ecosystem</a>
       <a class="btn terra" style="padding:10px 18px;" href="contact.html">Book consultation →</a>
@@ -579,7 +708,7 @@
       <h2>The buyers other consultancies <em>can't reach</em>. We can.</h2>
       <p>A boutique advisory's actual product is its network. Two decades inside healthcare has built ours into 220+ active senior executives across health systems, plans, MSOs, IPAs, ACOs, and risk-bearing groups — current relationships, not a stale rolodex. When you hire Bayshore, the network comes with the playbook.</p>
     </div>
-    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 48px;">
+    <div class="eco-teaser-stats" style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 48px;">
       <div style="background:#fff; padding: 32px;">
         <div style="font-family:'Fraunces',serif; font-weight:700; font-size:64px; letter-spacing:-0.04em; line-height:1; color:var(--terra);">220+</div>
         <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--stone); margin-top:12px;">Senior executives in the active network</div>

@@ -79,3 +79,47 @@ a { color: inherit; }
 .page-hero h1 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 80px; letter-spacing: -0.04em; line-height: 0.95; margin: 0; max-width: 1100px; }
 .page-hero h1 em { color: var(--terra); font-style: italic; font-weight: 600; }
 .page-hero .lede { font-size: 18px; line-height: 1.55; color: var(--stone); max-width: 720px; margin: 32px 0 0; }
+
+/* ============================================================
+   RESPONSIVE / MOBILE — shared components
+   (nav hamburger, cta-block, contact, footer, page-hero)
+   Page-specific layouts live in each page's inline <style>.
+   ============================================================ */
+img { max-width: 100%; }
+
+/* CSS-only hamburger toggle (checkbox hack — no JS). Hidden on desktop. */
+.nav-burger { display: none; }
+
+@media (max-width: 1080px) {
+  .cta-block { grid-template-columns: 1fr; gap: 32px; }
+  .contact { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
+  .foot-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+@media (max-width: 860px) {
+  /* NAV collapses to a tap-to-open menu */
+  .nav { flex-wrap: wrap; padding: 16px 20px; }
+  .nav-burger { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 5px; width: 44px; height: 36px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .nav-burger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: transform 0.25s ease, opacity 0.2s ease; }
+  .nav-right { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; gap: 0; margin-top: 14px; }
+  .nav-toggle:checked ~ .nav-right { display: flex; }
+  .nav-right a:not(.btn) { padding: 15px 2px; font-size: 16px; border-top: 1px solid var(--rule); }
+  .nav-right a.btn { margin-top: 16px; justify-content: center; padding: 16px 22px; }
+  .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+  .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+
+@media (max-width: 720px) {
+  .cta-block { padding: 56px 20px; gap: 24px; }
+  .cta-block h2 { font-size: 38px; }
+  .contact { grid-template-columns: 1fr; gap: 36px; padding: 56px 20px; }
+  .contact .col h3 { font-size: 26px; }
+  .page-hero { padding: 48px 20px 40px; }
+  .page-hero h1 { font-size: 42px; }
+  .page-hero .lede { font-size: 16px; margin-top: 24px; }
+  .foot { padding: 56px 20px 32px; }
+  .foot-top { grid-template-columns: 1fr; gap: 32px; padding-bottom: 36px; }
+  .foot-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .foot-bottom .legal { flex-wrap: wrap; gap: 14px; }
+}

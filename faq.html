@@ -36,6 +36,17 @@
   .qa.closing .toggle { transform: rotate(0deg); }
   @keyframes qaFadeIn  { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes qaFadeOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-6px); } }
+
+  @media (max-width: 900px) {
+    .faq-page { grid-template-columns: 1fr; gap: 40px; }
+    .faq-side { position: static; }
+  }
+  @media (max-width: 720px) {
+    .faq-page { padding: 48px 20px; }
+    .faq-main h2 { font-size: 30px; }
+    .faq-main .group { margin-bottom: 48px; }
+    .qa h3 { font-size: 19px; }
+  }
 </style>
 </head>
 <body>
@@ -53,6 +64,8 @@
       <img src="uploads/palm-recolored.png" alt="palm" />
     </div>
     </a>
+    <input type="checkbox" id="navToggle" class="nav-toggle" hidden />
+    <label for="navToggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
     <div class="nav-right">
       <a href="practice.html">Practice</a>
       <a href="case-studies.html">Case studies</a>

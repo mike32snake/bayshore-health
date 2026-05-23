@@ -32,6 +32,17 @@
   .intro-band .label { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); }
   .intro-band p { font-size: 17px; line-height: 1.6; color: var(--stone); margin: 0 0 16px; max-width: 720px; }
   .intro-band p strong { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .pr-row { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+    .intro-band { grid-template-columns: 1fr; gap: 28px; }
+  }
+  @media (max-width: 720px) {
+    .practice-grid { padding: 48px 20px; }
+    .pr-head h2 { font-size: 30px; }
+    .pr-body ul { grid-template-columns: 1fr; }
+    .intro-band { padding: 48px 20px; }
+  }
 </style>
 </head>
 <body>
@@ -49,6 +60,8 @@
       <img src="uploads/palm-recolored.png" alt="palm" />
     </div>
     </a>
+    <input type="checkbox" id="navToggle" class="nav-toggle" hidden />
+    <label for="navToggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
     <div class="nav-right">
       <a class="active" href="practice.html">Practice</a>
       <a href="case-studies.html">Case studies</a>

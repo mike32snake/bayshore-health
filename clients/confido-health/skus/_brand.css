@@ -143,12 +143,18 @@ details.acc .body-wrap .inner > div { padding: 0 0 24px 70px; font-size: 15px; l
 }
 
 /* Mobile */
+img { max-width: 100%; }
 @media (max-width: 880px) {
-  .hero { padding: 56px 24px 40px; }
-  .hero h1 { font-size: 40px; }
+  .hero { padding: 56px 20px 40px; }
+  .hero h1 { font-size: 38px; }
   .hero .meta-row { grid-template-columns: 1fr 1fr; gap: 14px; }
-  .s, .cta, .split, .foot { padding-left: 24px; padding-right: 24px; }
+  .s, .cta, .split, .foot { padding-left: 20px; padding-right: 20px; }
   .s h2, .cta h2 { font-size: 28px; }
-  .head { padding: 18px 24px; }
+  .head { padding: 16px 20px; flex-wrap: wrap; gap: 10px; }
   .card-grid.cols-2, .card-grid.cols-3, .card-grid.cols-4, .split { grid-template-columns: 1fr; }
+  .score { padding: 24px; }
+  .score .num { font-size: 56px; }
+  .score .num small { font-size: 24px; }
+  /* Wide tables scroll horizontally instead of overflowing the page */
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }

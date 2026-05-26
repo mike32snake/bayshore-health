@@ -5,3 +5,9 @@
 .idea/
 .vscode/
 node_modules/
+
+# Local working dirs (not deployed)
+# bayshore-output/ — /bayshore-productize skill output (recs, scopes, drafts)
+# .playwright-mcp/ — Playwright verification snapshots/screenshots
+bayshore-output/
+.playwright-mcp/

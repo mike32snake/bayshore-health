@@ -11,3 +11,6 @@ node_modules/
 # .playwright-mcp/ — Playwright verification snapshots/screenshots
 bayshore-output/
 .playwright-mcp/
+
+# Analytics reports (private — repo is public)
+reports/

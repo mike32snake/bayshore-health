@@ -70,6 +70,31 @@
     .alt-block { padding: 48px 20px; }
   }
 </style>
+<meta name="description" content="Book a 30-minute diagnostic call with Bayshore Health. No deck, a clear yes or no on fit, references available. Tampa, FL." />
+<link rel="canonical" href="https://www.bayshore.health/contact.html" />
+<meta property="og:site_name" content="Bayshore Health" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Book a consultation — Bayshore Health" />
+<meta property="og:description" content="Book a 30-minute diagnostic call with Bayshore Health. No deck, a clear yes or no on fit, references available. Tampa, FL." />
+<meta property="og:url" content="https://www.bayshore.health/contact.html" />
+<meta property="og:image" content="https://www.bayshore.health/uploads/palm-recolored.png" />
+<meta name="twitter:card" content="summary" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "ContactPage",
+ "url": "https://www.bayshore.health/contact.html",
+ "mainEntity": {
+  "@id": "https://www.bayshore.health/#org"
+ },
+ "about": {
+  "@type": "ContactPoint",
+  "contactType": "sales",
+  "email": "hello@bayshore.health",
+  "availableLanguage": "English"
+ }
+}
+</script>
 </head>
 <body>
 <div class="container">
@@ -293,6 +318,16 @@
   // show the inline success state without a page redirect. If JS fails or
   // the request errors, the form's standard action POST still works as a
   // graceful fallback (formsubmit will redirect to its own thank-you page).
+  // GA4: count mailto clicks as lead-adjacent events (enhanced measurement
+  // does not cover mailto links).
+  (function () {
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (typeof gtag === 'function') gtag('event', 'email_click', { link_url: a.getAttribute('href') });
+      });
+    });
+  })();
+
   (function () {
     var form = document.getElementById('diagnosticForm');
     if (!form) return;
@@ -310,6 +345,7 @@
         body: JSON.stringify(data)
       }).then(function (r) {
         if (!r.ok) throw new Error('submit-failed');
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'consultation_form' });
         card.classList.add('sent');
         window.scrollTo({ top: card.offsetTop - 80, behavior: 'smooth' });
       }).catch(function () {

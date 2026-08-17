@@ -12,5 +12,7 @@ node_modules/
 bayshore-output/
 .playwright-mcp/
 
-# Analytics reports (private — repo is public)
-reports/
+# Analytics reports (private — repo is public).
+# No trailing slash: the real files live in ~/.local/share/bayshore-analytics
+# (outside macOS TCC so launchd crons can read them) and `reports` here is a symlink.
+reports
